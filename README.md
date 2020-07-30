@@ -3,10 +3,10 @@
 # Group 2.THURS-18.30-6
 
 ## Members
-* ., Winston (s3777969)
-* Rojas, Rodrigo Miguel (s3784466)
-* Blanch, David (s3589310)
-* Nam, Le Hai (sXXXX)
+* ., Winston (S3777969)
+* Rojas, Rodrigo Miguel (S3784466)
+* Blanch, David (S3589310)
+* Nam, Le Hai (S3625204)
 
 ## Records
 
