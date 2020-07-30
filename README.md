@@ -1,6 +1,6 @@
 # RMIT SEPT 2020 Major Project
 
-# Group 2.THURS-18.20-6
+# Group 2.THURS-18.30-6
 
 ## Members
 * ., Winston (s3777969)
