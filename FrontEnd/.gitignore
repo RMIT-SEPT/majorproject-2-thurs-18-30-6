@@ -1,5 +1,6 @@
 #React gitignore files from https://gist.github.com/dimkirt/873adea886c4204f74440a2a09d5b2a9
 
+
 # Logs
 logs
 *.log
@@ -61,3 +62,5 @@ typings/
 
 # dotenv environment variables file
 .env
+
+
