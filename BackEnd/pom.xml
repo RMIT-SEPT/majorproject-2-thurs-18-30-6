@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.rmit.sept.thurs1830.group6</groupId>
-    <artifactId>frontend</artifactId>
+    <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>frontend</name>
-    <description>Front End React for Thurs1830 Group 6 Major Project</description>
+    <name>backend</name>
+    <description>Back End SpringBoot for Thurs1830 Group 6 Major Project</description>
 
     <properties>
         <java.version>1.8</java.version>
