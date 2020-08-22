@@ -1,20 +1,33 @@
 import React from 'react';
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect
+} from 'react-router-dom';
 
-// components
-import Header from './components/header_component/header'
-import Footer from './components/footer_component/footer'
-import Homepage from './components/pages/homepage'
+// pages
+import Mainpage from './components/pages/mainpage';
+import PageNotFound from './components/pages/pageNotFound';
+import Loginpage from './components/pages/loginpage';
+
+
 
 function App() {
   return (
-    <div>
-      <Header/>
 
-      <Homepage/>
-      
-      <Footer/>
-    </div>
+      <Router>
+          <Switch>
+              <Route exact path={'/'} component={Mainpage}/>
+              <Route exact path={'/login'} component={Loginpage}/>
+
+              {/*KEEP AT THE END*/}
+              <Route path={'/404'}component={PageNotFound}/>
+              <Redirect to={'/404'}/>
+          </Switch>
+      </Router>
+
   );
 }
 

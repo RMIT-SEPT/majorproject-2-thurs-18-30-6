@@ -1,11 +1,11 @@
 /*
-    JS file for homepage of react website
+    JS file for mainpage_body of react website
     Author: Rodrigo Miguel Rojas (s3784466)
  */
 import React, {Component} from 'react';
-import '../../assets/homepage.css'
+import '../../assets/body.css';
 
-class Homepage extends Component {
+class MainpageBody extends Component {
     render() {
         return (
             <div className={'bodyText'}>
@@ -29,4 +29,4 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+export default MainpageBody;
