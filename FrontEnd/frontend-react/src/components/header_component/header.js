@@ -22,7 +22,7 @@ class Header extends Component {
                         <li className={'mainNav'}><a href={"/"}> Available Services </a></li>
                         <li className={'mainNav'}><a href={"/"}> Make a Booking </a></li>
                         <li className={'loginNav'}><a href={"/login"}> Login </a></li>
-                        <li className={'registerNav'}><a href={"/"}> Register </a></li>
+                        <li className={'registerNav'}><a href={"/register"}> Register </a></li>
                     </ul>
                 </nav>
             </header>

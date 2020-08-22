@@ -11,6 +11,7 @@ import {
 import Mainpage from './components/pages/mainpage';
 import PageNotFound from './components/pages/pageNotFound';
 import Loginpage from './components/pages/loginpage';
+import Registerpage from './components/pages/registerpage';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Switch>
               <Route exact path={'/'} component={Mainpage}/>
               <Route exact path={'/login'} component={Loginpage}/>
+              <Route exact path={'/register'} component={Registerpage}/>
 
               {/*KEEP AT THE END*/}
               <Route path={'/404'}component={PageNotFound}/>

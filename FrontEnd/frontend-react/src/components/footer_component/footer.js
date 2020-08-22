@@ -10,7 +10,8 @@ class Footer extends Component {
         return (
             <footer className={'footer'}>
                 {/*Component type: to remove when finished*/}
-                <p className={'footerText'}>FOOTER</p>
+                <p className={'footerText'}>
+                    SEPT - 2.THURS-18.30-6</p>
 
                 {/*Add company details for footer*/}
 
