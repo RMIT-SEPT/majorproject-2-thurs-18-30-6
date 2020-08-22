@@ -1,13 +1,19 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 
-import Dashboard from './components/Dashboard';
+// components
+import Header from './components/header_component/header'
+import Footer from './components/footer_component/footer'
+import Homepage from './components/pages/homepage'
 
 function App() {
   return (
     <div>
-      <Dashboard/>
+      <Header/>
+
+      <Homepage/>
+      
+      <Footer/>
     </div>
   );
 }
