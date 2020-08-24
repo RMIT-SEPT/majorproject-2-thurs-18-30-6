@@ -55,14 +55,18 @@ class Loginpage extends Component {
 
     render() {
         return (
-            <div>
-                <h1> LOGIN: </h1> <br/>
-                <form onSubmit={this.handleSubmit}>
-                    <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
-                    <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
+            <div class="login">
+                <div className="form">
+                    <h2>Welcome!</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email}
+                               onChange={this.handleChange} required/>
+                        <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password}
+                               onChange={this.handleChange} required/>
 
-                    <button type={'submit'}> Login </button>
-                </form>
+                        <button type={'submit'}> Login</button>
+                    </form>
+                </div>
             </div>
         );
     }
