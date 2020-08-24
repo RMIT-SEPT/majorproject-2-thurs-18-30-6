@@ -55,9 +55,10 @@ class Loginpage extends Component {
 
     render() {
         return (
-            <div class="login">
+            <div className="login">
                 <div className="form">
-                    <h2>Welcome!</h2>
+                    <a className="back" href={"/"}><i className="arrow left"></i>back</a>
+                    <h2 className="head">Welcome!</h2>
                     <form onSubmit={this.handleSubmit}>
                         <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email}
                                onChange={this.handleChange} required/>
@@ -66,7 +67,9 @@ class Loginpage extends Component {
 
                         <button type={'submit'}> Login</button>
                     </form>
+                    <h4 className="register">Don't have an account? <a className="link" href={"/register"}> Register</a></h4>
                 </div>
+
             </div>
         );
     }
