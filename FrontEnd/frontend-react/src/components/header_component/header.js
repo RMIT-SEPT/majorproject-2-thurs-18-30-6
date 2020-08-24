@@ -15,7 +15,6 @@ class Header extends Component {
                     HEADER LOGO
                 </div>
 
-                {/*navbar for website (css later)*/}
                 <nav className={'navbar'}>
                     <ul className={'list'}>
                         <li className={'mainNav'}><a href={"/"}> Home </a></li>
