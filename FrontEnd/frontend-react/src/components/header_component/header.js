@@ -11,8 +11,8 @@ class Header extends Component {
             <header className={'header'}>
 
                 {/*Div for Website Logo (insert ref to logo image)*/}
-                <div className={'logo'}>
-                    HEADER LOGO
+                <div className={'title'}>
+                    <h1>PROJECT TITLE</h1>
                 </div>
 
                 <nav className={'navbar'}>

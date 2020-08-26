@@ -12,7 +12,11 @@ class Registerpage extends Component {
 
         // The fields in the registration form (update when necessary)
         this.state = {
+            name: "",
             email: "",
+            username: "",
+            phone_number: "",
+            address: "",
             password: "",
             confirm_password: "",
             errors: ""
@@ -57,7 +61,11 @@ class Registerpage extends Component {
             <div>
                 <h1> REGISTER: </h1> <br/>
                 <form onSubmit={this.handleSubmit}>
+                    <input type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.handleChange} required/>
                     <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
+                    <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
+                    <input type={'number'} name={'phone_number'} placeholder={'Phone Number'} value={this.state.phone_number} onChange={this.handleChange} required/>
+                    <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
                     <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
                     <input type={'password'} name={'confirm_password'} placeholder={'Confirm Password'} value={this.state.confirm_password} onChange={this.handleChange} required/>
 
