@@ -2,17 +2,17 @@
     CSS file for loginpage of react website
     Author: Rodrigo Miguel Rojas (s3784466)
  */
-.text{
+.textLog{
     text-align: center;
     margin-top: 50px;
 }
-.login{
+.loginLog{
     width: 360px;
     padding: 150px;
     margin: auto;
 }
 
-.form {
+.formLog {
     background: white;
     position: absolute;
     top: 50%;
@@ -22,7 +22,7 @@
     padding: 100px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form button {
+.formLog button {
     text-transform: uppercase;
     outline: 0;
     background: black;
@@ -33,10 +33,10 @@
     font-size: 14px;
     cursor: pointer;
 }
-.form button:hover {
+.formLog button:hover {
     background: darkgrey;
 }
-.form input {
+.formLog input {
     outline: 0;
     background: lightgrey;
     width: 100%;
@@ -48,32 +48,32 @@
     font-size: 14px;
 }
 
-.register {
+.registerLog {
     text-align: center;
     color: grey;
 }
-.link {
+.linkLog {
     text-align: center;
     font-size: 14px;
     text-decoration: underline;
     color: royalblue;
 }
-.back {
+.backLog {
     text-align:left;
     color:black;
     font-weight: bold;
 
 }
-.head {
+.headLog {
     text-align:center;
 }
-.arrow {
+.arrowLog {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
 }
-.left {
+.leftLog {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }

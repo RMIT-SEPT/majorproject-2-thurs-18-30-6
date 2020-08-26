@@ -12,7 +12,7 @@ class Header extends Component {
 
                 {/*Div for Website Logo (insert ref to logo image)*/}
                 <div className={'title'}>
-                    <h1>PROJECT TITLE</h1>
+                    AGME BOOKING
                 </div>
 
                 <nav className={'navbar'}>
@@ -23,6 +23,7 @@ class Header extends Component {
                         <li className={'loginNav'}><a href={"/login"}> Login </a></li>
                         <li className={'registerNav'}><a href={"/register"}> Register </a></li>
                     </ul>
+
                 </nav>
             </header>
         );

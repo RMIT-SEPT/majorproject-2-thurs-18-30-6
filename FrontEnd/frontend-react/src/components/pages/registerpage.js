@@ -5,6 +5,7 @@
 */
 import React, {Component} from 'react';
 import axios from 'axios';
+import '../../assets/registerpage.css'
 
 class Registerpage extends Component {
     constructor(props){
@@ -58,8 +59,9 @@ class Registerpage extends Component {
 
     render() {
         return (
-            <div>
-                <h1> REGISTER: </h1> <br/>
+            <div className={"formReg"}>
+                <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
+                <h1 className={"headReg"}> REGISTER </h1>
                 <form onSubmit={this.handleSubmit}>
                     <input type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.handleChange} required/>
                     <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
@@ -70,7 +72,9 @@ class Registerpage extends Component {
                     <input type={'password'} name={'confirm_password'} placeholder={'Confirm Password'} value={this.state.confirm_password} onChange={this.handleChange} required/>
 
                     <button type={'submit'}> Register </button>
+
                 </form>
+                <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}> Login</a></h4>
             </div>
         );
     }
