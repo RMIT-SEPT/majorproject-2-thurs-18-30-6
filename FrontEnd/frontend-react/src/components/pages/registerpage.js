@@ -30,9 +30,15 @@ class Registerpage extends Component {
     handleSubmit(event){
 
         // post registration information to API
-        axios.post("enter registration api url here", {
+        axios.post("http://localhost:8080/api/user/register", {
 
-        //    data structure in json format
+            name: this.state.name,
+            email: this.state.email,
+            username: this.state.username,
+            phone_number: this.state.phone_number,
+            address: this.state.address,
+            password: this.state.password,
+            confirm_password: this.state.confirm_password
 
         },
             {
