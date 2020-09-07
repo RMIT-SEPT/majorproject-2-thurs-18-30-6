@@ -25,6 +25,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> createNewUser(@Valid @RequestBody User user, BindingResult result){
 
+        // IF there were errors return bad request
         if(result.hasErrors()){
             Map<String, String> errorMap = new HashMap<>();
 
@@ -33,13 +34,31 @@ public class UserController {
             }
         }
 
+        // ELSE IF passwords do not match return bad request
         if(!user.getPassword().matches(user.getConfirm_password())){
             return new ResponseEntity<String>("Passwords do not match.", HttpStatus.BAD_REQUEST);
         }
 
-        User user1 = userService.savedOrUpdatedUser(user);
+        // ELSE return created
+        User user1 = userService.registerUser(user);
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> logInUser(@RequestBody Map<String, Object> userMap){
+        // Get email and password from post request
+        String email = userMap.get("email").toString();
+        String password = userMap.get("password").toString();
 
+        // Send email and password to user service
+        User user = userService.loginUser(email, password);
+
+        // If NULL, user does not exist
+        if(user == null){
+            return new ResponseEntity<String>("Email or password was incorrect", HttpStatus.BAD_REQUEST);
+        }
+
+        // ELSE return correct
+        return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
 }

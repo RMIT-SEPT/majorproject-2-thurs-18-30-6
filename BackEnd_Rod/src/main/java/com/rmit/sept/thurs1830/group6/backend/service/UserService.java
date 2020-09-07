@@ -11,10 +11,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User savedOrUpdatedUser(User user){
-
-        //business logic
-
+    // CREATE new user and SAVE in repository
+    public User registerUser(User user){
         return userRepository.save(user);
+    }
+
+    // QUERY repository for user and CHECK IF existing
+    public User loginUser(String email, String password){
+        return userRepository.findByEmailAndPassword(email, password);
     }
 }
