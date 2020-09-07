@@ -1,4 +1,3 @@
-"U
 
 package agme.backend2.repositories;
 

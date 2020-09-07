@@ -1,4 +1,4 @@
-u.package agme.backend2.controllers;
+package agme.backend2.controllers;
 
 import java.util.Map;
 

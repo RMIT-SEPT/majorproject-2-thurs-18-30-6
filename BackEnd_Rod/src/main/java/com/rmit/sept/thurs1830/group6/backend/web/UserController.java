@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -18,6 +19,8 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequestMapping("/api/user")
 public class UserController {
+
+    String salt = BCrypt.gensalt();
 
     @Autowired
     private UserService userService;
@@ -39,7 +42,11 @@ public class UserController {
             return new ResponseEntity<String>("Passwords do not match.", HttpStatus.BAD_REQUEST);
         }
 
-        // ELSE return created
+        // ELSE store in database, and return created
+        String hashedPass = BCrypt.hashpw(user.getPassword(), salt);
+        user.setPassword(hashedPass);
+        user.setConfirm_password(hashedPass);
+
         User user1 = userService.registerUser(user);
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
@@ -48,7 +55,9 @@ public class UserController {
     public ResponseEntity<?> logInUser(@RequestBody Map<String, Object> userMap){
         // Get email and password from post request
         String email = userMap.get("email").toString();
-        String password = userMap.get("password").toString();
+        String passFromMap = userMap.get("password").toString();
+
+        String password = BCrypt.hashpw(passFromMap, salt);
 
         // Send email and password to user service
         User user = userService.loginUser(email, password);
