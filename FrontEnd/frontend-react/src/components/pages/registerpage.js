@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import '../../assets/registerpage.css'
 
+
 class Registerpage extends Component {
     constructor(props){
         super(props);
