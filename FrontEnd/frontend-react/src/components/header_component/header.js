@@ -3,28 +3,68 @@
     Author: Rodrigo Miguel Rojas (s3784466)
  */
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import '../../assets/header.css';
 
 class Header extends Component {
-    render() {
-        return (
-            <header className={'header'}>
 
-                {/*Div for Website Logo (insert ref to logo image)*/}
-                <div className={'title'}>
-                    AGME BOOKING
-                </div>
+    constructor(props){
+        super(props);
 
-                <nav className={'navbar'}>
-                    <ul className={'list'}>
-                        <li className={"loginHead"}><a href={"/login"}> Login </a></li>
-                        <li><a href={"/register"}> Register </a></li>
-                    </ul>
-
-                </nav>
-            </header>
-        );
+        this.state = {
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user')
+        }
     }
+
+    logout =() => {
+
+        this.setState({loggedInStatus: false})
+        this.setState({user: null})
+        sessionStorage.clear()
+    }
+    render() {
+        if(this.state.loggedInStatus){
+            return (
+                <header className={'header'}>
+
+                    {/*Div for Website Logo (insert ref to logo image)*/}
+                    <div className={'title'}>
+                        AGME BOOKING
+                    </div>
+
+                    <nav className={'navbar'}>
+                        <ul className={'list'}>
+                            <li>
+                                <Link to={'/'} onClick={this.logout}>Logout</Link>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </header>
+            );
+        }
+        else{
+            return (
+                <header className={'header'}>
+
+                    {/*Div for Website Logo (insert ref to logo image)*/}
+                    <div className={'title'}>
+                        AGME BOOKING
+                    </div>
+
+                    <nav className={'navbar'}>
+                        <ul className={'list'}>
+                            <li className={"loginHead"}><Link to={"/login"}> Login </Link></li>
+                            <li><Link to={'/register'}> Register </Link></li>
+                        </ul>
+
+                    </nav>
+                </header>
+            );
+        }
+    }
+
 }
 
 export default Header;

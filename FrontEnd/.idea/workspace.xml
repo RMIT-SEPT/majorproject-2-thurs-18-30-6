@@ -20,14 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/loginpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/loginpage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/registerpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/registerpage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/header_component/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/header_component/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/mainpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/mainpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +69,8 @@
       <workItem from="1599478060073" duration="1779000" />
       <workItem from="1599482512950" duration="788000" />
       <workItem from="1599489337083" duration="3258000" />
-      <workItem from="1599549181277" duration="9915000" />
+      <workItem from="1599549181277" duration="10490000" />
+      <workItem from="1599563714256" duration="5888000" />
     </task>
     <servers />
   </component>

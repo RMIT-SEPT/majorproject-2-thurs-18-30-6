@@ -47,10 +47,11 @@ class Registerpage extends Component {
             {
                 withCredentials: true // lets browser store cookie for logged in purposes
             }).then(response => {
-                console.log('registration response', response)
+                console.log('registration response', response.data)
 
                 // set code for response 200 here (show as good)
-                this.props.changeStatus(true)
+                sessionStorage.setItem('user', JSON.stringify(response.data))
+                sessionStorage.setItem('loggedInStatus', 'true')
                 this.setState({redirect: '/dashboard'})
 
         }).catch(error => {

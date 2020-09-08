@@ -7,17 +7,18 @@ class Dashboard extends Component {
     constructor(props){
         super(props);
 
-        this.state ={
-
+        this.state = {
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user')
         }
     }
 
     render() {
-        if(this.props.loggedInStatus){
+        if(this.state.loggedInStatus){
+            //const user = JSON.parse(this.state.user);
             return (
                 <div>
                     <Header/>
-
                     <Footer/>
                 </div>
             );

@@ -21,7 +21,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            loggedInStatus: false,
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
             user: {}
         }
     }
@@ -29,15 +29,16 @@ class App extends Component {
     changeStatus(status){
         this.setState({loggedInStatus: status})
     }
+
     render() {
         return (
 
             <Router>
                 <Switch>
-                    <Route exact path={'/'} render={ props => (< Mainpage {...props} loggedInStatus ={this.state.loggedInStatus}/> )}/>
+                    <Route exact path={'/'} component={Mainpage}/>
                     <Route exact path={'/login'} component={Loginpage}/>
-                    <Route exact path={'/register'} render={ props => (< Registerpage {...props} loggedInStatus ={this.state.loggedInStatus} changeStatus = {this.changeStatus.bind(this)}/> )}/>
-                    <Route exact path={'/dashboard'} render={ props => (< Dashboard {...props} loggedInStatus ={this.state.loggedInStatus} changeStatus = {this.changeStatus.bind(this)}/> )}/>
+                    <Route exact path={'/register'} component={Registerpage}/>
+                    <Route exact path={'/dashboard'} component={Dashboard}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>
