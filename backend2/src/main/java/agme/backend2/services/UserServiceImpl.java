@@ -38,7 +38,10 @@ public class UserServiceImpl implements UserService {
 	}
 	private static AtomicInteger ID_GENERATOR = new AtomicInteger();
 	
-	
+	@Override
+	public void deleteAll() {
+		userRepository.deleteAll();
+	}
 	
 	
 }
