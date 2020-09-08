@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import '../../assets/loginpage.css'
 import axios from "axios";
+import {Redirect} from "react-router-dom";
 
 // components
 
@@ -59,6 +60,9 @@ class Loginpage extends Component {
     }
 
     render() {
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div className="loginLog">
                 <div className="formLog">
