@@ -21,6 +21,8 @@ class Header extends Component {
 
         this.setState({loggedInStatus: false})
         this.setState({user: null})
+        console.log('loggedInStatus', this.state.loggedInStatus)
+        console.log('user', this.state.user)
         sessionStorage.clear()
     }
     render() {

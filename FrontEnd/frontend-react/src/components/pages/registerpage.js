@@ -50,9 +50,8 @@ class Registerpage extends Component {
                 console.log('registration response', response.data)
 
                 // set code for response 200 here (show as good)
-                sessionStorage.setItem('user', JSON.stringify(response.data))
-                sessionStorage.setItem('loggedInStatus', 'true')
-                this.setState({redirect: '/dashboard'})
+                sessionStorage.setItem('fromRegister', 'true')
+                this.setState({redirect: '/registrationComplete'})
 
         }).catch(error => {
             console.log('registration error', error)

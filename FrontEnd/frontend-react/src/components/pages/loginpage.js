@@ -26,9 +26,11 @@ class Loginpage extends Component {
     handleSubmit(event) {
 
         // post registration information to API
-        axios.post("enter registration api url here", {
+        axios.post("http://localhost:8080/api/user/login", {
 
-                //    data structure in json format
+                email: this.state.email,
+                password: this.state.password,
+                redirect: null
 
             },
             {
@@ -37,6 +39,9 @@ class Loginpage extends Component {
             console.log('registration response', response)
 
             // set code for response 200 here (show as good)
+            sessionStorage.setItem('user', JSON.stringify(response.data))
+            sessionStorage.setItem('loggedInStatus', 'true')
+            this.setState({redirect: '/dashboard'})
 
         }).catch(error => {
             console.log('registration error', error)
