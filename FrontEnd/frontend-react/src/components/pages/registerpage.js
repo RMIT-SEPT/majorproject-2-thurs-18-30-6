@@ -9,18 +9,18 @@ import '../../assets/registerpage.css'
 
 
 class Registerpage extends Component {
+
     constructor(props){
         super(props);
 
         // The fields in the registration form (update when necessary)
         this.state = {
-            name: "",
+            firstName: "",
+            lastName: "",
             email: "",
-            username: "",
-            phone_number: "",
-            address: "",
             password: "",
             confirm_password: "",
+            role: "Admin",
             errors: ""
         }
 
@@ -33,13 +33,12 @@ class Registerpage extends Component {
         // post registration information to API
         axios.post("http://localhost:8080/api/user/register", {
 
-            name: this.state.name,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
             email: this.state.email,
-            username: this.state.username,
-            phone_number: this.state.phone_number,
-            address: this.state.address,
             password: this.state.password,
-            confirm_password: this.state.confirm_password
+            confirm_password: this.state.confirm_password,
+            role: this.state.role
 
         },
             {
@@ -62,6 +61,8 @@ class Registerpage extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+        console.log('handle change', event.target.value)
+        console.log('field' , event.target.name)
     }
 
     render() {
@@ -70,18 +71,21 @@ class Registerpage extends Component {
                 <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
                 <h1 className={"headReg"}> REGISTER </h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.handleChange} required/>
+                    <label className ={"labelReg"}  htmlFor="role">Account Type:</label>
+                    <select className ="dropdown"  name={'role'} onChange = {(event) => this.handleChange(event)} >
+                        <option value ={"Admin"}>Admin</option>
+                        <option value ={"User"}>User</option>
+                    </select>
+                    <input type={'text'} name={'firstName'} placeholder={'First Name'} value={this.state.firstName} onChange={this.handleChange} required/>
+                    <input type={'text'} name={'lastName'} placeholder={'Last Name'} value={this.state.lastName} onChange={this.handleChange} required/>
                     <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
-                    <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
-                    <input type={'number'} name={'phone_number'} placeholder={'Phone Number'} value={this.state.phone_number} onChange={this.handleChange} required/>
-                    <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
                     <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
                     <input type={'password'} name={'confirm_password'} placeholder={'Confirm Password'} value={this.state.confirm_password} onChange={this.handleChange} required/>
 
                     <button type={'submit'}> Register </button>
 
                 </form>
-                <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}> Login</a></h4>
+                <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}>Login</a></h4>
             </div>
         );
     }

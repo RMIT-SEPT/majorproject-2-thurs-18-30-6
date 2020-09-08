@@ -5,17 +5,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
 import agme.backend2.services.UserService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:3000", allowCredentials = "true")
+@RequestMapping("/api/user")
 public class UserController {
 	@Autowired
 	UserService userService;
@@ -26,7 +24,7 @@ public class UserController {
         String lastName = (String) userMap.get("lastName");
         String email = (String) userMap.get("email");
         String password = (String) userMap.get("password");
-        String confirmPassword = (String) userMap.get("confirmPassword");
+        String confirmPassword = (String) userMap.get("confirm_password");
         String role = (String) userMap.get("role");
         User newUser = userService.registerUser(firstName,lastName,email,password,confirmPassword,role);
 		return new ResponseEntity<>(newUser,HttpStatus.CREATED);
