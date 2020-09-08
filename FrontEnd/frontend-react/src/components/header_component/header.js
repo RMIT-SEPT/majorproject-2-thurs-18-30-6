@@ -17,11 +17,8 @@ class Header extends Component {
 
                 <nav className={'navbar'}>
                     <ul className={'list'}>
-                        <li className={'mainNav'}><a href={"/"}> Home </a></li>
-                        <li className={'mainNav'}><a href={"/"}> Available Services </a></li>
-                        <li className={'mainNav'}><a href={"/"}> Make a Booking </a></li>
-                        <li className={'loginNav'}><a href={"/login"}> Login </a></li>
-                        <li className={'registerNav'}><a href={"/register"}> Register </a></li>
+                        <li className={"loginHead"}><a href={"/login"}> Login </a></li>
+                        <li><a href={"/register"}> Register </a></li>
                     </ul>
 
                 </nav>

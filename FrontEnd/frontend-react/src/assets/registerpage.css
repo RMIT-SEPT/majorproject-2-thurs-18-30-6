@@ -6,11 +6,13 @@
 .formReg {
     background: white;
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    padding: 100px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-top: 50px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .formReg button {
@@ -84,8 +86,9 @@
 }
 
 .linkReg {
-    text-align: center;
+    display: inline-flex;
     font-size: 14px;
     text-decoration: underline;
     color: royalblue;
+    padding-left: 0;
 }

@@ -22,39 +22,22 @@
 .navbar {
     position: absolute;
     top: 40%;
+    width: 100%;
+    text-align: right;
     @include translateY(-40%);
 }
 
 .list {
-    list-style-type: none;
-
-}
-
-.mainNav {
     display: inline-flex;
     list-style-type: none;
-    margin: 0;
-    padding-left: 50px;
     line-height: normal;
+    margin-right:50px;
 }
 
-.loginNav {
-    display: inline-flex;
-    margin: auto;
-    left: 15px;
-    line-height: normal;
-    padding-left: 750px;
+.loginHead{
+    margin-right: 30px;
 }
-
-.registerNav {
-    display: inline-flex;
-    margin: auto;
-    line-height: normal;
-    padding-left: 25px;
-}
-
 a {
-
     display: block;
     text-align: center;
     padding: 14px 16px;

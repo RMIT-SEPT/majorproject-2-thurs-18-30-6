@@ -6,6 +6,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../../assets/registerpage.css'
+import { Redirect } from "react-router-dom";
+
 
 
 class Registerpage extends Component {
@@ -21,7 +23,8 @@ class Registerpage extends Component {
             password: "",
             confirm_password: "",
             role: "Admin",
-            errors: ""
+            errors: "",
+            redirect: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,6 +50,8 @@ class Registerpage extends Component {
                 console.log('registration response', response)
 
                 // set code for response 200 here (show as good)
+                this.props.changeStatus(true)
+                this.setState({redirect: '/dashboard'})
 
         }).catch(error => {
             console.log('registration error', error)
@@ -61,15 +66,16 @@ class Registerpage extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log('handle change', event.target.value)
-        console.log('field' , event.target.name)
     }
 
     render() {
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div className={"formReg"}>
                 <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
-                <h1 className={"headReg"}> REGISTER </h1>
+                <h1 className={"headReg"}> Join Us! </h1>
                 <form onSubmit={this.handleSubmit}>
                     <label className ={"labelReg"}  htmlFor="role">Account Type:</label>
                     <select className ="dropdown"  name={'role'} onChange = {(event) => this.handleChange(event)} >

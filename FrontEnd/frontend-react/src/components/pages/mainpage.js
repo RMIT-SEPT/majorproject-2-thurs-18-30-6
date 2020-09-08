@@ -10,6 +10,7 @@ import Footer from '../footer_component/footer';
 import MainpageBody from '../body_components/mainpage_body'
 
 class Mainpage extends Component {
+
     render() {
         return (
             <div className={'mainPageBody'}>
