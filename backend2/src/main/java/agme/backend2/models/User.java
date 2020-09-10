@@ -2,17 +2,26 @@ package agme.backend2.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+	@NotBlank(message = "First name is required")
     private String firstName;
+	@NotBlank(message = "Last name is required")
     private String lastName;
+	@NotBlank(message = "Email name is required")
     private String email;
+	@NotBlank(message = "Password name is required")
+	@Size(min = 8, message = "Password must be more than 8 characters long")
     private String password;
+	@NotBlank(message = "Missing role")
     private String role;
 
     public User(Integer userId, String firstName, String lastName, String email, String password, String role) {

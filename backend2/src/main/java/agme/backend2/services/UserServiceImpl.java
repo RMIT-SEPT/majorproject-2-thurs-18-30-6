@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 			throw new ValidationException("Email already existed");
 		}
 		Integer userID = ID_GENERATOR.getAndIncrement();
-		User newUser = new User(userID,firstName,lastName,email,password,role);
+		User newUser = new User(userID, firstName,lastName,email,password,role);
 		return userRepository.save(newUser);
 	}
 
@@ -38,10 +38,7 @@ public class UserServiceImpl implements UserService {
 	}
 	private static AtomicInteger ID_GENERATOR = new AtomicInteger();
 	
-	@Override
-	public void deleteAll() {
-		userRepository.deleteAll();
-	}
+	
 	
 	
 }
