@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/mainpage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/pageNotFound.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registerpage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationComplete.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/header_component/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/header_component/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
