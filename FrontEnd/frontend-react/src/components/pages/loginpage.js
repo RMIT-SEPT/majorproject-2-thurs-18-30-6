@@ -27,7 +27,7 @@ class Loginpage extends Component {
     handleSubmit(event) {
 
         // post registration information to API
-        axios.post("http://localhost:8080/api/user/login", {
+        axios.post("http://localhost:8080/login", {
 
                 email: this.state.email,
                 password: this.state.password,
@@ -37,7 +37,7 @@ class Loginpage extends Component {
             {
                 withCredentials: true // lets browser store cookie for logged in purposes
             }).then(response => {
-            console.log('registration response', response)
+            console.log('login response', response)
 
             // set code for response 200 here (show as good)
             sessionStorage.setItem('user', JSON.stringify(response.data))
@@ -45,7 +45,7 @@ class Loginpage extends Component {
             this.setState({redirect: '/dashboard'})
 
         }).catch(error => {
-            console.log('registration error', error)
+            console.log('login error', error)
 
             // set code for error response here (show as bad, display error messages)
         });

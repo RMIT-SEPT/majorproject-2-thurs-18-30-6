@@ -9,7 +9,8 @@ class RegistrationComplete extends Component {
         super(props);
 
         this.state = {
-            registered: sessionStorage.getItem('fromRegister')
+            registered: sessionStorage.getItem('fromRegister'),
+            fromWorker: sessionStorage.getItem('addedWorker')
 
         }
     }
@@ -29,8 +30,22 @@ class RegistrationComplete extends Component {
 
                 </div>
             );
+        }else if(this.state.fromWorker){
+            return (
+                <div>
+                    <Header/>
+
+                    <h1 className={'congrats'}>Congratulations! You have successfully registered a worker.</h1>
+                    <h3 className={'congrats'}><a href={'/dashboard'}>Click here to return to the dashboard.</a></h3>
+
+                    {/*Clear session storage so you can only access this page after registering*/}
+                    {sessionStorage.removeItem('addedWorker')}
+                    <Footer/>
+
+                </div>
+            );
         }else{
-            return <Redirect to={'/'} />
+            return <Redirect to={'/login'} />
         }
     }
 }

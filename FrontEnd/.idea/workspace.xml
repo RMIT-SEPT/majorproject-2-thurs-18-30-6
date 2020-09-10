@@ -20,8 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/addingWorkersPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/addingWorkersPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registrationComplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registrationComplete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +50,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -51,6 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

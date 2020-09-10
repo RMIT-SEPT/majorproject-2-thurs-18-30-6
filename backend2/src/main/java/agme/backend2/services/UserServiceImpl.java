@@ -19,7 +19,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User registerUser(String firstName, String lastName, String email, String password, String confirmPassword, String role) throws ValidationException {
+
 		if(!password.equals(confirmPassword)) {
+			System.out.println(password);
+			System.out.println(confirmPassword);
 			throw new ValidationException("Password and confirm password do not match");
 		}
 		Integer emailCount = userRepository.countByEmail(email);		

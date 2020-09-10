@@ -21,7 +21,7 @@ class Registerpage extends Component {
             lastName: "",
             email: "",
             password: "",
-            confirm_password: "",
+            confirmPassword: "",
             role: "Admin",
             errors: "",
             redirect: null
@@ -34,13 +34,13 @@ class Registerpage extends Component {
     handleSubmit(event){
 
         // post registration information to API
-        axios.post("http://localhost:8080/api/user/register", {
+        axios.post("http://localhost:8080/register", {
 
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
-            confirm_password: this.state.confirm_password,
+            confirmPassword: this.state.confirmPassword,
             role: this.state.role
 
         },
@@ -86,7 +86,7 @@ class Registerpage extends Component {
                     <input type={'text'} name={'lastName'} placeholder={'Last Name'} value={this.state.lastName} onChange={this.handleChange} required/>
                     <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
                     <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
-                    <input type={'password'} name={'confirm_password'} placeholder={'Confirm Password'} value={this.state.confirm_password} onChange={this.handleChange} required/>
+                    <input type={'password'} name={'confirmPassword'} placeholder={'Confirm Password'} value={this.state.confirmPassword} onChange={this.handleChange} required/>
 
                     <button type={'submit'}> Register </button>
 

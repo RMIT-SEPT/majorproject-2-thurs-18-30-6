@@ -21,7 +21,7 @@ import agme.backend2.services.UserService;
 import agme.backend2.services.MapValidationErrorService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
 	@Autowired
 	UserService userService;

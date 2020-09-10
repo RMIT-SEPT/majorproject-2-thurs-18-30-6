@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-// import Header from "../header_component/header";
-// import Footer from "../footer_component/footer";
+import Header from "../header_component/header";
+import Footer from "../footer_component/footer";
 import {Redirect} from "react-router-dom";
 
 class Dashboard extends Component {
@@ -19,20 +19,40 @@ class Dashboard extends Component {
             if(user['role'] === 'Admin'){
                 return (
                     <div>
-                        <h1>Admin</h1>
+                        <Header/>
+                        <h1>Admin Dashboard</h1>
+                        <h3>Worker Options:</h3>
+                        <form action={'/workerRegistration'}>
+                            <button type={'submit'}>Add a Worker</button>
+                        </form>
+                        <Footer/>
                     </div>
                 )
             }
             else if(user['role'] === 'User'){
                 return (
                     <div>
+                        <Header/>
                         <h1>User</h1>
+                        <Footer/>
                     </div>
                 )
             }
+            else if(user['role'] === 'Worker'){
+                return (
+                    <div>
+                        <Header/>
+                        <h1>Worker</h1>
+                        <Footer/>
+                    </div>
+                )
+            }
+            else{
+                return <Redirect to={'/login'} />
+            }
         }
         else{
-            return <Redirect to={'/'} />
+            return <Redirect to={'/login'} />
         }
 
     }
