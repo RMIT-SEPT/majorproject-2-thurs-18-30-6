@@ -14,4 +14,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	@Query("select u from User u where u.email = ?1 and u.password = ?2")
 	User findByEmailAndPassword (String email, String password);
 	Integer countByEmail(String email);
+	
+	@Query("select u from User u where u.email = ?1")
+	User findByEmail (String email);
 }

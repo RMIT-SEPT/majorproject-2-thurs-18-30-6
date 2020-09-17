@@ -37,4 +37,20 @@ public class UserController {
         return new ResponseEntity<>(user,HttpStatus.CREATED);
 		
 	}
+	
+	@PostMapping("/checkAvailability")
+	public ResponseEntity<?> checkAvailability(@RequestBody Map<String, Object> userMap){
+		String timeslot = (String) userMap.get("timeslot");
+		String email = (String) userMap.get("email");
+        String availability = userService.getAvailability(email, timeslot);
+        return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	@PostMapping("/setAvailability")
+	public ResponseEntity<?> setAvailability(@RequestBody Map<String, Object> userMap){
+		String timeslot = (String) userMap.get("timeslot");
+		String email = (String) userMap.get("email");
+        String availability = (String) userMap.get("availability");
+        userService.setAvailability(email, timeslot, availability);
+        return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
 }

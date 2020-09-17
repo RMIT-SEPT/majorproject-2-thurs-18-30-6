@@ -7,5 +7,9 @@ public interface UserService  {
 	
 	User validateUser(String username, String password);
 	
+	String getAvailability(String email, String timeslot);
+	
+	void setAvailability(String email, String timeslot, String availability);
+	
 	void deleteAll();
 }

@@ -38,6 +38,18 @@ public class UserServiceImpl implements UserService {
 	}
 	private static AtomicInteger ID_GENERATOR = new AtomicInteger();
 	
+	public String getAvailability(String email, String timeslot) {
+		User user = userRepository.findByEmail(email);
+		String availability = user.getAvailability(timeslot);
+		return availability;		
+	}
+	
+	public void setAvailability(String email, String timeslot, String availability) {
+		User user = userRepository.findByEmail(email);
+		user.setAvailability(timeslot, availability);
+		userRepository.save(user);		
+	}
+	
 	@Override
 	public void deleteAll() {
 		userRepository.deleteAll();
