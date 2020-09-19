@@ -79,6 +79,28 @@ class Backend2ApplicationTests {
 			userService.registerUser("fname", "lname", "test1", "password", "password", "Worker");
 		});
 	}
+	
+	@Test
+	void setAvailabilitySuccess(){
+		userService.setAvailability("test1", "Monday", "Available");
+	}
+	
+	@Test
+	void getAvailabilitySuccess(){
+		String availability = userService.getAvailability("test1", "Monday");
+		assertEquals(availability, "Unavailable");
+	}
+	
+	@Test
+	void setServiceSuccess(){
+		userService.setService("test1", "Eating", "Available");
+	}
+	
+	@Test
+	void getServiceSuccess(){
+		String availability = userService.getService("test1", "Eating");
+		assertEquals(availability, "Unavailable");
+	}
 
 	@Test
 	void contextLoads() {

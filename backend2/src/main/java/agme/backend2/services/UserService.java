@@ -11,5 +11,9 @@ public interface UserService  {
 	
 	void setAvailability(String email, String timeslot, String availability);
 	
+	String getService(String email, String service);
+	
+	void setService(String email, String service, String availability);
+	
 	void deleteAll();
 }

@@ -50,6 +50,18 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);		
 	}
 	
+	public String getService(String email, String service) {
+		User user = userRepository.findByEmail(email);
+		String availability = user.getService(service);
+		return availability;		
+	}
+	
+	public void setService(String email, String service, String availability) {
+		User user = userRepository.findByEmail(email);
+		user.setService(service, availability);
+		userRepository.save(user);		
+	}
+	
 	@Override
 	public void deleteAll() {
 		userRepository.deleteAll();

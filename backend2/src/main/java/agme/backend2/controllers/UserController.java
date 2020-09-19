@@ -38,19 +38,37 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/checkAvailability")
-	public ResponseEntity<?> checkAvailability(@RequestBody Map<String, Object> userMap){
+	@PostMapping("/getAvailability")
+	public ResponseEntity<?> getAvailability(@RequestBody Map<String, Object> userMap){
 		String timeslot = (String) userMap.get("timeslot");
 		String email = (String) userMap.get("email");
         String availability = userService.getAvailability(email, timeslot);
         return new ResponseEntity<>(availability,HttpStatus.OK);
 	}
+	
 	@PostMapping("/setAvailability")
 	public ResponseEntity<?> setAvailability(@RequestBody Map<String, Object> userMap){
 		String timeslot = (String) userMap.get("timeslot");
 		String email = (String) userMap.get("email");
         String availability = (String) userMap.get("availability");
         userService.setAvailability(email, timeslot, availability);
+        return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/getService")
+	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
+		String service = (String) userMap.get("service");
+		String email = (String) userMap.get("email");
+        String availability = userService.getService(email, service);
+        return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	@PostMapping("/setService")
+	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
+		String service = (String) userMap.get("service");
+		String email = (String) userMap.get("email");
+        String availability = (String) userMap.get("availability");
+        userService.setService(email, service, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 }
