@@ -14,17 +14,7 @@ public class User {
     private String email;
     private String password;
     private String role;
-    
-    //this is just a temporary thing
-    private String monday = "Unavailable";
-    private String tuesday = "Unavailable";
-    private String wednesday = "Unavailable";
-    private String thursday = "Unavailable";
-    private String friday = "Unavailable";
-    
-    private String eating = "Unavailable";
-    private String drinking = "Unavailable";
-
+        
     public User(Integer userId, String firstName, String lastName, String email, String password, String role) {
         this.userId = userId;
         this.firstName = firstName;
@@ -87,67 +77,4 @@ public class User {
 		this.role = role;
 	}
 	
-	//todo
-	public String getAvailability(String timeslot) {
-		switch(timeslot) {
-		case "Monday":			
-			return monday;
-		case "Tuesday":			
-			return tuesday;
-		case "Wednesday":			
-			return wednesday;
-		case "Thursday":			
-			return thursday;
-		case "Friday":			
-			return friday;
-		default:
-			return null;
-		}
-	}
-	
-	public void setAvailability(String timeslot, String status) {
-		switch(timeslot) {
-		case "Monday":			
-			monday = status;
-			break;
-		case "Tuesday":			
-			tuesday = status;
-			break;
-		case "Wednesday":			
-			wednesday = status;
-			break;
-		case "Thursday":			
-			thursday = status;
-			break;
-		case "Friday":			
-			friday = status;
-			break;
-		default:
-			
-		}
-	}
-	
-	public String getService(String service) {
-		switch(service) {
-		case "Eating":			
-			return eating;
-		case "Drinking":			
-			return drinking;
-		default:
-			return null;
-		}
-	}
-	
-	public void setService(String service, String status) {
-		switch(service) {
-		case "Eating":			
-			eating = status;
-			break;
-		case "Drinking":			
-			drinking = status;
-			break;
-		default:
-			
-		}
-	}
 }
