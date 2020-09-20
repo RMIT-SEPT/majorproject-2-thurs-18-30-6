@@ -29,7 +29,7 @@ class Loginpage extends Component {
         // post registration information to API
         axios.post("http://localhost:8080/login", {
 
-                email: this.state.email,
+                username: this.state.username,
                 password: this.state.password,
                 redirect: null
 
@@ -69,7 +69,7 @@ class Loginpage extends Component {
                     <a className="backLog" href={"/"}><i className="arrowLog leftLog"></i>back</a>
                     <h2 className="headLog">Welcome!</h2>
                     <form onSubmit={this.handleSubmit}>
-                        <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email}
+                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.email}
                                onChange={this.handleChange} required/>
                         <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password}
                                onChange={this.handleChange} required/>

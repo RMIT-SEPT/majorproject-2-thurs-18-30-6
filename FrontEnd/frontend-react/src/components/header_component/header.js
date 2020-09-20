@@ -55,7 +55,7 @@ class Header extends Component {
                     <nav className={'navbar'}>
                         <ul className={'list'}>
                             <li className={"loginHead"}><a href={"/login"}> Login </a></li>
-                            <li><a href={'/register'}> Register </a></li>
+                            <li><a href={'/registrationType'}> Register </a></li>
                         </ul>
 
                     </nav>
