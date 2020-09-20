@@ -54,7 +54,7 @@ public class UserController {
         String address = (String) userMap.get("address");
         String phone = (String) userMap.get("phone");
         String role = (String) userMap.get("role");
-        String adminId = (String) userMap.get("adminId");
+        Integer adminId = (Integer) userMap.get("adminId");
         User newUser = userService.registerWorker(firstName,lastName,username,password,confirmPassword,address,phone,role,adminId);
 		return new ResponseEntity<>(newUser,HttpStatus.CREATED);
 	}
