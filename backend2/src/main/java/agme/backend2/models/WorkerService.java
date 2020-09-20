@@ -11,12 +11,12 @@ public class WorkerService {
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Integer serviceId;
 	
-	private Integer workerId;	
+	private Integer userId;	
     private String name;
     private String status;
 
-    public WorkerService(WorkerInformation worker, String name, String status) {
-    	this.workerId = worker.getId();
+    public WorkerService(User user, String name, String status) {
+    	this.userId = user.getUserId();
     	this.name = name;
     	this.status = status;
     }

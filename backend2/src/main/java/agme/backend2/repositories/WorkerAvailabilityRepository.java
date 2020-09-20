@@ -12,9 +12,9 @@ import org.springframework.data.repository.CrudRepository;
 @Repository
 public interface WorkerAvailabilityRepository extends CrudRepository<WorkerAvailability, Long> {
 
-	@Query("select wa from WorkerAvailability wa where wa.workerId = ?1 and wa.name = ?2")
-	WorkerAvailability findByWorkerIdAndName (Integer workerId, String name);
+	@Query("select wa from WorkerAvailability wa where wa.userId = ?1 and wa.name = ?2")
+	WorkerAvailability findByUserIdAndName (Integer userId, String name);
 	
-	@Query("select wa.status from WorkerAvailability wa where wa.workerId = ?1 and wa.name = ?2")
-	String findStatusByWorkerIdAndName (Integer workerId, String name);
+	@Query("select wa.status from WorkerAvailability wa where wa.userId = ?1 and wa.name = ?2")
+	String findStatusByUserIdAndName (Integer userId, String name);
 }

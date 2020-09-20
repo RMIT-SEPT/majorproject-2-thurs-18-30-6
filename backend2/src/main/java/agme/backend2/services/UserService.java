@@ -3,20 +3,27 @@ package agme.backend2.services;
 import agme.backend2.models.User;
 
 public interface UserService  {
-	User registerUser(String firstName, String lastName, String email, String password, String confirmPassword, String role);
+	User registerCustomer(String firstName, String lastName, String username, String password, String confirmPassword,
+			String address, String phone, String role);
+	
+	User registerAdmin(String firstName, String lastName, String username, String password, String confirmPassword,
+			String company, String address, String phone, String role);
+	
+	User registerWorker(String firstName, String lastName, String username, String password, String confirmPassword,
+			String address, String phone, String role, Integer adminId);
 	
 	User validateUser(String username, String password);
 	
-	String getAvailability(String email, String timeslot);
+	String getAvailability(String username, String timeslot);
 	
-	void setAvailability(String email, String timeslot, String availability);
+	void setAvailability(String username, String timeslot, String availability);
 	
-	String getService(String email, String service);
+	String getService(String username, String service);
 	
-	void setService(String email, String service, String availability);
+	void setService(String username, String service, String availability);
 	
 	void deleteAll();
 	
-	void populateWorkerInformation(String email);
+	void populateWorkerInformation(String username);
 	
 }

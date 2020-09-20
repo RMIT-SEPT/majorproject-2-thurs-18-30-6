@@ -11,10 +11,15 @@ import org.springframework.data.repository.CrudRepository;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-	@Query("select u from User u where u.email = ?1 and u.password = ?2")
-	User findByEmailAndPassword (String email, String password);
-	Integer countByEmail(String email);
+	@Query("select u from User u where u.username = ?1 and u.password = ?2")
+	User findByUsernameAndPassword (String username, String password);
 	
-	@Query("select u from User u where u.email = ?1")
-	User findByEmail (String email);
+	Integer countByUsername(String username);
+	Integer countByUserId(Integer userId);
+	
+	@Query("select u from User u where u.username = ?1")
+	User findByUsername (String username);
+	
+	@Query("select u.userId from User u where u.username = ?1")
+	Integer findUserIdByUsername (String username);
 }
