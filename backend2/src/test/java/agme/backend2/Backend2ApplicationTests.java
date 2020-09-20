@@ -22,6 +22,7 @@ class Backend2ApplicationTests {
 	
 	@BeforeEach
 	void init() {
+		userService.deleteAll();
     	userService.registerUser("fname", "lname", "test1", "password", "password", "Worker");
 	}
 	
@@ -38,7 +39,7 @@ class Backend2ApplicationTests {
 	@Test
 	void validateUserSuccess(){
     	validUser = userService.validateUser("test1", "password");
-    	assertEquals(validUser.getFirstName(), "fname");
+    	assertEquals("fname", validUser.getFirstName());
 	}
 	
 	@Test
@@ -88,7 +89,14 @@ class Backend2ApplicationTests {
 	@Test
 	void getAvailabilitySuccess(){
 		String availability = userService.getAvailability("test1", "Monday");
-		assertEquals(availability, "Unavailable");
+		assertEquals("Unavailable", availability);
+	}
+	
+	@Test
+	void createAvailabilitySuccess(){
+		userService.setAvailability("test1", "Cheeseday", "Unavailable");
+		String availability = userService.getAvailability("test1", "Cheeseday");
+		assertEquals("Unavailable", availability);
 	}
 	
 	@Test
@@ -99,9 +107,16 @@ class Backend2ApplicationTests {
 	@Test
 	void getServiceSuccess(){
 		String availability = userService.getService("test1", "Eating");
-		assertEquals(availability, "Unavailable");
+		assertEquals("Unavailable", availability);
 	}
-
+	
+	@Test
+	void createServiceSuccess(){
+		userService.setAvailability("test1", "Burger", "Unavailable");
+		String availability = userService.getAvailability("test1", "Burger");
+		assertEquals("Unavailable", availability);
+	}
+	
 	@Test
 	void contextLoads() {
 	}

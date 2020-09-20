@@ -16,4 +16,7 @@ public interface UserService  {
 	void setService(String email, String service, String availability);
 	
 	void deleteAll();
+	
+	void populateWorkerInformation(String email);
+	
 }
