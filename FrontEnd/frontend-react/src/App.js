@@ -19,19 +19,6 @@ import AddingWorkers from "./components/pages/addingWorkersPage";
 
 class App extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
-            user: {}
-        }
-    }
-
-    changeStatus(status){
-        this.setState({loggedInStatus: status})
-    }
-
     render() {
         return (
 

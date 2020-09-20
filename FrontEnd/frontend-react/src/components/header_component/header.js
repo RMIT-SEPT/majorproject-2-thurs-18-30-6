@@ -3,7 +3,6 @@
     Author: Rodrigo Miguel Rojas (s3784466)
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import '../../assets/header.css';
 
 class Header extends Component {
@@ -21,8 +20,6 @@ class Header extends Component {
 
         this.setState({loggedInStatus: false})
         this.setState({user: null})
-        console.log('loggedInStatus', this.state.loggedInStatus)
-        console.log('user', this.state.user)
         sessionStorage.clear()
     }
     render() {
@@ -38,7 +35,7 @@ class Header extends Component {
                     <nav className={'navbar'}>
                         <ul className={'list'}>
                             <li>
-                                <Link to={'/'} onClick={this.logout}>Logout</Link>
+                                <a href={'/'} onClick={this.logout}>Logout</a>
                             </li>
                         </ul>
 
@@ -57,8 +54,8 @@ class Header extends Component {
 
                     <nav className={'navbar'}>
                         <ul className={'list'}>
-                            <li className={"loginHead"}><Link to={"/login"}> Login </Link></li>
-                            <li><Link to={'/register'}> Register </Link></li>
+                            <li className={"loginHead"}><a href={"/login"}> Login </a></li>
+                            <li><a href={'/register'}> Register </a></li>
                         </ul>
 
                     </nav>
