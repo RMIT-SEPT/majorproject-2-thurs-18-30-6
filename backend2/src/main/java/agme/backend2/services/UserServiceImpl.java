@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 		return newUser;
 	}
 		
-	@Override
+	
 	public void deleteAll() {
 		userRepository.deleteAll();
 	}
