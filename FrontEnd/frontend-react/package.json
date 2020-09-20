@@ -11,6 +11,8 @@
     "axios": "^0.20.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.5.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.8.0",
@@ -38,9 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080",
-  "devDependencies": {
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.4"
-  }
+  "proxy": "http://localhost:8080"
 }
