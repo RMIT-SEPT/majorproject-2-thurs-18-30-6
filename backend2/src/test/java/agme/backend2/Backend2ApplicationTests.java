@@ -16,7 +16,7 @@ import agme.backend2.services.UserService;
 @SpringBootTest
 class Backend2ApplicationTests {
 	
-	@Autowired
+	/*@Autowired
     UserService userService;
 	User validUser;
 	
@@ -82,6 +82,6 @@ class Backend2ApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
-
+	}*/
+	
 }
