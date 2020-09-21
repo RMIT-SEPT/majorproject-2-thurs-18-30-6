@@ -78,4 +78,38 @@ public class UserController {
 		worker = managementService.getAllWorkerFromAdmin(adminId);
 		return new ResponseEntity<>(worker,HttpStatus.OK);
 	}
+	
+	@PostMapping("/getAvailability")
+	public ResponseEntity<?> getAvailability(@RequestBody Map<String, Object> userMap){
+		String username = (String) userMap.get("username");
+		String timeslot = (String) userMap.get("timeslot");
+        String availability = userService.getAvailability(username, timeslot);
+        return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	@PostMapping("/setAvailability")
+	public ResponseEntity<?> setAvailability(@RequestBody Map<String, Object> userMap){
+		String username = (String) userMap.get("username");
+		String timeslot = (String) userMap.get("timeslot");
+        String availability = (String) userMap.get("availability");
+        userService.setAvailability(username, timeslot, availability);
+        return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/getService")
+	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
+		String username = (String) userMap.get("username");
+		String service = (String) userMap.get("service");
+        String availability = userService.getService(username, service);
+        return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	@PostMapping("/setService")
+	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
+		String username = (String) userMap.get("username");
+		String service = (String) userMap.get("service");
+        String availability = (String) userMap.get("availability");
+        userService.setService(username, service, availability);
+        return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
 }

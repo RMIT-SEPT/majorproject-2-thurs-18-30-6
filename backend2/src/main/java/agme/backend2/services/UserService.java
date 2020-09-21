@@ -15,5 +15,16 @@ public interface UserService  {
 	
 	User validateUser(String username, String password);
 	
+	String getAvailability(String username, String timeslot);
+	
+	void setAvailability(String username, String timeslot, String availability);
+	
+	String getService(String username, String service);
+	
+	void setService(String username, String service, String availability);
+	
 	void deleteAll();
+	
+	void populateWorkerInformation(String username);
+	
 }

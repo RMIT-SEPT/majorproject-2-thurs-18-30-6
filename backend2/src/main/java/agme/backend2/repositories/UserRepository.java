@@ -16,4 +16,13 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	Integer countByUsername(String username);
 	Integer countByUserId(Integer userId);
 	User findByUserId(Integer userId);
+	
+	Integer countByUsername(String username);
+	Integer countByUserId(Integer userId);
+	
+	@Query("select u from User u where u.username = ?1")
+	User findByUsername (String username);
+	
+	@Query("select u.userId from User u where u.username = ?1")
+	Integer findUserIdByUsername (String username);
 }

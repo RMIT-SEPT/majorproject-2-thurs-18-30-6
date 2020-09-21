@@ -20,8 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/availability.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +48,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -51,6 +65,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -68,6 +83,12 @@
       <workItem from="1599489337083" duration="3258000" />
       <workItem from="1599549181277" duration="10490000" />
       <workItem from="1599563714256" duration="5888000" />
+      <workItem from="1599656019816" duration="985000" />
+      <workItem from="1599658651394" duration="371000" />
+      <workItem from="1599714842712" duration="147000" />
+      <workItem from="1599748366793" duration="127000" />
+      <workItem from="1600665849009" duration="6471000" />
+      <workItem from="1600674060083" duration="5773000" />
     </task>
     <servers />
   </component>
