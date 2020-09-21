@@ -23,7 +23,10 @@ class WorkerAvailabilityTests {
 	@BeforeEach
 	void init() {
 		userService.deleteAll();
-    	userService.registerUser("fname", "lname", "test1", "password", "password", "Worker");
+    	userService.registerAdmin("fname", "lname", "admin", "password", "password", "test company", "address", "phone", "Worker");
+    	User admin = userService.validateUser("admin", "password");
+    	Integer adminId = admin.getUserId();
+    	userService.registerWorker("fname", "lname", "test1", "password", "password", "address", "phone", "Worker", adminId);
 	}
 	
 	@AfterEach
@@ -38,8 +41,9 @@ class WorkerAvailabilityTests {
 	
 	@Test
 	void getAvailabilitySuccess(){
+		userService.setAvailability("test1", "Monday", "Available");
 		String availability = userService.getAvailability("test1", "Monday");
-		assertEquals("Unavailable", availability);
+		assertEquals("Available", availability);
 	}
 	
 	@Test
@@ -56,8 +60,9 @@ class WorkerAvailabilityTests {
 	
 	@Test
 	void getServiceSuccess(){
+		userService.setService("test1", "Eating", "Available");
 		String availability = userService.getService("test1", "Eating");
-		assertEquals("Unavailable", availability);
+		assertEquals("Available", availability);
 	}
 	
 	@Test

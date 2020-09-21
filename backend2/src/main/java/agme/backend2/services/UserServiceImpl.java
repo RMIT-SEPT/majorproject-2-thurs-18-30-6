@@ -94,13 +94,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String getAvailability(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
+		if (userId == null) {
+			throw new ValidationException("User does not exist");			
+		}
 		String availability = workerAvailabilityRepository.findStatusByUserIdAndName(userId, name);
+		if (availability == null) {
+			throw new ValidationException("Timeslot does not exist");			
+		}
 		return availability;				
 	}
 	
 	@Override
 	public void setAvailability(String username, String name, String availability) {
 		User user = userRepository.findByUsername(username);
+		if (user == null) {
+			throw new ValidationException("User does not exist");			
+		}
 		Integer userId = user.getUserId();
 		WorkerAvailability timeslot = workerAvailabilityRepository.findByUserIdAndName(userId, name);
 		if (timeslot == null) {
@@ -114,13 +123,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String getService(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
+		if (userId == null) {
+			throw new ValidationException("User does not exist");			
+		}
 		String workerService = workerServiceRepository.findStatusByUserIdAndName(userId, name);
+		if (workerService == null) {
+			throw new ValidationException("Service does not exist");			
+		}
 		return workerService;			
 	}
 	
 	@Override
 	public void setService(String username, String name, String availability) {
 		User user = userRepository.findByUsername(username);
+		if (user == null) {
+			throw new ValidationException("User does not exist");			
+		}
 		Integer userId = user.getUserId();
 		WorkerService workerService = workerServiceRepository.findByUserIdAndName(userId, name);
 		if (workerService == null) {

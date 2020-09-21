@@ -12,12 +12,12 @@ public class WorkerAvailability {
     private Integer availabilityId;
 	
 	private Integer userId;	
-    private String name;
+    private String timeslot;
     private String status;
 
-    public WorkerAvailability(User user, String name, String status) {
+    public WorkerAvailability(User user, String timeslot, String status) {
     	this.userId = user.getUserId();
-    	this.name = name;
+    	this.timeslot = timeslot;
     	this.status = status;
     }
     
