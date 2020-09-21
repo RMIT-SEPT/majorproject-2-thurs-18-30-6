@@ -23,7 +23,7 @@ class Backend2ApplicationTests {
 	@BeforeEach
 	void init() {
 		userService.deleteAll();
-    	userService.registerUser("fname", "lname", "test1", "password", "password", "Worker");
+    	userService.registerCustomer("fname", "lname", "test1", "password", "password", "address", "phone", "Customer");
 	}
 	
 	@AfterEach
@@ -32,8 +32,13 @@ class Backend2ApplicationTests {
 	}
 	
 	@Test
+	void registerAdmin() {
+		
+	}
+	
+	@Test
 	void registerUser(){
-    	userService.registerUser("fname", "lname", "registertest", "password", "password", "Worker");
+    	userService.registerCustomer("fname", "lname", "registertest", "password", "password", "address", "phone", "Customer");
 	}
 	
 	@Test
@@ -52,32 +57,22 @@ class Backend2ApplicationTests {
         
     @Test
     void uniqueId(){
-    	userService.registerUser("fname", "lname", "test2", "password", "password", "Worker");
+    	userService.registerCustomer("fname", "lname", "test2", "password", "password", "address", "phone", "Customer");
     	assertNotEquals(userService.validateUser("test1", "password").getUserId(), 
     			userService.validateUser("test2", "password").getUserId());
     }
-
-	@Test
-	void checkConfirmPasswordSuccess(){
-		userService.registerUser("fname", "lname", "confirm", "password", "password", "Worker");
-	}
 	
 	@Test
 	void checkConfirmPasswordFailure(){
 		Assertions.assertThrows(ValidationException.class, () -> {
-			userService.registerUser("fname", "lname", "confirm2", "password", "password2", "Worker");
+	    	userService.registerCustomer("fname", "lname", "test3", "password", "password2", "address", "phone", "Customer");
 		});
-	}
-	
-	@Test
-	void checkDuplicateUsernameSuccess(){
-		userService.registerUser("fname", "lname", "duplicate", "password", "password", "Worker");
 	}
 	
 	@Test
 	void checkDuplicateUsernameFailure(){
 		Assertions.assertThrows(ValidationException.class, () -> {
-			userService.registerUser("fname", "lname", "test1", "password", "password", "Worker");
+	    	userService.registerCustomer("fname", "lname", "test1", "password", "password", "address", "phone", "Customer");
 		});
 	}
 

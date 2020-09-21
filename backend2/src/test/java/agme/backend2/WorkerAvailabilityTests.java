@@ -25,7 +25,6 @@ class WorkerAvailabilityTests {
 		userService.deleteAll();
     	userService.registerAdmin("fname", "lname", "admin", "password", "password", "test company", "address", "phone", "Worker");
     	userService.registerWorker("fname", "lname", "test1", "password", "password", "address", "phone", "Worker", 69);
-    	userService.registerWorker("fname", "lname", "test1", "password", "password", "address", "phone", "Worker", 69);
 	}
 	
 	@AfterEach
