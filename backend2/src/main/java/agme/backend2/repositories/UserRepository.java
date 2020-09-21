@@ -11,7 +11,8 @@ import org.springframework.data.repository.CrudRepository;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-	@Query("select u from User u where u.email = ?1 and u.password = ?2")
-	User findByEmailAndPassword (String email, String password);
-	Integer countByEmail(String email);
+	@Query("select u from User u where u.username = ?1 and u.password = ?2")
+	User findByUsernameAndPassword (String username, String password);
+	Integer countByUsername(String username);
+	Integer countByUserId(Integer userId);
 }

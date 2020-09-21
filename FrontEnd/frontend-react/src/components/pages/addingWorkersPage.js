@@ -12,10 +12,12 @@ class AddingWorkersPage extends Component {
             user: sessionStorage.getItem('user'),
             firstName: "",
             lastName: "",
-            email: "",
             password: "",
             confirmPassword: "",
+            address: "",
+            phone: "",
             role: "Worker",
+            adminId: "",
             errors: "",
             redirect: null
         }
@@ -25,16 +27,21 @@ class AddingWorkersPage extends Component {
     }
 
     handleSubmit(event){
+        const adminUser = JSON.parse(this.state.user)
+        this.setState({adminId: adminUser['adminId']})
 
         // post registration information to API
-        axios.post("http://localhost:8080/register", {
+        axios.post("http://localhost:8080/register/worker", {
 
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
-                email: this.state.email,
+                username: this.state.username,
                 password: this.state.password,
                 confirmPassword: this.state.confirmPassword,
-                role: this.state.role
+                address: this.state.address,
+                phone: this.state.phone,
+                role: this.state.role,
+                adminId: this.state.adminId
 
             },
             {
@@ -73,13 +80,15 @@ class AddingWorkersPage extends Component {
                         <a className="backWorker" href={"/dashboard"}><i className="arrowWorker leftWorker"></i>back</a>
                         <h1 className={"headWorker"}> Add A Worker</h1>
                         <form onSubmit={this.handleSubmit}>
+
                             <input type={'text'} name={'firstName'} placeholder={'First Name'} value={this.state.firstName} onChange={this.handleChange} required/>
                             <input type={'text'} name={'lastName'} placeholder={'Last Name'} value={this.state.lastName} onChange={this.handleChange} required/>
-                            <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
+                            <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
                             <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
                             <input type={'password'} name={'confirmPassword'} placeholder={'Confirm Password'} value={this.state.confirmPassword} onChange={this.handleChange} required/>
-
-                            <button type={'submit'}> Register Worker </button>
+                            <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
+                            <input type={'number'} name={'phone'} placeholder={'Phone Number'} value={this.state.phone} onChange={this.handleChange} required/>
+                            <button type={'submit'}> Register </button>
 
                         </form>
                     </div>
