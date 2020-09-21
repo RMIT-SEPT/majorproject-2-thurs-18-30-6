@@ -12,12 +12,12 @@ public class WorkerService {
     private Integer serviceId;
 	
 	private Integer userId;	
-    private String name;
+    private String service;
     private String status;
 
-    public WorkerService(User user, String name, String status) {
+    public WorkerService(User user, String service, String status) {
     	this.userId = user.getUserId();
-    	this.name = name;
+    	this.service = service;
     	this.status = status;
     }
     
@@ -28,4 +28,5 @@ public class WorkerService {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 }
