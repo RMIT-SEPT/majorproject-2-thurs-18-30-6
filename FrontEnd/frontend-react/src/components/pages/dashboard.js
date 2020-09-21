@@ -14,14 +14,34 @@ class Dashboard extends Component {
     }
 
     render() {
+        const user = JSON.parse(this.state.user);
         if(this.state.loggedInStatus){
-            //const user = JSON.parse(this.state.user);
-            return (
-                <div>
-                    <Header/>
-                    <Footer/>
-                </div>
-            );
+            if(user['role'] === 'Admin'){
+                return (
+                    <div>
+                        <Header/>
+                        <h1>Admin Dashboard</h1>
+                        <h3>Worker Options:</h3>
+                        <form action={'/shiftAllocation'}>
+                            <button type={'submit'}>Allocate Shifts</button>
+                        </form>
+                        <Footer/>
+                    </div>
+                );
+            }else if(user['role'] === 'Worker'){
+                return(
+                    <div>
+                        <Header/>
+                        <h1>Worker Dashboard</h1>
+                        <h3>Worker Options:</h3>
+                        <form action={'/availability'}>
+                            <button type={'submit'}>Set Availability</button>
+                        </form>
+                        <Footer/>
+                    </div>
+                );
+            }
+
         }
         else{
             return <Redirect to={'/'} />
