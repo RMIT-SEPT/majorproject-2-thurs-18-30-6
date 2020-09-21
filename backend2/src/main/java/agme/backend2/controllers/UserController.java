@@ -96,8 +96,8 @@ public class UserController {
 	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
 		String username = (String) userMap.get("username");
 		String service = (String) userMap.get("service");
-        String availability = (String) userMap.get("availability");
-        userService.setService(username, service, availability);
-        return new ResponseEntity<>(availability,HttpStatus.CREATED);
+        String status = (String) userMap.get("status");
+        userService.setService(username, service, status);
+        return new ResponseEntity<>(status,HttpStatus.CREATED);
 	}
 }
