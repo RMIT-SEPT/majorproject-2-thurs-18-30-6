@@ -30,11 +30,11 @@ public class WorkerAvailability {
 		this.status = status;
 	}
 
-	public void setShift(Boolean assigned) {
+	public void setAssigned(Boolean assigned) {
 		this.assigned = assigned;
 	}
 
-	public Boolean getShift() {
+	public Boolean getAssigned() {
 		return assigned;
 	}
 

@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public List<WorkerAvailability> getAssigned(Integer userId) {
-		List<WorkerAvailability> shifts = workerAvailabilityRepository.findByUserId(userId);
+		List<WorkerAvailability> shifts = workerAvailabilityRepository.findByUserIdAndAssigned(userId, true);
 		return shifts;				
 	}
 	
@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
 		if (shift == null) {
 			throw new ValidationException("Timeslot does not exist");
 		}
-		shift.setShift(assigned);
+		shift.setAssigned(assigned);
 		workerAvailabilityRepository.save(shift);		
 	}
 	
