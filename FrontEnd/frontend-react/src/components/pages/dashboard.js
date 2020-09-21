@@ -28,15 +28,23 @@ class Dashboard extends Component {
                         <form action={'/chooseAvailableWorker'}>
                             <button type={'submit'}>Allocate Worker Shifts</button>
                         </form>
+                        <h3>Profile:</h3>
+                        <form action={'/profile'}>
+                            <button type={'submit'}>View Profile Page</button>
+                        </form>
                         <Footer/>
                     </div>
                 )
             }
-            else if(user['role'] === 'User'){
+            else if(user['role'] === 'Customer'){
                 return (
                     <div>
                         <Header/>
-                        <h1>User</h1>
+                        <h1>User Dashboard</h1>
+                        <h3>Profile:</h3>
+                        <form action={'/profile'}>
+                            <button type={'submit'}>View Profile Page</button>
+                        </form>
                         <Footer/>
                     </div>
                 )
@@ -49,6 +57,13 @@ class Dashboard extends Component {
                         <h3>Availability:</h3>
                         <form action={'/availability'}>
                             <button type={'submit'}>Set Availability</button>
+                        </form>
+                        <form action={'/viewShifts'}>
+                            <button type={'submit'}>View Assigned Shifts</button>
+                        </form>
+                        <h3>Profile:</h3>
+                        <form action={'/profile'}>
+                            <button type={'submit'}>View Profile Page</button>
                         </form>
                         <Footer/>
                     </div>

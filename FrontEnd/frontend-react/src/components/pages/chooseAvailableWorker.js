@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import axios from 'axios';
-
 import parse from 'html-react-parser';
 
 class ChooseAvailableWorker extends Component {
@@ -14,8 +13,6 @@ class ChooseAvailableWorker extends Component {
             chosenWorker: "",
             userId: "",
             username: "",
-            userList: "",
-            userCount: null,
             redirect: null,
             allUsers: "Your workers: ",
             code: ""
@@ -29,11 +26,10 @@ class ChooseAvailableWorker extends Component {
         const adminId = adminUser['userId']
 
         axios.post("http://localhost:8080/getworker/" + adminId).then(response => {
-            this.setState({userList: response.data.toString()})
-            this.setState({userCount: response.data['length']})
+            const userCount = response.data['length']
 
             let htmlCode = "<option> - </option>"
-            for(let i = 0; i < this.state.userCount; i++){
+            for(let i = 0; i < userCount; i++){
                 let usernameAndId = response.data[i]['username'] + "," + response.data[i]['userId']
                 htmlCode += "<option value='" + usernameAndId + "'>" + usernameAndId + "</option>"
             }

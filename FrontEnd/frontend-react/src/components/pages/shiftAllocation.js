@@ -125,6 +125,7 @@ class ShiftAllocation extends Component {
             assigned: assigned
         })
 
+        alert('Shifts allocated for ' + this.state.username + ' successfully!')
         this.setState({redirect: "/dashboard"})
 
         event.preventDefault()
@@ -149,6 +150,8 @@ class ShiftAllocation extends Component {
                             <h4>Wednesday - {this.state.wednesday}</h4>
                             <h4>Thursday - {this.state.thursday}</h4>
                             <h4>Friday - {this.state.friday}</h4>
+                            <br/>
+                            <p>Please only assign workers on available days <br/> unless in an emergency.</p>
 
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
                                 <h1>Set Worker's Shifts This Week</h1>

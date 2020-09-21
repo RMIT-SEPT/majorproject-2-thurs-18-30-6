@@ -15,6 +15,8 @@ class Loginpage extends Component {
         super(props);
 
         this.state = {
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user'),
             username: "",
             password: "",
             errors: ""
@@ -62,6 +64,10 @@ class Loginpage extends Component {
     render() {
         if (this.state.redirect){
             return <Redirect to={this.state.redirect} />
+        }
+
+        if(this.state.loggedInStatus){
+            return <Redirect to={'/dashboard'} />
         }
         return (
             <div className="loginLog">

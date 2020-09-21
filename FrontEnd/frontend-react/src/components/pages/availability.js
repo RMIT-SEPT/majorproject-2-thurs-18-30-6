@@ -61,6 +61,7 @@ class Availability extends Component {
             availability: this.state.friday
         })
 
+        alert('Availability submitted successfully!')
         this.setState({redirect: '/dashboard'});
         event.preventDefault();
 
