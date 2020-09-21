@@ -49,7 +49,7 @@ class Backend2ApplicationTests {
 	
 	@Test
 	void validateUserFail(){
-		Assertions.assertThrows(NullPointerException.class, () -> {
+		Assertions.assertThrows(ValidationException.class, () -> {
 			validUser = userService.validateUser("nothing", "password");
 			validUser.getUserId();
 		});
