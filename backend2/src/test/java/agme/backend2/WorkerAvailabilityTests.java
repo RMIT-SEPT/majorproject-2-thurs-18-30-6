@@ -52,7 +52,7 @@ class WorkerAvailabilityTests {
 		String availability = userService.getAvailability("test1", "Cheeseday");
 		assertEquals("Unavailable", availability);
 	}
-	
+		
 	@Test
 	void setServiceSuccess(){
 		userService.setService("test1", "Eating", "Available");
