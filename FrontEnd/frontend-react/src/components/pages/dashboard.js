@@ -25,6 +25,9 @@ class Dashboard extends Component {
                         <form action={'/workerRegistration'}>
                             <button type={'submit'}>Add a Worker</button>
                         </form>
+                        <form action={'/shiftAllocation'}>
+                            <button type={'submit'}>Allocate Worker Shifts</button>
+                        </form>
                         <Footer/>
                     </div>
                 )
@@ -42,7 +45,11 @@ class Dashboard extends Component {
                 return (
                     <div>
                         <Header/>
-                        <h1>Worker</h1>
+                        <h1>Worker Dashboard</h1>
+                        <h3>Availability:</h3>
+                        <form action={'/availability'}>
+                            <button type={'submit'}>Set Availability</button>
+                        </form>
                         <Footer/>
                     </div>
                 )

@@ -13,7 +13,6 @@ import agme.backend2.services.UserService;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:3000", allowCredentials = "true")
-@RequestMapping("/api/user")
 public class UserController {
 	@Autowired
 	UserService userService;
@@ -61,44 +60,44 @@ public class UserController {
 	}
 	@PostMapping("/login")
 	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap){
-		String email = (String) userMap.get("username");
+		String username = (String) userMap.get("username");
         String password = (String) userMap.get("password");
-        User user = userService.validateUser(email, password);
+        User user = userService.validateUser(username, password);
         return new ResponseEntity<>(user,HttpStatus.CREATED);
 		
 	}
 	
 	@PostMapping("/getAvailability")
 	public ResponseEntity<?> getAvailability(@RequestBody Map<String, Object> userMap){
-		String email = (String) userMap.get("email");
+		String username = (String) userMap.get("username");
 		String timeslot = (String) userMap.get("timeslot");
-        String availability = userService.getAvailability(email, timeslot);
+        String availability = userService.getAvailability(username, timeslot);
         return new ResponseEntity<>(availability,HttpStatus.OK);
 	}
 	
 	@PostMapping("/setAvailability")
 	public ResponseEntity<?> setAvailability(@RequestBody Map<String, Object> userMap){
-		String email = (String) userMap.get("email");
+		String username = (String) userMap.get("username");
 		String timeslot = (String) userMap.get("timeslot");
         String availability = (String) userMap.get("availability");
-        userService.setAvailability(email, timeslot, availability);
+        userService.setAvailability(username, timeslot, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/getService")
 	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
-		String email = (String) userMap.get("email");
+		String username = (String) userMap.get("username");
 		String service = (String) userMap.get("service");
-        String availability = userService.getService(email, service);
+        String availability = userService.getService(username, service);
         return new ResponseEntity<>(availability,HttpStatus.OK);
 	}
 	
 	@PostMapping("/setService")
 	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
-		String email = (String) userMap.get("email");
+		String username = (String) userMap.get("username");
 		String service = (String) userMap.get("service");
         String availability = (String) userMap.get("availability");
-        userService.setService(email, service, availability);
+        userService.setService(username, service, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 }
