@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import agme.backend2.models.WorkerAvailability;
 
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +18,6 @@ public interface WorkerAvailabilityRepository extends CrudRepository<WorkerAvail
 	
 	@Query("select wa.status from WorkerAvailability wa where wa.userId = ?1 and wa.timeslot = ?2")
 	String findStatusByUserIdAndName (Integer userId, String timeslot);
+	
+	List<WorkerAvailability> findByUserId(Integer userId);
 }
