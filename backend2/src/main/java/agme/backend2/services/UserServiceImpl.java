@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User registerCustomer(String firstName, String lastName, String username, String password, String confirmPassword,
 			String address, String phone, String role) throws ValidationException {
+
 		if(!password.equals(confirmPassword)) {
 			throw new ValidationException("Password and confirm password do not match");
 		}

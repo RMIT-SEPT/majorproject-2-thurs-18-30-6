@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
+import '../../assets/registrationType.css'
 
 class RegistrationType extends Component {
 
@@ -33,10 +34,10 @@ class RegistrationType extends Component {
             return <Redirect to={this.state.redirect} />
         }else{
             return (
-                <div>
-                    <h1>Choose a role: </h1>
+                <div className={'formRegType'}>
+                    <h1>Account Type:</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <select name={'role'} onChange={this.handleChange}>
+                        <select className={'dropdownRegType'} name={'role'} onChange={this.handleChange}>
                             <option value={'Admin'}>Admin</option>
                             <option value={'Customer'}>Customer</option>
                         </select>

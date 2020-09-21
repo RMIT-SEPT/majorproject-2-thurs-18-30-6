@@ -15,7 +15,7 @@ class Loginpage extends Component {
         super(props);
 
         this.state = {
-            email: "",
+            username: "",
             password: "",
             errors: ""
         }
@@ -69,7 +69,7 @@ class Loginpage extends Component {
                     <a className="backLog" href={"/"}><i className="arrowLog leftLog"></i>back</a>
                     <h2 className="headLog">Welcome!</h2>
                     <form onSubmit={this.handleSubmit}>
-                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.email}
+                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username}
                                onChange={this.handleChange} required/>
                         <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password}
                                onChange={this.handleChange} required/>

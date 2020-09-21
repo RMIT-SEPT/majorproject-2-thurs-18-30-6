@@ -10,6 +10,7 @@ class AddingWorkersPage extends Component {
         this.state = {
             loggedInStatus: sessionStorage.getItem('loggedInStatus'),
             user: sessionStorage.getItem('user'),
+            username: "",
             firstName: "",
             lastName: "",
             password: "",
@@ -17,7 +18,7 @@ class AddingWorkersPage extends Component {
             address: "",
             phone: "",
             role: "Worker",
-            adminId: "",
+            adminId: null,
             errors: "",
             redirect: null
         }
@@ -28,7 +29,6 @@ class AddingWorkersPage extends Component {
 
     handleSubmit(event){
         const adminUser = JSON.parse(this.state.user)
-        this.setState({adminId: adminUser['adminId']})
 
         // post registration information to API
         axios.post("http://localhost:8080/register/worker", {
@@ -41,7 +41,7 @@ class AddingWorkersPage extends Component {
                 address: this.state.address,
                 phone: this.state.phone,
                 role: this.state.role,
-                adminId: this.state.adminId
+                adminId: adminUser['userId']
 
             },
             {

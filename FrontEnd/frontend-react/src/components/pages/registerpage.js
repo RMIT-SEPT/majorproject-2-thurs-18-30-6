@@ -35,12 +35,10 @@ class Registerpage extends Component {
     }
 
     handleSubmit(event){
-        let body = "";
-        let url;
 
         if(this.state.role === "Admin"){
-            url = "http://localhost:8080/register/admin"
-            body = {
+            axios.post("http://localhost:8080/register/admin", {
+
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 username: this.state.username,
@@ -50,11 +48,24 @@ class Registerpage extends Component {
                 address: this.state.address,
                 phone: this.state.phone,
                 role: this.state.role
-            }
 
+            }, {
+                withCredentials: true
+            }).then(response => {
+                console.log('registration response', response.data)
+
+                // set code for response 200 here (show as good)
+                sessionStorage.removeItem('regRole')
+                sessionStorage.setItem('fromRegister', 'true')
+                this.setState({redirect: '/registrationComplete'})
+            }).catch(error => {
+                console.log('registration error', error.data)
+
+                // set code for error response here (show as bad, display error messages)
+            });
         }else if(this.state.role === "Customer"){
-            url = "http://localhost:8080/register/customer"
-            body = {
+            axios.post("http://localhost:8080/register/customer", {
+
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 username: this.state.username,
@@ -63,28 +74,22 @@ class Registerpage extends Component {
                 address: this.state.address,
                 phone: this.state.phone,
                 role: this.state.role
-            }
+
+            }, {
+                withCredentials: true
+            }).then(response => {
+                console.log('registration response', response.data)
+
+                // set code for response 200 here (show as good)
+                sessionStorage.removeItem('regRole')
+                sessionStorage.setItem('fromRegister', 'true')
+                this.setState({redirect: '/registrationComplete'})
+            }).catch(error => {
+                console.log('registration error', error.data)
+
+                // set code for error response here (show as bad, display error messages)
+            });
         }
-
-        axios.post(url, {
-
-            body
-
-        }, {
-            withCredentials: true
-        }).then(response => {
-            console.log('registration response', response.data)
-
-            // set code for response 200 here (show as good)
-            sessionStorage.removeItem('regRole')
-            sessionStorage.setItem('fromRegister', 'true')
-            this.setState({redirect: '/registrationComplete'})
-        }).catch(error => {
-            console.log('registration error', error)
-
-            // set code for error response here (show as bad, display error messages)
-        });
-
         event.preventDefault();
     }
 

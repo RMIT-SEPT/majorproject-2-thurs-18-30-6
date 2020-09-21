@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="" />
+    <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/registrationType.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/registerpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/registerpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/addingWorkersPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/addingWorkersPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registrationType.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registrationType.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,6 +80,7 @@
       <workItem from="1599658651394" duration="371000" />
       <workItem from="1599714842712" duration="147000" />
       <workItem from="1599748366793" duration="127000" />
+      <workItem from="1600665849009" duration="6471000" />
     </task>
     <servers />
   </component>
