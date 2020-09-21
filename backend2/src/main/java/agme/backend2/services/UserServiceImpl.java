@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
 		newManagement.setWorkerId(newUser.getUserId());
 		managementRepository.save(newManagement);
 		return newUser;
+	}
 	public String getAvailability(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
 		if (userId == null) {
@@ -170,7 +171,6 @@ public class UserServiceImpl implements UserService {
 		return newUser;
 	}
 
-}
 	
 	@Override
 	public void populateWorkerInformation(String username) {
