@@ -1,5 +1,7 @@
 package agme.backend2.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
+import agme.backend2.services.ManagementService;
 import agme.backend2.services.UserService;
 
 @RestController
@@ -16,6 +19,9 @@ import agme.backend2.services.UserService;
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ManagementService managementService;
 	
 	@PostMapping("/register/customer")
 	public ResponseEntity<?> registerCustomer(@RequestBody Map<String, Object> userMap){
@@ -63,7 +69,13 @@ public class UserController {
 		String email = (String) userMap.get("username");
         String password = (String) userMap.get("password");
         User user = userService.validateUser(email, password);
-        return new ResponseEntity<>(user,HttpStatus.CREATED);
-		
+        return new ResponseEntity<>(user,HttpStatus.CREATED);		
+	}
+	
+	@PostMapping("/getworker/{adminId}")
+	public ResponseEntity<?> getWorkerFromAdmin(@PathVariable Integer adminId){
+		List<User> worker = new ArrayList<User>();
+		worker = managementService.getAllWorkerFromAdmin(adminId);
+		return new ResponseEntity<>(worker,HttpStatus.OK);
 	}
 }

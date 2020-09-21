@@ -15,4 +15,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	User findByUsernameAndPassword (String username, String password);
 	Integer countByUsername(String username);
 	Integer countByUserId(Integer userId);
+	User findByUserId(Integer userId);
 }
