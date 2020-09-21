@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
 		newManagement.setAdminId(adminId);
 		newManagement.setWorkerId(newUser.getUserId());
 		managementRepository.save(newManagement);
+		populateWorkerInformation(username);
 		return newUser;
 	}
 
