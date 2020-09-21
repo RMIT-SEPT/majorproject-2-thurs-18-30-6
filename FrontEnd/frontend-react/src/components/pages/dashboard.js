@@ -25,7 +25,7 @@ class Dashboard extends Component {
                         <form action={'/workerRegistration'}>
                             <button type={'submit'}>Add a Worker</button>
                         </form>
-                        <form action={'/shiftAllocation'}>
+                        <form action={'/chooseAvailableWorker'}>
                             <button type={'submit'}>Allocate Worker Shifts</button>
                         </form>
                         <Footer/>

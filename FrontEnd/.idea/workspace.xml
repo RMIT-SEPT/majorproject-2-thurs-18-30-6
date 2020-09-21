@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/shiftAllocation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseAvailableWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
