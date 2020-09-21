@@ -13,6 +13,8 @@ import agme.backend2.models.WorkerAvailability;
 import agme.backend2.models.AdminCompany;
 import agme.backend2.models.Management;
 import agme.backend2.models.User;
+import agme.backend2.models.AdminCompany;
+import agme.backend2.models.Management;
 import agme.backend2.models.WorkerService;
 import agme.backend2.repositories.WorkerAvailabilityRepository;
 import agme.backend2.repositories.AdminCompanyRepository;
@@ -78,21 +80,7 @@ public class UserServiceImpl implements UserService {
 		newManagement.setAdminId(adminId);
 		newManagement.setWorkerId(newUser.getUserId());
 		managementRepository.save(newManagement);
-		populateWorkerInformation(username);
 		return newUser;
-	}
-
-	@Override
-	public User validateUser(String username, String password) throws ValidationException {
-		User newUser = userRepository.findByUsernameAndPassword(username, password);
-		if (newUser == null) {
-			throw new ValidationException("Wrong username or password");
-		}
-		return newUser;
-	}
-	private static AtomicInteger ID_GENERATOR = new AtomicInteger();
-	
-	@Override
 	public String getAvailability(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
 		if (userId == null) {
@@ -172,6 +160,17 @@ public class UserServiceImpl implements UserService {
 		workerAvailabilityRepository.deleteAll();
 		workerServiceRepository.deleteAll();
 	}
+
+	@Override
+	public User validateUser(String username, String password) throws ValidationException {
+		User newUser = userRepository.findByUsernameAndPassword(username, password);
+		if (newUser == null) {
+			throw new ValidationException("Wrong username or password");
+		}
+		return newUser;
+	}
+
+}
 	
 	@Override
 	public void populateWorkerInformation(String username) {

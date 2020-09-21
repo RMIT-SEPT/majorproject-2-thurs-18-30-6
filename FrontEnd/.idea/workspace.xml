@@ -23,6 +23,7 @@
       <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/availability.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />

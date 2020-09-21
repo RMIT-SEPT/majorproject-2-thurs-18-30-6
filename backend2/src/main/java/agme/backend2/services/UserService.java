@@ -5,6 +5,7 @@ import java.util.List;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
 
+
 public interface UserService  {
 	User registerCustomer(String firstName, String lastName, String username, String password, String confirmPassword,
 			String address, String phone, String role);

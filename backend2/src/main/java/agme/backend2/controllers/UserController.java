@@ -1,5 +1,6 @@
 package agme.backend2.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
+import agme.backend2.services.ManagementService;
 import agme.backend2.services.UserService;
 
 @RestController
@@ -18,6 +20,9 @@ import agme.backend2.services.UserService;
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ManagementService managementService;
 	
 	@PostMapping("/register/customer")
 	public ResponseEntity<?> registerCustomer(@RequestBody Map<String, Object> userMap){
@@ -62,11 +67,17 @@ public class UserController {
 	}
 	@PostMapping("/login")
 	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+		String email = (String) userMap.get("username");
         String password = (String) userMap.get("password");
-        User user = userService.validateUser(username, password);
-        return new ResponseEntity<>(user,HttpStatus.CREATED);
-		
+        User user = userService.validateUser(email, password);
+        return new ResponseEntity<>(user,HttpStatus.CREATED);		
+	}
+	
+	@PostMapping("/getworker/{adminId}")
+	public ResponseEntity<?> getWorkerFromAdmin(@PathVariable Integer adminId){
+		List<User> worker = new ArrayList<User>();
+		worker = managementService.getAllWorkerFromAdmin(adminId);
+		return new ResponseEntity<>(worker,HttpStatus.OK);
 	}
 	
 	@PostMapping("/getAvailability")
