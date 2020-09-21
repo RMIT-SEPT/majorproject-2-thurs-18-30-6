@@ -3,19 +3,17 @@
     Author: Winston . (S3777969)
  */
 
-.formReg {
+.formWorker {
     background: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    padding-right: 100px;
-    padding-left: 100px;
-    padding-top: 250px;
+    padding: 50px 100px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.formReg button {
+.formWorker button {
     text-transform: uppercase;
     outline: 0;
     background: black;
@@ -27,10 +25,10 @@
     cursor: pointer;
 }
 
-.formReg button:hover {
+.formWorker button:hover {
     background: darkgrey;
 }
-.formReg input {
+.formWorker input {
     outline: 0;
     background: lightgrey;
     width: 100%;
@@ -42,53 +40,34 @@
     font-size: 14px;
 }
 
-.headReg {
+.headWorker {
     text-align: center;
     margin-bottom: 50px;
 }
 
-.dropdown {
-    background: lightgrey;
-    outline: 0;
-    border: 0;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 10px 40px;
-}
-
-.labelReg {
+.labelWorker{
     font-size: 16px;
     font-weight: bold;
     margin-right: 20px;
 }
 
-.backReg {
+.backWorker {
     font-size: 16px;
     text-align:left;
     color:black;
     font-weight: bold;
 }
 
-.arrowReg {
+.arrowWorker {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
 }
-.leftReg {
+.leftWorker {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
 
-.loginReg {
-    text-align: center;
-    color: grey;
-}
 
-.linkReg {
-    display: inline-flex;
-    font-size: 14px;
-    text-decoration: underline;
-    color: royalblue;
-    padding-left: 0;
-}
+

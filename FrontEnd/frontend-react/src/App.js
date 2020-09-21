@@ -14,24 +14,11 @@ import Loginpage from './components/pages/loginpage';
 import Registerpage from './components/pages/registerpage';
 import Dashboard from './components/pages/dashboard';
 import RegistrationComplete from "./components/pages/registrationComplete";
-import ShiftAllocation from "./components/pages/shiftAllocation";
-import Availability from "./components/pages/availability";
+import AddingWorkers from "./components/pages/addingWorkersPage";
+import RegistrationType from "./components/pages/registrationType";
 
 
 class App extends Component {
-
-    constructor(props){
-        super(props);
-
-        this.state = {
-            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
-            user: {}
-        }
-    }
-
-    changeStatus(status){
-        this.setState({loggedInStatus: status})
-    }
 
     render() {
         return (
@@ -43,8 +30,8 @@ class App extends Component {
                     <Route exact path={'/register'} component={Registerpage}/>
                     <Route exact path={'/dashboard'} component={Dashboard}/>
                     <Route exact path={'/registrationComplete'} component={RegistrationComplete}/>
-                    <Route exact path={'/shiftAllocation'} component={ShiftAllocation}/>
-                    <Route exact path={'/availability'} component={Availability}/>
+                    <Route exact path={'/workerRegistration'} component={AddingWorkers}/>
+                    <Route exact path={'/registrationType'} component={RegistrationType}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

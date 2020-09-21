@@ -14,7 +14,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        const user = JSON.parse(this.state.user);
+        const user = JSON.parse(this.state.user)
         if(this.state.loggedInStatus){
             if(user['role'] === 'Admin'){
                 return (
@@ -22,29 +22,37 @@ class Dashboard extends Component {
                         <Header/>
                         <h1>Admin Dashboard</h1>
                         <h3>Worker Options:</h3>
-                        <form action={'/shiftAllocation'}>
-                            <button type={'submit'}>Allocate Shifts</button>
+                        <form action={'/workerRegistration'}>
+                            <button type={'submit'}>Add a Worker</button>
                         </form>
                         <Footer/>
                     </div>
-                );
-            }else if(user['role'] === 'Worker'){
-                return(
+                )
+            }
+            else if(user['role'] === 'User'){
+                return (
                     <div>
                         <Header/>
-                        <h1>Worker Dashboard</h1>
-                        <h3>Worker Options:</h3>
-                        <form action={'/availability'}>
-                            <button type={'submit'}>Set Availability</button>
-                        </form>
+                        <h1>User</h1>
                         <Footer/>
                     </div>
-                );
+                )
             }
-
+            else if(user['role'] === 'Worker'){
+                return (
+                    <div>
+                        <Header/>
+                        <h1>Worker</h1>
+                        <Footer/>
+                    </div>
+                )
+            }
+            else{
+                return <Redirect to={'/login'} />
+            }
         }
         else{
-            return <Redirect to={'/'} />
+            return <Redirect to={'/login'} />
         }
 
     }
