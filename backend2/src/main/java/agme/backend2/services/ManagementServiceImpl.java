@@ -21,9 +21,13 @@ public class ManagementServiceImpl implements ManagementService{
 	UserRepository userRepository;
 	
 	@Override
+	//get worker from adminId
 	public List<User> getAllWorkerFromAdmin(Integer adminId) {
+		//initialize a worker list
 		List<User> workerList = new ArrayList<User>();
+		//find worker entities by admin id
 		List<Management> managementList = managementRepository.findAllByAdminId(adminId);
+		//for all that is found, add into worker list
 		for (Management management : managementList) {
 			workerList.add(userRepository.findByUserId(management.getWorkerId()));
 		}
