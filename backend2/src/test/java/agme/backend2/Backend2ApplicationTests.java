@@ -94,10 +94,14 @@ class Backend2ApplicationTests {
 	
 	//Checks if creating a worker with no admin calls an exception
 	@Test
-	void contextLoads() {
+	void checkWorkerNoAdmin() {
 		Assertions.assertThrows(ValidationException.class, () -> {
 			userService.registerWorker("fname", "lname", "test1", "password", "password", "address", "phone", "Worker", 69);
 		});
+	}
+	
+	@Test
+	void contextLoads() {
 	}
 	
 }
