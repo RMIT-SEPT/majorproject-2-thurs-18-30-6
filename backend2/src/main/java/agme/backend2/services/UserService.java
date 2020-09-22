@@ -22,7 +22,7 @@ public interface UserService  {
 	
 	void setAvailability(String username, String timeslot, String availability);
 	
-	List<WorkerAvailability> getAssigned(Integer userId);
+	List<String> getAssigned(Integer userId);
 	
 	void setAssigned(Integer userId, String timeslot, Boolean assigned);
 	
