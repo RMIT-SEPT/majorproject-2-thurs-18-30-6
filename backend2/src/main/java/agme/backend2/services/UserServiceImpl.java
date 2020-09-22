@@ -111,8 +111,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<WorkerAvailability> getAssigned(Integer userId) {
-		List<WorkerAvailability> shifts = workerAvailabilityRepository.findByUserIdAndAssigned(userId, true);
+	public List<String> getAssigned(Integer userId) {
+		List<String> shifts = workerAvailabilityRepository.findTimeslotByUserIdAndAssigned(userId, true);
 		return shifts;				
 	}
 	
