@@ -5,10 +5,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    padding-right: 100px;
-    padding-left: 100px;
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding: 50px 100px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -36,4 +33,22 @@
     color: white;
     font-size: 10px;
     cursor: pointer;
+}
+
+.backAvail {
+    text-align:left;
+    color:black;
+    font-weight: bold;
+
+}
+
+.arrowAvail {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.leftAvail {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
 }

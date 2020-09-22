@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import axios from 'axios';
 import parse from 'html-react-parser';
+import '../../assets/chooseAvailableWorker.css'
 
 class ChooseAvailableWorker extends Component {
     constructor(props){
@@ -70,12 +71,11 @@ class ChooseAvailableWorker extends Component {
                     return (
 
                         <div>
-                            <form onSubmit={this.handleSubmit}>
+                            <form className={'formCAW'} onSubmit={this.handleSubmit}>
                                 <h1>Select a Worker:</h1>
-                                <select name={'chosenWorker'} onChange={this.handleChange}>
+                                <select className={'dropdownCAW'} name={'chosenWorker'} onChange={this.handleChange}>
                                     {parse(this.state.code)}
                                 </select>
-                                <br/>
                                 <button type='submit'>Next</button>
                             </form>
                         </div>

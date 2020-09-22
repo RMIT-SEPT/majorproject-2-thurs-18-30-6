@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
+import '../../assets/profilepage.css';
+import Header from "../header_component/header";
+import Footer from "../footer_component/footer";
 
 class Profilepage extends Component {
     constructor(props){
@@ -16,18 +19,20 @@ class Profilepage extends Component {
         if(this.state.loggedInStatus) {
             return (
                 <div>
+                    <Header/>
+                    <div className={'divProfile'}>
+                        <a className="backProfile" href={"/dashboard"}><i className="arrowProfile leftProfile"></i>back</a>
+                        <h1 className={'headerProfile'}>Profile Page</h1>
+                        <div className={'textProfile'}>
 
-                    <h1>Profile Page:</h1>
-                    <h4>Role: {user['role']}</h4>
-                    <h4>Username: {user['username']}</h4>
-                    <h4>Name: {user['firstName']} {user['lastName']}</h4>
-                    <h4>Address: {user['address']}</h4>
-                    <h4>Phone: {user['phone']}</h4>
-
-                    <form action={'/dashboard'}>
-                        <button type={'submit'}>Back to dashboard</button>
-                    </form>
-
+                            <h4>Role: {user['role']}</h4>
+                            <h4>Username: {user['username']}</h4>
+                            <h4>Name: {user['firstName']} {user['lastName']}</h4>
+                            <h4>Address: {user['address']}</h4>
+                            <h4>Phone: {user['phone']}</h4>
+                        </div>
+                    </div>
+                    <Footer/>
                 </div>
             );
         }else{

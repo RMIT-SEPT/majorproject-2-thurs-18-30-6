@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import parse from 'html-react-parser';
+import Header from "../header_component/header";
+import Footer from "../footer_component/footer";
 
 class ViewShifts extends Component {
     constructor(props){
@@ -22,7 +24,7 @@ class ViewShifts extends Component {
             let htmlCode = ""
             for(let i = 0; i < count; i++){
                 // Response is just "assigned" but no day so need to talk to nam about it
-                htmlCode += "<h4>" + response.data[i]['assigned'] + "</h4>"
+                htmlCode += "<h4 style='padding-left: 50px;'>" + response.data[i] + ": 9am - 5pm</h4>"
             }
 
             this.setState({code: htmlCode})
@@ -34,14 +36,13 @@ class ViewShifts extends Component {
     render() {
         return (
             <div>
+                <Header/>
+                <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
+                <h2 align={'center'}>Assigned Shifts</h2>
 
-                <h2>Assigned Shifts:</h2>
                 {parse(this.state.code)}
 
-                <form action={'/dashboard'}>
-                    <button type={'submit'}>Back to dashboard</button>
-                </form>
-
+                <Footer/>
             </div>
         );
     }

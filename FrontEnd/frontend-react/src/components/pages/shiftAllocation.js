@@ -144,16 +144,19 @@ class ShiftAllocation extends Component {
                 if(user['role'] === 'Admin'){
                     return (
                         <div>
-                            <h3>Availabilities for {this.state.username}:</h3>
-                            <h4>Monday - {this.state.monday}</h4>
-                            <h4>Tuesday - {this.state.tuesday}</h4>
-                            <h4>Wednesday - {this.state.wednesday}</h4>
-                            <h4>Thursday - {this.state.thursday}</h4>
-                            <h4>Friday - {this.state.friday}</h4>
-                            <br/>
-                            <p>Please only assign workers on available days <br/> unless in an emergency.</p>
+                            <div className={'divShift'}>
+                                <h3>Availabilities for {this.state.username}:</h3>
+                                <h4>Monday - {this.state.monday}</h4>
+                                <h4>Tuesday - {this.state.tuesday}</h4>
+                                <h4>Wednesday - {this.state.wednesday}</h4>
+                                <h4>Thursday - {this.state.thursday}</h4>
+                                <h4>Friday - {this.state.friday}</h4>
+                                <br/>
+                                <p>Please only assign workers on available days <br/> unless in an emergency.</p>
+                            </div>
 
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
+                                <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
                                 <h1>Set Worker's Shifts This Week</h1>
 
                                 <h4 className={'days'}>Monday:</h4>

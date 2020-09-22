@@ -78,8 +78,10 @@ class Availability extends Component {
                 if(user['role'] === "Worker"){
                     return (
                         <div>
+
                             {/*form showing monday - friday, tick which is available*/}
                             <form className={'formAvailability'} onSubmit={this.handleSubmit}>
+                                <a className="backAvail" href={"/dashboard"}><i className="arrowAvail leftAvail"></i>back</a>
                                 <h1>Set Your Availability:</h1>
                                 <h4 className={'days'}>Monday:</h4>
                                 <select className={"dropdownAvail"} name={'monday'} onChange={this.handleChange}>
