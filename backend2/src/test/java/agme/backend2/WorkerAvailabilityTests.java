@@ -68,8 +68,8 @@ class WorkerAvailabilityTests {
 		Integer userId = userService.validateUser("test1", "password").getUserId();
 		userService.setAvailability("test1", "Monday", "Available");
 		userService.setAssigned(userId, "Monday", true);
-		List<WorkerAvailability> assigned = userService.getAssigned(userId);
-		assertEquals(true, assigned.get(0).getAssigned());
+		List<String> assigned = userService.getAssigned(userId);
+		assertEquals(true, assigned.get(0));
 	}
 		
 	@Test
