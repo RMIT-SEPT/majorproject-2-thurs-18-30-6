@@ -16,6 +16,7 @@ class Dashboard extends Component {
 
     render() {
         const user = JSON.parse(this.state.user)
+        //if role is admin, show admin dashboard
         if(this.state.loggedInStatus){
             if(user['role'] === 'Admin'){
                 return (
@@ -42,6 +43,7 @@ class Dashboard extends Component {
                     </div>
                 )
             }
+            //if role is customer, show customer dashboard
             else if(user['role'] === 'Customer'){
                 return (
                     <div>
@@ -57,6 +59,7 @@ class Dashboard extends Component {
                     </div>
                 )
             }
+            //if role is worker, show worker dashboard
             else if(user['role'] === 'Worker'){
                 return (
                     <div>

@@ -37,6 +37,7 @@ class Registerpage extends Component {
 
     handleSubmit(event){
 
+        //when role is admin, this are the attributes needed
         if(this.state.role === "Admin"){
             axios.post("http://localhost:8080/register/admin", {
 
@@ -66,7 +67,9 @@ class Registerpage extends Component {
 
                 this.setState({errors: htmlCode})
             });
-        }else if(this.state.role === "Customer"){
+        }
+        //when role is customer, this are the attributes needed
+        else if(this.state.role === "Customer"){
             axios.post("http://localhost:8080/register/customer", {
 
                 firstName: this.state.firstName,
@@ -107,7 +110,9 @@ class Registerpage extends Component {
     render() {
         if (this.state.redirect){
             return <Redirect to={this.state.redirect} />
-        }else if(this.state.role === "Admin"){
+        }
+        //Different forms are rendered with different user role
+        else if(this.state.role === "Admin"){
             return (
                 <div className={"formReg"}>
                     <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>

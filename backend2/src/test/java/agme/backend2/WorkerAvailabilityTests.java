@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
-import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.UserService;
 
 @SpringBootTest
@@ -26,7 +25,7 @@ class WorkerAvailabilityTests {
 	@BeforeEach
 	void init() {
 		userService.deleteAll();
-    	userService.registerAdmin("fname", "lname", "admin", "password", "password", "test company", "address", "phone", "Worker");
+    	userService.registerAdmin("fname", "lname", "admin", "password", "password", "test company", "address", "phone", "Admin");
     	User admin = userService.validateUser("admin", "password");
     	Integer adminId = admin.getUserId();
     	userService.registerWorker("fname", "lname", "test1", "password", "password", "address", "phone", "Worker", adminId);
@@ -37,11 +36,13 @@ class WorkerAvailabilityTests {
 		userService.deleteAll();
 	}
 	
+	//Check if setting availability passes without exceptions
 	@Test
 	void setAvailabilitySuccess(){
 		userService.setAvailability("test1", "Monday", "Available");
 	}
 	
+	//Check if getting availability returns the correct result
 	@Test
 	void getAvailabilitySuccess(){
 		userService.setAvailability("test1", "Monday", "Available");
@@ -49,6 +50,7 @@ class WorkerAvailabilityTests {
 		assertEquals("Available", availability);
 	}
 	
+	//Check if creating a timeslot creates successfully
 	@Test
 	void createAvailabilitySuccess(){
 		userService.setAvailability("test1", "Cheeseday", "Unavailable");
@@ -56,6 +58,7 @@ class WorkerAvailabilityTests {
 		assertEquals("Unavailable", availability);
 	}
 	
+	//Check if setting shifts passes without exceptions
 	@Test
 	void setAssignedSuccess(){
 		Integer userId = userService.validateUser("test1", "password").getUserId();
@@ -63,20 +66,23 @@ class WorkerAvailabilityTests {
 		userService.setAssigned(userId, "Monday", true);
 	}
 	
+	//Check if getting shifts returns the correct result
 	@Test
 	void getAssignedSuccess(){
 		Integer userId = userService.validateUser("test1", "password").getUserId();
 		userService.setAvailability("test1", "Monday", "Available");
 		userService.setAssigned(userId, "Monday", true);
 		List<String> assigned = userService.getAssigned(userId);
-		assertEquals(true, assigned.get(0));
+		assertEquals("Monday", assigned.get(0));
 	}
-		
+	
+	//Check if setting services passes without exceptions
 	@Test
 	void setServiceSuccess(){
 		userService.setService("test1", "Eating", "Available");
 	}
 	
+	//Check if getting services returns the correct result
 	@Test
 	void getServiceSuccess(){
 		userService.setService("test1", "Eating", "Available");
@@ -84,6 +90,7 @@ class WorkerAvailabilityTests {
 		assertEquals("Available", availability);
 	}
 	
+	//Check if creating a service creates successfully
 	@Test
 	void createServiceSuccess(){
 		userService.setAvailability("test1", "Burger", "Unavailable");
@@ -91,6 +98,7 @@ class WorkerAvailabilityTests {
 		assertEquals("Unavailable", availability);
 	}
 	
+	//Check if setting availability for a worker that does not exist throws an exception
 	@Test
 	void setAvailabilityNoWorker(){
 		Assertions.assertThrows(ValidationException.class, () -> {
@@ -98,6 +106,7 @@ class WorkerAvailabilityTests {
 		});
 	}
 	
+	//Check if getting availability for a worker that does not exist throws an exception
 	@Test
 	void getAvailabilityNoWorker(){
 		Assertions.assertThrows(ValidationException.class, () -> {
@@ -105,6 +114,7 @@ class WorkerAvailabilityTests {
 		});
 	}
 	
+	//Check if getting availability for a timeslot that does not exist throws an exception
 	@Test
 	void getAvailabilityNoTimeslot(){
 		Assertions.assertThrows(ValidationException.class, () -> {

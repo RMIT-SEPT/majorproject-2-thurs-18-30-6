@@ -37,12 +37,15 @@ public class UserServiceImpl implements UserService {
 	ManagementRepository managementRepository;
 
 	@Override
+	//register customer into the database
 	public User registerCustomer(String firstName, String lastName, String username, String password, String confirmPassword,
 			String address, String phone, String role) throws ValidationException {
+		//check if password matches confirm password
 		if(!password.equals(confirmPassword)) {
 			throw new ValidationException("Password and confirm password do not match");
 		}
-		Integer usernameCount = userRepository.countByUsername(username);		
+		Integer usernameCount = userRepository.countByUsername(username);
+		//validation checks to see if username already existed to keep it unique
 		if (usernameCount > 0){
 			throw new ValidationException("Username already existed");
 		}
@@ -58,6 +61,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//registering admin into database
 	public User registerAdmin(String firstName, String lastName, String username, String password,
 			String confirmPassword, String company, String address, String phone, String role)  {
 		User newUser = registerCustomer(firstName,lastName,username,password,confirmPassword,address,phone,role);
@@ -69,6 +73,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//registering worker into database
 	public User registerWorker(String firstName, String lastName, String username, String password,
 			String confirmPassword, String address, String phone, String role, Integer adminId) throws ValidationException {
 		Integer idCount = userRepository.countByUserId(adminId);		
@@ -82,6 +87,7 @@ public class UserServiceImpl implements UserService {
 		managementRepository.save(newManagement);
 		return newUser;
 	}
+	//find availability of worker with that specific username
 	public String getAvailability(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
 		if (userId == null) {
@@ -95,6 +101,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//set availability for the specific user (worker)
 	public void setAvailability(String username, String name, String availability) {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
@@ -111,22 +118,26 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//load shifts for the specific worker
 	public List<String> getAssigned(Integer userId) {
 		List<String> shifts = workerAvailabilityRepository.findTimeslotByUserIdAndAssigned(userId, true);
 		return shifts;				
 	}
 	
 	@Override
+	//set a shift for the specific worker in the database
 	public void setAssigned(Integer userId, String timeslot, Boolean assigned) {
 		WorkerAvailability shift = workerAvailabilityRepository.findByUserIdAndName(userId, timeslot);
 		if (shift == null) {
 			throw new ValidationException("Timeslot does not exist");
 		}
+		//set it to the boolean value passed from font end
 		shift.setAssigned(assigned);
 		workerAvailabilityRepository.save(shift);		
 	}
 	
 	@Override
+	//set services provided by admin into database
 	public String getService(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
 		if (userId == null) {
@@ -140,6 +151,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//get services provided by admin from database
 	public void setService(String username, String name, String availability) {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
@@ -170,7 +182,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return newUser;
 	}
-
 	
 	@Override
 	public void populateWorkerInformation(String username) {

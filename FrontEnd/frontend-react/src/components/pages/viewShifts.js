@@ -36,6 +36,7 @@ class ViewShifts extends Component {
     render() {
         return (
             <div>
+                {/*show shifts allocated if there is any*/}
                 <Header/>
                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
                 <h2 align={'center'}>Assigned Shifts this week</h2>

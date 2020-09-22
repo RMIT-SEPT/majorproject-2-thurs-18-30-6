@@ -30,24 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/addingWorkersPage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/availability.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/chooseAvailableWorker.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/dashboard.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/profilepage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationType.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/shiftAllocation.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewShifts.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FrontEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FrontEnd.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registerpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registerpage.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationComplete.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationComplete.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/test_cases/rod_test_cases.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +79,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600751876718</updated>
-      <workItem from="1600751902267" duration="12741000" />
+      <workItem from="1600751902267" duration="13375000" />
+      <workItem from="1600773902386" duration="1460000" />
+      <workItem from="1600776746437" duration="2459000" />
     </task>
     <servers />
   </component>
@@ -116,9 +101,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="57" key="SettingsEditor" timestamp="1600762118163">
+    <state x="277" y="57" key="SettingsEditor" timestamp="1600776818866">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600762118162" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600776818866" />
   </component>
 </project>

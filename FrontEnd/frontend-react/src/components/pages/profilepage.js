@@ -20,6 +20,7 @@ class Profilepage extends Component {
             return (
                 <div>
                     <Header/>
+                    {/*profile for specified user*/}
                     <div className={'divProfile'}>
                         <a className="backProfile" href={"/dashboard"}><i className="arrowProfile leftProfile"></i>back</a>
                         <h1 className={'headerProfile'}>Profile Page</h1>

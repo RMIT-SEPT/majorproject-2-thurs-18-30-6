@@ -8,6 +8,7 @@ class ChooseAvailableWorker extends Component {
     constructor(props){
         super(props);
 
+        //states needed for this class
         this.state = {
             loggedInStatus: sessionStorage.getItem('loggedInStatus'),
             user: sessionStorage.getItem('user'),
@@ -28,7 +29,7 @@ class ChooseAvailableWorker extends Component {
 
         axios.post("http://localhost:8080/getworker/" + adminId).then(response => {
             const userCount = response.data['length']
-
+            //htmlCode is the string that is parsed later on to HTML
             let htmlCode = "<option> - </option>"
             for(let i = 0; i < userCount; i++){
                 let usernameAndId = response.data[i]['username'] + "," + response.data[i]['userId']
@@ -54,6 +55,7 @@ class ChooseAvailableWorker extends Component {
         const workerUsername = workerArray[0]
         const workerId = workerArray[1]
 
+        //set session storage items to store worker information
         if (workerId) {
             sessionStorage.setItem('workerUserId', workerId)
             sessionStorage.setItem('workerUserName', workerUsername)
@@ -71,6 +73,7 @@ class ChooseAvailableWorker extends Component {
                     return (
 
                         <div>
+                            {/*Form to choose worker to set shifts*/}
                             <form className={'formCAW'} onSubmit={this.handleSubmit}>
                                 <h1>Select a Worker:</h1>
                                 <select className={'dropdownCAW'} name={'chosenWorker'} onChange={this.handleChange}>
