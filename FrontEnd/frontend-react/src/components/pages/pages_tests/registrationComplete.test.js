@@ -13,9 +13,3 @@ test('Registration Complete Renders Correctly', () => {
     sessionStorage.setItem('fromRegister', 'true');
     render(<RegistrationComplete/>, div);
 })
-
-/*
-    Tests to see if registration complete redirects if authorization fails
- */
-
-// CODE HERE

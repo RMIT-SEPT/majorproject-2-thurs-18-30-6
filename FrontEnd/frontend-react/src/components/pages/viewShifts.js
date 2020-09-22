@@ -38,7 +38,7 @@ class ViewShifts extends Component {
             <div>
                 <Header/>
                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
-                <h2 align={'center'}>Assigned Shifts</h2>
+                <h2 align={'center'}>Assigned Shifts this week</h2>
 
                 {parse(this.state.code)}
 
