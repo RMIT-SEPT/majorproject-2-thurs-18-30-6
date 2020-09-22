@@ -14,4 +14,6 @@ public interface UserService  {
 			String address, String phone, String role, Integer adminId);
 	
 	User validateUser(String username, String password);
+	
+	void deleteAll();
 }
