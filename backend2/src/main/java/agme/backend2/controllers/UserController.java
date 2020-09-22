@@ -100,7 +100,7 @@ public class UserController {
 	@PostMapping("/getShift")
 	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap){
 		Integer userId = (Integer) userMap.get("userId");
-        List<WorkerAvailability> assigned = userService.getAssigned(userId);
+        List<String> assigned = userService.getAssigned(userId);
         return new ResponseEntity<>(assigned,HttpStatus.OK);
 	}
 	
