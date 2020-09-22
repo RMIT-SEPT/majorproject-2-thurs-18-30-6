@@ -73,7 +73,7 @@ class WorkerAvailabilityTests {
 		userService.setAvailability("test1", "Monday", "Available");
 		userService.setAssigned(userId, "Monday", true);
 		List<String> assigned = userService.getAssigned(userId);
-		assertEquals(true, assigned.get(0));
+		assertEquals("Monday", assigned.get(0));
 	}
 	
 	//Check if setting services passes without exceptions
