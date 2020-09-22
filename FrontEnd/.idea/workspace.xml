@@ -8,6 +8,11 @@
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -15,26 +20,33 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/availability.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
+    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/addingWorkersPage.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/availability.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/chooseAvailableWorker.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/dashboard.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/profilepage.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationType.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/shiftAllocation.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewShifts.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FrontEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FrontEnd.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/loginpage.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/repositories/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registerpage.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registerpage.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationComplete.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/registrationComplete.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/test_cases/rod_test_cases.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/test-classes/agme/backend2/Backend2ApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,16 +59,24 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1gRaCYPRTdGmkBq6IB3StGzTBfL" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1hqwI2uq1QN62KqJV1nQSvrN8Rp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,31 +84,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4f10b5b5-1344-439a-a641-a8bd804d3deb" name="Default Changelist" comment="" />
-      <created>1598079734781</created>
+      <changelist id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="" />
+      <created>1600751876718</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1598079734781</updated>
-      <workItem from="1598079737384" duration="174000" />
-      <workItem from="1599478028733" duration="30000" />
-      <workItem from="1599478060073" duration="1779000" />
-      <workItem from="1599482512950" duration="788000" />
-      <workItem from="1599489337083" duration="3258000" />
-      <workItem from="1599549181277" duration="10490000" />
-      <workItem from="1599563714256" duration="5888000" />
-      <workItem from="1599656019816" duration="985000" />
-      <workItem from="1599658651394" duration="371000" />
-      <workItem from="1599714842712" duration="147000" />
-      <workItem from="1599748366793" duration="127000" />
-      <workItem from="1600665849009" duration="6471000" />
-      <workItem from="1600674060083" duration="5773000" />
+      <updated>1600751876718</updated>
+      <workItem from="1600751902267" duration="12741000" />
     </task>
     <servers />
   </component>
@@ -108,9 +116,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1599478057511">
+    <state x="277" y="57" key="SettingsEditor" timestamp="1600762118163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599478057511" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600762118162" />
   </component>
 </project>

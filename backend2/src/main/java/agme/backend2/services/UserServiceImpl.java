@@ -1,5 +1,9 @@
 package agme.backend2.services;
 
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,6 +108,22 @@ public class UserServiceImpl implements UserService {
 			timeslot.setStatus(availability);
 		}
 		workerAvailabilityRepository.save(timeslot);		
+	}
+	
+	@Override
+	public List<String> getAssigned(Integer userId) {
+		List<String> shifts = workerAvailabilityRepository.findTimeslotByUserIdAndAssigned(userId, true);
+		return shifts;				
+	}
+	
+	@Override
+	public void setAssigned(Integer userId, String timeslot, Boolean assigned) {
+		WorkerAvailability shift = workerAvailabilityRepository.findByUserIdAndName(userId, timeslot);
+		if (shift == null) {
+			throw new ValidationException("Timeslot does not exist");
+		}
+		shift.setAssigned(assigned);
+		workerAvailabilityRepository.save(shift);		
 	}
 	
 	@Override

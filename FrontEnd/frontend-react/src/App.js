@@ -18,7 +18,9 @@ import AddingWorkers from "./components/pages/addingWorkersPage";
 import RegistrationType from "./components/pages/registrationType";
 import ShiftAllocation from "./components/pages/shiftAllocation";
 import Availability from "./components/pages/availability";
-
+import ChooseAvailableWorker from "./components/pages/chooseAvailableWorker";
+import Profilepage from "./components/pages/profilepage";
+import ViewShifts from "./components/pages/viewShifts";
 
 class App extends Component {
 
@@ -36,6 +38,9 @@ class App extends Component {
                     <Route exact path={'/registrationType'} component={RegistrationType}/>
                     <Route exact path={'/shiftAllocation'} component={ShiftAllocation}/>
                     <Route exact path={'/availability'} component={Availability}/>
+                    <Route exact path={'/chooseAvailableWorker'} component={ChooseAvailableWorker}/>
+                    <Route exact path={'/profile'} component={Profilepage}/>
+                    <Route exact path={'/viewShifts'} component={ViewShifts}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

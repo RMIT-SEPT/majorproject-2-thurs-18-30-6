@@ -8,6 +8,8 @@ class RegistrationType extends Component {
         super(props);
 
         this.state = {
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user'),
             redirect: null,
             role: "Admin"
         }
@@ -30,8 +32,10 @@ class RegistrationType extends Component {
 
 
     render() {
-        if(this.state.redirect){
-            return <Redirect to={this.state.redirect} />
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect}/>
+        } else if (this.state.loggedInStatus){
+            return <Redirect to={'/dashboard'}/>
         }else{
             return (
                 <div className={'formRegType'}>

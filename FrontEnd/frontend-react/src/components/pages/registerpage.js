@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import '../../assets/registerpage.css'
 import { Redirect } from "react-router-dom";
+import parse from 'html-react-parser';
 
 
 
@@ -61,7 +62,9 @@ class Registerpage extends Component {
             }).catch(error => {
                 console.log('registration error', error.data)
 
-                // set code for error response here (show as bad, display error messages)
+                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
+
+                this.setState({errors: htmlCode})
             });
         }else if(this.state.role === "Customer"){
             axios.post("http://localhost:8080/register/customer", {
@@ -87,7 +90,9 @@ class Registerpage extends Component {
             }).catch(error => {
                 console.log('registration error', error.data)
 
-                // set code for error response here (show as bad, display error messages)
+                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Registration Failed</p>"
+
+                this.setState({errors: htmlCode})
             });
         }
         event.preventDefault();
@@ -107,6 +112,8 @@ class Registerpage extends Component {
                 <div className={"formReg"}>
                     <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
                     <h1 className={"headReg"}> Join Us! </h1>
+
+                    {parse(this.state.errors)}
                     <form onSubmit={this.handleSubmit}>
 
                         <h2>Role: {this.state.role}</h2>
@@ -130,6 +137,7 @@ class Registerpage extends Component {
                 <div className={"formReg"}>
                     <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
                     <h1 className={"headReg"}> Join Us! </h1>
+                    {parse(this.state.errors)}
                     <form onSubmit={this.handleSubmit}>
 
                         <h2>Role: {this.state.role}</h2>

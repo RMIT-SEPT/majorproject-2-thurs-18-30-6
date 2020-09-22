@@ -2,6 +2,8 @@ package agme.backend2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
+import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.UserService;
 
 @SpringBootTest
@@ -54,6 +57,22 @@ class WorkerAvailabilityTests {
 	}
 	
 	@Test
+	void setAssignedSuccess(){
+		Integer userId = userService.validateUser("test1", "password").getUserId();
+		userService.setAvailability("test1", "Monday", "Available");
+		userService.setAssigned(userId, "Monday", true);
+	}
+	
+	@Test
+	void getAssignedSuccess(){
+		Integer userId = userService.validateUser("test1", "password").getUserId();
+		userService.setAvailability("test1", "Monday", "Available");
+		userService.setAssigned(userId, "Monday", true);
+		List<String> assigned = userService.getAssigned(userId);
+		assertEquals(true, assigned.get(0));
+	}
+		
+	@Test
 	void setServiceSuccess(){
 		userService.setService("test1", "Eating", "Available");
 	}
@@ -70,6 +89,27 @@ class WorkerAvailabilityTests {
 		userService.setAvailability("test1", "Burger", "Unavailable");
 		String availability = userService.getAvailability("test1", "Burger");
 		assertEquals("Unavailable", availability);
+	}
+	
+	@Test
+	void setAvailabilityNoWorker(){
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.setAvailability("nothing", "Monday", "Available");
+		});
+	}
+	
+	@Test
+	void getAvailabilityNoWorker(){
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.getAvailability("nothing", "Monday");
+		});
+	}
+	
+	@Test
+	void getAvailabilityNoTimeslot(){
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.getAvailability("test1", "Funday");
+		});
 	}
 	
 	@Test

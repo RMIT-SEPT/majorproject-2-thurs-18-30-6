@@ -14,6 +14,7 @@ public class WorkerAvailability {
 	private Integer userId;	
     private String timeslot;
     private String status;
+    private Boolean assigned = false;
 
     public WorkerAvailability(User user, String timeslot, String status) {
     	this.userId = user.getUserId();
@@ -27,6 +28,14 @@ public class WorkerAvailability {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public void setAssigned(Boolean assigned) {
+		this.assigned = assigned;
+	}
+
+	public Boolean getAssigned() {
+		return assigned;
 	}
 
 }

@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import '../../assets/loginpage.css'
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import parse from 'html-react-parser';
 
 // components
 
@@ -15,6 +16,8 @@ class Loginpage extends Component {
         super(props);
 
         this.state = {
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user'),
             username: "",
             password: "",
             errors: ""
@@ -47,7 +50,9 @@ class Loginpage extends Component {
         }).catch(error => {
             console.log('login error', error)
 
-            // set code for error response here (show as bad, display error messages)
+            const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
+
+            this.setState({errors: htmlCode})
         });
 
         event.preventDefault();
@@ -63,11 +68,16 @@ class Loginpage extends Component {
         if (this.state.redirect){
             return <Redirect to={this.state.redirect} />
         }
+
+        if(this.state.loggedInStatus){
+            return <Redirect to={'/dashboard'} />
+        }
         return (
             <div className="loginLog">
                 <div className="formLog">
                     <a className="backLog" href={"/"}><i className="arrowLog leftLog"></i>back</a>
                     <h2 className="headLog">Welcome!</h2>
+                    {parse(this.state.errors)}
                     <form onSubmit={this.handleSubmit}>
                         <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username}
                                onChange={this.handleChange} required/>

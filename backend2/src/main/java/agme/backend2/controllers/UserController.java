@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.User;
+import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
 import agme.backend2.services.UserService;
 
@@ -94,6 +95,22 @@ public class UserController {
         String availability = (String) userMap.get("availability");
         userService.setAvailability(username, timeslot, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/getShift")
+	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap){
+		Integer userId = (Integer) userMap.get("userId");
+        List<String> assigned = userService.getAssigned(userId);
+        return new ResponseEntity<>(assigned,HttpStatus.OK);
+	}
+	
+	@PostMapping("/setShift")
+	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap){
+		Integer userId = (Integer) userMap.get("userId");
+		String timeslot = (String) userMap.get("timeslot");
+        Boolean assigned = (Boolean) userMap.get("assigned");
+        userService.setAssigned(userId, timeslot, assigned);
+        return new ResponseEntity<>(assigned,HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/getService")

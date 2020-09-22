@@ -1,12 +1,12 @@
-/*
-    CSS file for homepage of react website
-    Author: Rodrigo Miguel Rojas (s3784466)
- */
 
 .bodyText {
-    text-align: center;
-    margin-top: 100px;
-    width: 75%;
+    text-align: left;
+    margin-top: 50px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.listBody {
+    text-align: left;
 }

@@ -1,6 +1,9 @@
 package agme.backend2.services;
 
+import java.util.List;
+
 import agme.backend2.models.User;
+import agme.backend2.models.WorkerAvailability;
 
 
 public interface UserService  {
@@ -18,6 +21,10 @@ public interface UserService  {
 	String getAvailability(String username, String timeslot);
 	
 	void setAvailability(String username, String timeslot, String availability);
+	
+	List<String> getAssigned(Integer userId);
+	
+	void setAssigned(Integer userId, String timeslot, Boolean assigned);
 	
 	String getService(String username, String service);
 	
