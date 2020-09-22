@@ -69,10 +69,12 @@ class Availability extends Component {
     }
 
     render() {
+        //check if any redirection is needed
         if(this.state.redirect !== ""){
             return <Redirect to={this.state.redirect} />
         }
         else{
+            //check if role is worker
             const user = JSON.parse(this.state.user)
             if(this.state.loggedInStatus){
                 if(user['role'] === "Worker"){

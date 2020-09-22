@@ -69,16 +69,22 @@ class AddingWorkersPage extends Component {
     }
 
     render() {
+        //check if user logged in
         if(this.state.loggedInStatus){
+            //parse user information to get role
             const user = JSON.parse(this.state.user)
+
+            //check if role is admin
             if(user['role'] === 'Admin'){
                 if (this.state.redirect){
+                    //
                     return <Redirect to={this.state.redirect} />
                 }
                 return (
                     <div className={"formWorker"}>
                         <a className="backWorker" href={"/dashboard"}><i className="arrowWorker leftWorker"></i>back</a>
                         <h1 className={"headWorker"}> Add A Worker</h1>
+                        {/*form to add worker*/}
                         <form onSubmit={this.handleSubmit}>
 
                             <input type={'text'} name={'firstName'} placeholder={'First Name'} value={this.state.firstName} onChange={this.handleChange} required/>

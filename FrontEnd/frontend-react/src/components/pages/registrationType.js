@@ -30,7 +30,7 @@ class RegistrationType extends Component {
     }
 
 
-
+    //display a form for user to choose which user role they are registering for
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect}/>

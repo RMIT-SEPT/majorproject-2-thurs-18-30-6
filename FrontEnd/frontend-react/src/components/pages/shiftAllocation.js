@@ -66,7 +66,7 @@ class ShiftAllocation extends Component {
             [event.target.name]: event.target.value
         })
     }
-
+    //updating back end on days where the workers are given shifts
     handleSubmit(event){
         let assigned = false;
 
@@ -143,6 +143,7 @@ class ShiftAllocation extends Component {
             if(this.state.loggedInStatus){
                 if(user['role'] === 'Admin'){
                     return (
+                        //admin can view worker's availability based on worker chosen in choose available worker page
                         <div>
                             <div className={'divShift'}>
                                 <h3>Availabilities for {this.state.username}:</h3>
@@ -154,7 +155,7 @@ class ShiftAllocation extends Component {
                                 <br/>
                                 <p>Please only assign workers on available days <br/> unless in an emergency.</p>
                             </div>
-
+                            {/*Select box for Admin to set worker's shift*/}
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
                                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
                                 <h1>Set Worker's Shifts This Week</h1>

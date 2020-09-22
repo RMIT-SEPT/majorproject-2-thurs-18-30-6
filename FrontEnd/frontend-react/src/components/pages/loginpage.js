@@ -48,6 +48,8 @@ class Loginpage extends Component {
             this.setState({redirect: '/dashboard'})
 
         }).catch(error => {
+            //check if there is an error when logging in, if there is an error
+            //parse htmlCode to show that login has failed
             console.log('login error', error)
 
             const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
@@ -74,9 +76,11 @@ class Loginpage extends Component {
         }
         return (
             <div className="loginLog">
+                {/*form to get input for login*/}
                 <div className="formLog">
                     <a className="backLog" href={"/"}><i className="arrowLog leftLog"></i>back</a>
                     <h2 className="headLog">Welcome!</h2>
+
                     {parse(this.state.errors)}
                     <form onSubmit={this.handleSubmit}>
                         <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username}
