@@ -21,4 +21,7 @@ public interface WorkerAvailabilityRepository extends CrudRepository<WorkerAvail
 	
 	@Query("select wa from WorkerAvailability wa where wa.userId = ?1 and wa.assigned = ?2")
 	List<WorkerAvailability> findByUserIdAndAssigned(Integer userId, Boolean assigned);
+		
+	@Query("select wa.timeslot from WorkerAvailability wa where wa.userId = ?1 and wa.assigned = ?2")
+	List<String> findTimeslotByUserIdAndAssigned(Integer userId, Boolean assigned);
 }
