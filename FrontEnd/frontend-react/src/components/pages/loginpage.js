@@ -5,6 +5,8 @@
 import React, {Component} from 'react';
 import '../../assets/loginpage.css'
 import axios from "axios";
+import {Redirect} from "react-router-dom";
+import parse from 'html-react-parser';
 
 // components
 
@@ -14,7 +16,9 @@ class Loginpage extends Component {
         super(props);
 
         this.state = {
-            email: "",
+            loggedInStatus: sessionStorage.getItem('loggedInStatus'),
+            user: sessionStorage.getItem('user'),
+            username: "",
             password: "",
             errors: ""
         }
@@ -26,22 +30,29 @@ class Loginpage extends Component {
     handleSubmit(event) {
 
         // post registration information to API
-        axios.post("enter registration api url here", {
+        axios.post("http://localhost:8080/login", {
 
-                //    data structure in json format
+                username: this.state.username,
+                password: this.state.password,
+                redirect: null
 
             },
             {
                 withCredentials: true // lets browser store cookie for logged in purposes
             }).then(response => {
-            console.log('registration response', response)
+            console.log('login response', response)
 
             // set code for response 200 here (show as good)
+            sessionStorage.setItem('user', JSON.stringify(response.data))
+            sessionStorage.setItem('loggedInStatus', 'true')
+            this.setState({redirect: '/dashboard'})
 
         }).catch(error => {
-            console.log('registration error', error)
+            console.log('login error', error)
 
-            // set code for error response here (show as bad, display error messages)
+            const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
+
+            this.setState({errors: htmlCode})
         });
 
         event.preventDefault();
@@ -54,13 +65,21 @@ class Loginpage extends Component {
     }
 
     render() {
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
+
+        if(this.state.loggedInStatus){
+            return <Redirect to={'/dashboard'} />
+        }
         return (
             <div className="loginLog">
                 <div className="formLog">
                     <a className="backLog" href={"/"}><i className="arrowLog leftLog"></i>back</a>
                     <h2 className="headLog">Welcome!</h2>
+                    {parse(this.state.errors)}
                     <form onSubmit={this.handleSubmit}>
-                        <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email}
+                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username}
                                onChange={this.handleChange} required/>
                         <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password}
                                onChange={this.handleChange} required/>

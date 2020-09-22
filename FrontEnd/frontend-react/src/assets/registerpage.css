@@ -6,11 +6,13 @@
 .formReg {
     background: white;
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    padding: 100px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-top: 250px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .formReg button {
@@ -42,13 +44,29 @@
 
 .headReg {
     text-align: center;
+    margin-bottom: 50px;
+}
+
+.dropdown {
+    background: lightgrey;
+    outline: 0;
+    border: 0;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+}
+
+.labelReg {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
 }
 
 .backReg {
+    font-size: 16px;
     text-align:left;
     color:black;
     font-weight: bold;
-
 }
 
 .arrowReg {
@@ -68,8 +86,9 @@
 }
 
 .linkReg {
-    text-align: center;
+    display: inline-flex;
     font-size: 14px;
     text-decoration: underline;
     color: royalblue;
+    padding-left: 0;
 }

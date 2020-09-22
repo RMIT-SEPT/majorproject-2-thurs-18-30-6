@@ -6,21 +6,29 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../../assets/registerpage.css'
+import { Redirect } from "react-router-dom";
+import parse from 'html-react-parser';
+
+
 
 class Registerpage extends Component {
+
     constructor(props){
         super(props);
 
         // The fields in the registration form (update when necessary)
         this.state = {
-            name: "",
-            email: "",
+            firstName: "",
+            lastName: "",
             username: "",
-            phone_number: "",
-            address: "",
             password: "",
-            confirm_password: "",
-            errors: ""
+            confirmPassword: "",
+            company: "",
+            address: "",
+            phone: "",
+            role: sessionStorage.getItem('regRole'),
+            errors: "",
+            redirect: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,25 +37,64 @@ class Registerpage extends Component {
 
     handleSubmit(event){
 
-        // post registration information to API
-        axios.post("enter registration api url here", {
+        if(this.state.role === "Admin"){
+            axios.post("http://localhost:8080/register/admin", {
 
-        //    data structure in json format
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                username: this.state.username,
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+                company: this.state.company,
+                address: this.state.address,
+                phone: this.state.phone,
+                role: this.state.role
 
-        },
-            {
-                withCredentials: true // lets browser store cookie for logged in purposes
+            }, {
+                withCredentials: true
             }).then(response => {
-                console.log('registration response', response)
+                console.log('registration response', response.data)
 
                 // set code for response 200 here (show as good)
+                sessionStorage.removeItem('regRole')
+                sessionStorage.setItem('fromRegister', 'true')
+                this.setState({redirect: '/registrationComplete'})
+            }).catch(error => {
+                console.log('registration error', error.data)
 
-        }).catch(error => {
-            console.log('registration error', error)
+                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
 
-            // set code for error response here (show as bad, display error messages)
-        });
+                this.setState({errors: htmlCode})
+            });
+        }else if(this.state.role === "Customer"){
+            axios.post("http://localhost:8080/register/customer", {
 
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                username: this.state.username,
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+                address: this.state.address,
+                phone: this.state.phone,
+                role: this.state.role
+
+            }, {
+                withCredentials: true
+            }).then(response => {
+                console.log('registration response', response.data)
+
+                // set code for response 200 here (show as good)
+                sessionStorage.removeItem('regRole')
+                sessionStorage.setItem('fromRegister', 'true')
+                this.setState({redirect: '/registrationComplete'})
+            }).catch(error => {
+                console.log('registration error', error.data)
+
+                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Registration Failed</p>"
+
+                this.setState({errors: htmlCode})
+            });
+        }
         event.preventDefault();
     }
 
@@ -58,25 +105,60 @@ class Registerpage extends Component {
     }
 
     render() {
-        return (
-            <div className={"formReg"}>
-                <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
-                <h1 className={"headReg"}> REGISTER </h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.handleChange} required/>
-                    <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
-                    <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
-                    <input type={'number'} name={'phone_number'} placeholder={'Phone Number'} value={this.state.phone_number} onChange={this.handleChange} required/>
-                    <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
-                    <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
-                    <input type={'password'} name={'confirm_password'} placeholder={'Confirm Password'} value={this.state.confirm_password} onChange={this.handleChange} required/>
+        if (this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }else if(this.state.role === "Admin"){
+            return (
+                <div className={"formReg"}>
+                    <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
+                    <h1 className={"headReg"}> Join Us! </h1>
 
-                    <button type={'submit'}> Register </button>
+                    {parse(this.state.errors)}
+                    <form onSubmit={this.handleSubmit}>
 
-                </form>
-                <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}> Login</a></h4>
-            </div>
-        );
+                        <h2>Role: {this.state.role}</h2>
+
+                        <input type={'text'} name={'firstName'} placeholder={'First Name'} value={this.state.firstName} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'lastName'} placeholder={'Last Name'} value={this.state.lastName} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
+                        <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
+                        <input type={'password'} name={'confirmPassword'} placeholder={'Confirm Password'} value={this.state.confirmPassword} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'company'} placeholder={'Business Name'} value={this.state.company} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
+                        <input type={'number'} name={'phone'} placeholder={'Phone Number'} value={this.state.phone} onChange={this.handleChange} required/>
+                        <button type={'submit'}> Register </button>
+
+                    </form>
+                    <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}>Login</a></h4>
+                </div>
+            );
+        } else if(this.state.role === "Customer"){
+            return (
+                <div className={"formReg"}>
+                    <a className="backReg" href={"/"}><i className="arrowReg leftReg"></i>back</a>
+                    <h1 className={"headReg"}> Join Us! </h1>
+                    {parse(this.state.errors)}
+                    <form onSubmit={this.handleSubmit}>
+
+                        <h2>Role: {this.state.role}</h2>
+
+                        <input type={'text'} name={'firstName'} placeholder={'First Name'} value={this.state.firstName} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'lastName'} placeholder={'Last Name'} value={this.state.lastName} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'username'} placeholder={'Username'} value={this.state.username} onChange={this.handleChange} required/>
+                        <input type={'password'} name={'password'} placeholder={'Password'} value={this.state.password} onChange={this.handleChange} required/>
+                        <input type={'password'} name={'confirmPassword'} placeholder={'Confirm Password'} value={this.state.confirmPassword} onChange={this.handleChange} required/>
+                        <input type={'text'} name={'address'} placeholder={'Address'} value={this.state.address} onChange={this.handleChange} required/>
+                        <input type={'number'} name={'phone'} placeholder={'Phone Number'} value={this.state.phone} onChange={this.handleChange} required/>
+                        <button type={'submit'}> Register </button>
+
+                    </form>
+                    <h4 className={"loginReg"}>Don't have an account? <a className="linkReg" href={"/login"}>Login</a></h4>
+                </div>
+            );
+        } else{
+            return <Redirect to={'/registrationType'} />
+        }
+
     }
 }
 

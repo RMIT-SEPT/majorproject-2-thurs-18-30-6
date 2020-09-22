@@ -1,7 +1,4 @@
-/*
-    CSS file for loginpage of react website
-    Author: Rodrigo Miguel Rojas (s3784466)
- */
+
 .textLog{
     text-align: center;
     margin-top: 50px;
@@ -53,10 +50,11 @@
     color: grey;
 }
 .linkLog {
-    text-align: center;
+    display: inline-flex;
     font-size: 14px;
     text-decoration: underline;
     color: royalblue;
+    padding-left: 0;
 }
 .backLog {
     text-align:left;
