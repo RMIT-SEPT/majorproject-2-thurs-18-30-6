@@ -37,6 +37,9 @@ class Dashboard extends Component {
                             <form className={'formDash'} action={'/chooseAvailableWorker'}>
                                 <button className={'buttonDash'} type={'submit'}>Allocate Worker Shifts</button>
                             </form>
+                            <form className={'formDash'} action={'/viewWorker'}>
+                                <button className={'buttonDash'} type={'submit'}>View All Workers</button>
+                            </form>
 
                         </div>
                         <Footer/>

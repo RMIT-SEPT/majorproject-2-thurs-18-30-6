@@ -21,6 +21,7 @@ import Availability from "./components/pages/availability";
 import ChooseAvailableWorker from "./components/pages/chooseAvailableWorker";
 import Profilepage from "./components/pages/profilepage";
 import ViewShifts from "./components/pages/viewShifts";
+import ViewWorkers from "./components/pages/viewWorkers";
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
                     <Route exact path={'/chooseAvailableWorker'} component={ChooseAvailableWorker}/>
                     <Route exact path={'/profile'} component={Profilepage}/>
                     <Route exact path={'/viewShifts'} component={ViewShifts}/>
+                    <Route exact path={'/viewWorkers'} component={ViewWorkers}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>
