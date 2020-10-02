@@ -3,6 +3,7 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import Header from "../header_component/header";
 import Footer from "../footer_component/footer";
+import '../../assets/viewShifts.css';
 
 class ViewShifts extends Component {
     constructor(props){
