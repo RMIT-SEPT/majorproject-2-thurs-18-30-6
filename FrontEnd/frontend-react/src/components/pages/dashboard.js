@@ -32,7 +32,7 @@ class Dashboard extends Component {
                                 <button className={'buttonDash'} type={'submit'}>Add Services</button>
                             </form>
 
-                            <h3>Worker Options:</h3>
+                            <h3>Administration Options:</h3>
                             <form className={'formDash'} action={'/workerRegistration'}>
                                 <button className={'buttonDash'}  type={'submit'}>Add a Worker</button>
                             </form>
@@ -41,6 +41,9 @@ class Dashboard extends Component {
                             </form>
                             <form className={'formDash'} action={'/viewWorkers'}>
                                 <button className={'buttonDash'} type={'submit'}>View All Workers</button>
+                            </form>
+                            <form className={'formDash'} action={'/createService'}>
+                                <button className={'buttonDash'}  type={'submit'}>Create a Service</button>
                             </form>
 
                         </div>
