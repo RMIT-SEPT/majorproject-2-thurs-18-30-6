@@ -14,16 +14,18 @@ class CreateService extends Component {
             service: "",
             availability: "",
             redirect: null,
-            errors: null
+            errors: ""
         }
 
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
     }
 
     handleSubmit(event){
 
         const user = JSON.parse(this.state.user)
-        const username = user['userId']
+        const username = user['username']
 
         axios.post("http://localhost:8080/setService", {
 
@@ -38,8 +40,12 @@ class CreateService extends Component {
 
             this.setState({redirect: "/dashboard"})
         }).catch(errors => {
-            this.setState({errors: "An error has occured..."})
+            const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Error</p>"
+            this.setState({errors: htmlCode})
+            alert("error")
         })
+
+        event.preventDefault();
     }
 
     handleChange(event) {
