@@ -136,8 +136,7 @@ public class UserController {
 	@PostMapping("/getServices")
 	public ResponseEntity<?> getServices(@RequestBody Map<String, Object> userMap){
 		Integer adminId = (Integer) userMap.get("adminId");
-		String service = (String) userMap.get("service");
-        List<String> services = userService.getAllServices(adminId, service);
+        List<String> services = userService.getAllServices(adminId);
         return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 
@@ -150,4 +149,20 @@ public class UserController {
         userService.setService(adminId, service, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
+	
+	//function to get an adminId from a company name
+	@PostMapping("/getAdminId")
+	public ResponseEntity<?> getAdminId(@RequestBody Map<String, Object> userMap){
+		String company = (String) userMap.get("company");
+        Integer adminId = userService.getAdminId(company);
+        return new ResponseEntity<>(adminId,HttpStatus.OK);
+	}
+
+	//function to get all companies
+	@PostMapping("/getAllCompanies")
+	public ResponseEntity<?> getAllCompanies(@RequestBody Map<String, Object> userMap){
+        List<String> companies = userService.getAllCompanies();
+        return new ResponseEntity<>(companies,HttpStatus.OK);
+	}
+
 }

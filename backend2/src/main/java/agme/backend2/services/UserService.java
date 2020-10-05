@@ -28,12 +28,14 @@ public interface UserService  {
 	
 	String getService(Integer adminId, String service);
 	
-	List<String> getAllServices(Integer adminId, String service);
+	List<String> getAllServices(Integer adminId);
 	
 	void setService(Integer adminId, String service, String availability);
 	
 	void deleteAll();
 	
-	void populateWorkerInformation(String username);
+	Integer getAdminId(String company);
+	
+	List<String> getAllCompanies();
 	
 }
