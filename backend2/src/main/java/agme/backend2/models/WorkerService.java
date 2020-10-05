@@ -14,11 +14,13 @@ public class WorkerService {
 	private Integer userId;	
     private String service;
     private String status;
+    private String description;
 
-    public WorkerService(Integer userId, String service, String status) {
+    public WorkerService(Integer userId, String service, String status, String description) {
     	this.userId = userId;
     	this.service = service;
     	this.status = status;
+    	this.description = description;
     }
     
     public WorkerService() {
@@ -27,6 +29,11 @@ public class WorkerService {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

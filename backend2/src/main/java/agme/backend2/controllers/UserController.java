@@ -146,7 +146,8 @@ public class UserController {
 		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
         String availability = (String) userMap.get("availability");
-        userService.setService(adminId, service, availability);
+        String description = (String) userMap.get("description");
+        userService.setService(adminId, service, availability,description);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 	

@@ -155,12 +155,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//get services provided by admin from database
-	public void setService(Integer userId, String name, String availability) {
+	public void setService(Integer userId, String name, String availability, String description) {
 		WorkerService workerService = workerServiceRepository.findByUserIdAndName(userId, name);
 		if (workerService == null) {
-			workerService = new WorkerService(userId, name, availability);
+			workerService = new WorkerService(userId, name, availability, description);
 		} else {
 			workerService.setStatus(availability);
+			workerService.setDescription(description);
 		}
 		workerServiceRepository.save(workerService);		
 	}
