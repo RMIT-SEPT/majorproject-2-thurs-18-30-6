@@ -30,7 +30,7 @@ public interface UserService  {
 	
 	List<String> getAllServices(Integer adminId);
 	
-	void setService(Integer adminId, String service, String availability);
+	void setService(Integer adminId, String service, String availability, String description);
 	
 	void deleteAll();
 	
