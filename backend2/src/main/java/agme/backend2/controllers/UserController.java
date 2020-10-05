@@ -124,21 +124,30 @@ public class UserController {
 	}
 
 	//function to get all services provided by an admin
-	@PostMapping("/getService")
-	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+	@PostMapping("/checkService")
+	public ResponseEntity<?> checkService(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
-        String availability = userService.getService(username, service);
+        String availability = userService.getService(adminId, service);
         return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	//function to get all services provided by an admin
+	@PostMapping("/getServices")
+	public ResponseEntity<?> getServices(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
+		String service = (String) userMap.get("service");
+        List<String> services = userService.getAllServices(adminId, service);
+        return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 
 	//function to set services by admin 
 	@PostMapping("/setService")
 	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
         String availability = (String) userMap.get("availability");
-        userService.setService(username, service, availability);
+        userService.setService(adminId, service, availability);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 }

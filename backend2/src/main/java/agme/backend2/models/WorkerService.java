@@ -15,8 +15,8 @@ public class WorkerService {
     private String service;
     private String status;
 
-    public WorkerService(User user, String service, String status) {
-    	this.userId = user.getUserId();
+    public WorkerService(Integer userId, String service, String status) {
+    	this.userId = userId;
     	this.service = service;
     	this.status = status;
     }
