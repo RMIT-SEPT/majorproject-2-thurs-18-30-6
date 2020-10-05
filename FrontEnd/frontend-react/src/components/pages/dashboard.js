@@ -60,8 +60,8 @@ class Dashboard extends Component {
                             </form>
 
                             <h3>Customer Options:</h3>
-                            <form className={'formDash'} action={'/'}>
-                                <button className={'buttonDash'}  type={'submit'}>View Services</button>
+                            <form className={'formDash'} action={'/chooseCompany'}>
+                                <button className={'buttonDash'}  type={'submit'}>Browse Services</button>
                             </form>
                         </div>
                         <Footer/>
