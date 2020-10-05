@@ -58,6 +58,11 @@ class Dashboard extends Component {
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
                             </form>
+
+                            <h3>Customer Options:</h3>
+                            <form className={'formDash'} action={'/'}>
+                                <button className={'buttonDash'}  type={'submit'}>View Services</button>
+                            </form>
                         </div>
                         <Footer/>
                     </div>

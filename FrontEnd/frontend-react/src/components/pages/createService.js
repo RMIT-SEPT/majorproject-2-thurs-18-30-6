@@ -25,11 +25,11 @@ class CreateService extends Component {
     handleSubmit(event){
 
         const user = JSON.parse(this.state.user)
-        const username = user['username']
+        const userId = user['userId']
 
         axios.post("http://localhost:8080/setService", {
 
-            username: username,
+            adminId: userId,
             service: this.state.service,
             availability: "True"
 
