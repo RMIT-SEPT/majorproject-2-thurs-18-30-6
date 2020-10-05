@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser/index";
+import "../../assets/chooseCompany.css";
 
 class ChooseCompany extends Component {
 
@@ -19,20 +20,18 @@ class ChooseCompany extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        axios.post("http://localhost:8080/getAllCompanies").then(response => {
-            console.log('inside', response);
+        axios.post("http://localhost:8080/getAdminId").then(response => {
+
             const companyCount = response.data['length']
             //htmlCode is the string that is parsed later on to HTML
             let htmlCode = "<option> - </option>"
             for(let i = 0; i < companyCount; i++){
-                let companyName = response.data[i]['company']
+                let companyName = response.data[i]
                 htmlCode += "<option value='" + companyName + "'>" + companyName + "</option>"
             }
             this.setState({code: htmlCode})
 
         })
-
-        //console.log('log', this.state.code);
     }
 
     handleChange(event){
@@ -43,7 +42,7 @@ class ChooseCompany extends Component {
 
     handleSubmit(event){
         sessionStorage.setItem('company', this.state.company);
-        //this.setState({redirect: '/register'});
+        this.setState({redirect: '/viewServices'});
     }
 
     render() {

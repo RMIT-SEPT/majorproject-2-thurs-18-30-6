@@ -160,7 +160,7 @@ public class UserController {
 
 	//function to get all companies
 	@PostMapping("/getAllCompanies")
-	public ResponseEntity<?> getAllCompanies(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> getAllCompanies(){
         List<String> companies = userService.getAllCompanies();
         return new ResponseEntity<>(companies,HttpStatus.OK);
 	}

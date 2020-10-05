@@ -31,14 +31,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/chooseCompany.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewServices.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewservicespage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1600933939808" duration="52000" />
       <workItem from="1601644036740" duration="2001000" />
       <workItem from="1601733229215" duration="271000" />
-      <workItem from="1601879723611" duration="6533000" />
+      <workItem from="1601879723611" duration="8090000" />
     </task>
     <servers />
   </component>
