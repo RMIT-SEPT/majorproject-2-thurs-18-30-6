@@ -24,6 +24,7 @@ import ViewShifts from "./components/pages/viewShifts";
 import ViewWorkers from "./components/pages/viewWorkers";
 import CreateService from "./components/pages/createService";
 import ChooseCompany from "./components/pages/chooseCompany";
+import ViewServices from "./components/pages/viewServices";
 
 class App extends Component {
 
@@ -47,6 +48,7 @@ class App extends Component {
                     <Route exact path={'/viewWorkers'} component={ViewWorkers}/>
                     <Route exact path={'/createService'} component={CreateService}/>
                     <Route exact path={'/chooseCompany'} component={ChooseCompany}/>
+                    <Route exact path={'/viewServices'} component={ViewServices}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

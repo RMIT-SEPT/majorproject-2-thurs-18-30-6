@@ -20,7 +20,7 @@ class ChooseCompany extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        axios.post("http://localhost:8080/getAdminId").then(response => {
+        axios.post("http://localhost:8080/getAllCompanies").then(response => {
 
             const companyCount = response.data['length']
             //htmlCode is the string that is parsed later on to HTML
@@ -41,7 +41,12 @@ class ChooseCompany extends Component {
     }
 
     handleSubmit(event){
-        sessionStorage.setItem('company', this.state.company);
+
+        axios.post("http://localhost:8080/getAdminId", {
+            company: this.state.company
+        }).then(response => {
+            sessionStorage.setItem('adminId', response.data)
+        })
         this.setState({redirect: '/viewServices'});
     }
 
@@ -51,6 +56,7 @@ class ChooseCompany extends Component {
         }
 
         if(this.state.loggedInStatus) {
+            sessionStorage.removeItem('adminId')
             return (
                 <div className={'formRegType'}>
                     <h1>Select A Company:</h1>
