@@ -16,7 +16,6 @@ class ChooseAvailableWorker extends Component {
             userId: "",
             username: "",
             redirect: null,
-            allUsers: "Your workers: ",
             code: ""
         }
 

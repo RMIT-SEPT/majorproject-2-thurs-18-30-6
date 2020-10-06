@@ -20,7 +20,8 @@ class Loginpage extends Component {
             user: sessionStorage.getItem('user'),
             username: "",
             password: "",
-            errors: ""
+            errors: "",
+            redirect: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +34,7 @@ class Loginpage extends Component {
         axios.post("http://localhost:8080/login", {
 
                 username: this.state.username,
-                password: this.state.password,
-                redirect: null
+                password: this.state.password
 
             },
             {

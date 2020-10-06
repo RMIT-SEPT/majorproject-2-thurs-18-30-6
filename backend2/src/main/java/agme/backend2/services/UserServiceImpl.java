@@ -138,11 +138,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//set services provided by admin into database
-	public String getService(String username, String name) {
-		Integer userId = userRepository.findUserIdByUsername(username);
-		if (userId == null) {
-			throw new ValidationException("User does not exist");			
-		}
+	public String getService(Integer userId, String name) {
 		String workerService = workerServiceRepository.findStatusByUserIdAndName(userId, name);
 		if (workerService == null) {
 			throw new ValidationException("Service does not exist");			
@@ -151,18 +147,21 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//set services provided by admin into database
+	public List<String> getAllServices(Integer userId) {
+		List<String> workerService = workerServiceRepository.findServiceByUserId(userId);
+		return workerService;			
+	}
+	
+	@Override
 	//get services provided by admin from database
-	public void setService(String username, String name, String availability) {
-		User user = userRepository.findByUsername(username);
-		if (user == null) {
-			throw new ValidationException("User does not exist");			
-		}
-		Integer userId = user.getUserId();
+	public void setService(Integer userId, String name, String availability, String description) {
 		WorkerService workerService = workerServiceRepository.findByUserIdAndName(userId, name);
 		if (workerService == null) {
-			workerService = new WorkerService(user, name, availability);
+			workerService = new WorkerService(userId, name, availability, description);
 		} else {
 			workerService.setStatus(availability);
+			workerService.setDescription(description);
 		}
 		workerServiceRepository.save(workerService);		
 	}
@@ -182,16 +181,22 @@ public class UserServiceImpl implements UserService {
 		}
 		return newUser;
 	}
+
+	@Override
+	//get admin id from company name
+	public Integer getAdminId(String company) {
+		Integer adminId = adminCompanyRepository.findAdminIdByCompany(company);
+		if (adminId == null) {
+			throw new ValidationException("Company does not exist");
+		}
+		return adminId;
+	}
 	
 	@Override
-	public void populateWorkerInformation(String username) {
-		setAvailability(username, "Monday", "Unavailable");
-		setAvailability(username, "Tuesday", "Unavailable");
-		setAvailability(username, "Wednesday", "Unavailable");
-		setAvailability(username, "Thursday", "Unavailable");
-		setAvailability(username, "Friday", "Unavailable");
-		setService(username, "Eating", "Unavailable");
-		setService(username, "Drinking", "Unavailable");
+	//get all company names
+	public List<String> getAllCompanies(){
+		List<String> companies = adminCompanyRepository.findAllCompany();
+		return companies;
 	}
 	
 }

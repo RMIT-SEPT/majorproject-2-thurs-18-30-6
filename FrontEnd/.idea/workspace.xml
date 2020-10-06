@@ -42,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -67,6 +67,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -81,7 +82,12 @@
       <updated>1600751876718</updated>
       <workItem from="1600751902267" duration="13375000" />
       <workItem from="1600773902386" duration="1460000" />
-      <workItem from="1600776746437" duration="2459000" />
+      <workItem from="1600776746437" duration="2463000" />
+      <workItem from="1600933939808" duration="52000" />
+      <workItem from="1601644036740" duration="2001000" />
+      <workItem from="1601733229215" duration="271000" />
+      <workItem from="1601879723611" duration="11288000" />
+      <workItem from="1601969093587" duration="5709000" />
     </task>
     <servers />
   </component>
@@ -101,9 +107,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600933989284">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600933989284" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1600776818866">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600776818866" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1601880119005">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1601880119005" />
   </component>
 </project>

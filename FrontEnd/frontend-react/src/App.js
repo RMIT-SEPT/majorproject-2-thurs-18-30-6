@@ -21,6 +21,10 @@ import Availability from "./components/pages/availability";
 import ChooseAvailableWorker from "./components/pages/chooseAvailableWorker";
 import Profilepage from "./components/pages/profilepage";
 import ViewShifts from "./components/pages/viewShifts";
+import ViewWorkers from "./components/pages/viewWorkers";
+import CreateService from "./components/pages/createService";
+import ChooseCompany from "./components/pages/chooseCompany";
+import ViewServices from "./components/pages/viewServices";
 
 class App extends Component {
 
@@ -41,6 +45,10 @@ class App extends Component {
                     <Route exact path={'/chooseAvailableWorker'} component={ChooseAvailableWorker}/>
                     <Route exact path={'/profile'} component={Profilepage}/>
                     <Route exact path={'/viewShifts'} component={ViewShifts}/>
+                    <Route exact path={'/viewWorkers'} component={ViewWorkers}/>
+                    <Route exact path={'/createService'} component={CreateService}/>
+                    <Route exact path={'/chooseCompany'} component={ChooseCompany}/>
+                    <Route exact path={'/viewServices'} component={ViewServices}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

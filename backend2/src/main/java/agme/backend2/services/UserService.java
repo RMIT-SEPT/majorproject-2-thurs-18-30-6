@@ -26,12 +26,16 @@ public interface UserService  {
 	
 	void setAssigned(Integer userId, String timeslot, Boolean assigned);
 	
-	String getService(String username, String service);
+	String getService(Integer adminId, String service);
 	
-	void setService(String username, String service, String availability);
+	List<String> getAllServices(Integer adminId);
+	
+	void setService(Integer adminId, String service, String availability, String description);
 	
 	void deleteAll();
 	
-	void populateWorkerInformation(String username);
+	Integer getAdminId(String company);
+	
+	List<String> getAllCompanies();
 	
 }

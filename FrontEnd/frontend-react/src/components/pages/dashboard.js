@@ -25,17 +25,22 @@ class Dashboard extends Component {
                         <div className={'bodyDash'}>
                             <h1>Admin Dashboard</h1>
 
-                            <h3>Profile:</h3>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
                             </form>
 
-                            <h3>Worker Options:</h3>
+                            <h3>Administration Options:</h3>
                             <form className={'formDash'} action={'/workerRegistration'}>
                                 <button className={'buttonDash'}  type={'submit'}>Add a Worker</button>
                             </form>
                             <form className={'formDash'} action={'/chooseAvailableWorker'}>
                                 <button className={'buttonDash'} type={'submit'}>Allocate Worker Shifts</button>
+                            </form>
+                            <form className={'formDash'} action={'/viewWorkers'}>
+                                <button className={'buttonDash'} type={'submit'}>View All Workers</button>
+                            </form>
+                            <form className={'formDash'} action={'/createService'}>
+                                <button className={'buttonDash'}  type={'submit'}>Create a Service</button>
                             </form>
 
                         </div>
@@ -50,9 +55,13 @@ class Dashboard extends Component {
                         <Header/>
                         <div className={'bodyDash'}>
                             <h1>User Dashboard</h1>
-                            <h3>Profile:</h3>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
+                            </form>
+
+                            <h3>Customer Options:</h3>
+                            <form className={'formDash'} action={'/chooseCompany'}>
+                                <button className={'buttonDash'}  type={'submit'}>Browse Services</button>
                             </form>
                         </div>
                         <Footer/>
@@ -67,7 +76,6 @@ class Dashboard extends Component {
                         <div className={'bodyDash'}>
                             <h1>Worker Dashboard</h1>
 
-                            <h3>Profile:</h3>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Profile Page</button>
                             </form>

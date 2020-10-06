@@ -126,24 +126,49 @@ public class UserController {
 	}
 
 	//function to get all services provided by an admin
-	@PostMapping("/getService")
-	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+	@PostMapping("/checkService")
+	public ResponseEntity<?> checkService(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
-        String availability = userService.getService(username, service);
+        String availability = userService.getService(adminId, service);
         return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	//function to get all services provided by an admin
+	@PostMapping("/getServices")
+	public ResponseEntity<?> getServices(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
+        List<String> services = userService.getAllServices(adminId);
+        return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 
 	//function to set services by admin 
 	@PostMapping("/setService")
 	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
         String availability = (String) userMap.get("availability");
-        userService.setService(username, service, availability);
+        String description = (String) userMap.get("description");
+        userService.setService(adminId, service, availability,description);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
 	}
 	
+	//function to get an adminId from a company name
+	@PostMapping("/getAdminId")
+	public ResponseEntity<?> getAdminId(@RequestBody Map<String, Object> userMap){
+		String company = (String) userMap.get("company");
+        Integer adminId = userService.getAdminId(company);
+        return new ResponseEntity<>(adminId,HttpStatus.OK);
+	}
+
+	//function to get all companies
+	@PostMapping("/getAllCompanies")
+	public ResponseEntity<?> getAllCompanies(){
+        List<String> companies = userService.getAllCompanies();
+        return new ResponseEntity<>(companies,HttpStatus.OK);
+	}
+
+
 	//function to get all bookings of a customer or worker
 	@PostMapping("/getBooking")
 	public ResponseEntity<?> getBooking(@RequestBody Map<String, Object> userMap){
