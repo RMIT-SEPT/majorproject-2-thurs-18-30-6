@@ -30,20 +30,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/createService.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/viewServices.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/chooseCompany.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/chooseCompany.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/createService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/createService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/registerpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/test/java/agme/backend2/WorkerAvailabilityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/test/java/agme/backend2/WorkerAvailabilityTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +87,7 @@
       <workItem from="1601644036740" duration="2001000" />
       <workItem from="1601733229215" duration="271000" />
       <workItem from="1601879723611" duration="11288000" />
-      <workItem from="1601969093587" duration="5083000" />
+      <workItem from="1601969093587" duration="5709000" />
     </task>
     <servers />
   </component>
