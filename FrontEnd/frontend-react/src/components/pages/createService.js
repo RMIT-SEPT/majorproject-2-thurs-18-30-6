@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
 import parse from "html-react-parser";
+import "../../assets/createService.css";
 
 class CreateService extends Component {
     constructor(props){
@@ -12,6 +13,7 @@ class CreateService extends Component {
             loggedInStatus: sessionStorage.getItem('loggedInStatus'),
             user: sessionStorage.getItem('user'),
             service: "",
+            description: "",
             availability: "",
             redirect: null,
             errors: ""
@@ -31,6 +33,7 @@ class CreateService extends Component {
 
             adminId: userId,
             service: this.state.service,
+            description: this.state.description,
             availability: "True"
 
         }).then(response => {
@@ -72,9 +75,10 @@ class CreateService extends Component {
 
                                 {parse(this.state.errors)}
                                 <form onSubmit={this.handleSubmit}>
-                                    <input type={'text'} name={'service'} placeholder={'Service'} value={this.state.service}
-                                           onChange={this.handleChange} required/>
+                                    <input type={'text'} name={'service'} placeholder={'Service'} value={this.state.service} onChange={this.handleChange} required/>
 
+                                    <textarea name={'description'} placeholder={'Description'} value={this.state.description} onChange={this.handleChange} required>
+                                    </textarea>
                                     <button type={'submit'}> Create Service </button>
                                 </form>
                             </div>

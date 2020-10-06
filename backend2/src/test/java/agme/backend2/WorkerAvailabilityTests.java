@@ -79,13 +79,13 @@ class WorkerAvailabilityTests {
 	//Check if setting services passes without exceptions
 	@Test
 	void setServiceSuccess(){
-		userService.setService(1, "Eating", "Available");
+		userService.setService(1, "Eating", "Available", "blabla");
 	}
 	
 	//Check if getting services returns the correct result
 	@Test
 	void getServiceSuccess(){
-		userService.setService(1, "Eating", "Available");
+		userService.setService(1, "Eating", "Available", "blabla");
 		String availability = userService.getService(1, "Eating");
 		assertEquals("Available", availability);
 	}

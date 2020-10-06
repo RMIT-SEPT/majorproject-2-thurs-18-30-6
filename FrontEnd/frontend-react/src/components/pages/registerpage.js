@@ -63,7 +63,7 @@ class Registerpage extends Component {
             }).catch(error => {
                 console.log('registration error', error.data)
 
-                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Login Failed</p>"
+                const htmlCode = "<p style='text-align: center; color: red; font-weight: bold'>Registration Failed</p>"
 
                 this.setState({errors: htmlCode})
             });

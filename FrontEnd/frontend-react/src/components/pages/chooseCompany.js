@@ -42,12 +42,26 @@ class ChooseCompany extends Component {
 
     handleSubmit(event){
 
+
         axios.post("http://localhost:8080/getAdminId", {
             company: this.state.company
         }).then(response => {
-            sessionStorage.setItem('adminId', response.data)
+            sessionStorage.setItem('adminId', response.data.toString());
+
+
+
+
+        }).catch(error => {
+
         })
-        this.setState({redirect: '/viewServices'});
+
+        const adminId = sessionStorage.getItem('adminId')
+
+        if(adminId){
+            this.setState({redirect: '/viewServices'});
+        }
+
+        event.preventDefault();
     }
 
     render() {
@@ -58,10 +72,10 @@ class ChooseCompany extends Component {
         if(this.state.loggedInStatus) {
             sessionStorage.removeItem('adminId')
             return (
-                <div className={'formRegType'}>
+                <div className={'formViewChooseCompany'}>
                     <h1>Select A Company:</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <select className={'dropdownRegCompany'} name={'company'} onChange={this.handleChange}>
+                        <select className={'dropdownChooseCompany'} name={'company'} onChange={this.handleChange}>
                             {parse(this.state.code)}
                         </select>
                         <button type={'submit'}> Next</button>
