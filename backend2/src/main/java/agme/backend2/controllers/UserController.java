@@ -1,6 +1,7 @@
 package agme.backend2.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import agme.backend2.exceptions.ValidationException;
+import agme.backend2.models.Booking;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
@@ -166,4 +168,34 @@ public class UserController {
         return new ResponseEntity<>(companies,HttpStatus.OK);
 	}
 
+
+	//function to get all bookings of a customer or worker
+	@PostMapping("/getBooking")
+	public ResponseEntity<?> getBooking(@RequestBody Map<String, Object> userMap){
+		Integer userId = (Integer) userMap.get("userId");
+		//TODO
+		List<Booking> bookings = null;
+        return new ResponseEntity<>(bookings,HttpStatus.OK);
+	}
+
+	//function to create a booking
+	@PostMapping("/createBooking")
+	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap){
+		Integer workerId = (Integer) userMap.get("workerId");
+		Integer customerId = (Integer) userMap.get("customerId");
+		String timeslot = (String) userMap.get("timeslot");
+		Date date = (Date) userMap.get("date");
+		//TODO
+		Booking booking = null;
+        return new ResponseEntity<>(booking,HttpStatus.CREATED);
+	}
+	
+	//function to cancel a booking
+	@PostMapping("/cancelBooking")
+	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap){
+		Integer bookingId = (Integer) userMap.get("bookingId");
+		//TODO
+		Booking booking = null;
+        return new ResponseEntity<>(booking,HttpStatus.CREATED);
+	}
 }
