@@ -1,9 +1,10 @@
 package agme.backend2.services;
 
+import java.util.Date;
 import java.util.List;
 
+import agme.backend2.models.Booking;
 import agme.backend2.models.User;
-import agme.backend2.models.WorkerAvailability;
 
 
 public interface UserService  {
@@ -37,5 +38,11 @@ public interface UserService  {
 	Integer getAdminId(String company);
 	
 	List<String> getAllCompanies();
+	
+	List<Booking> getBookings(Integer userId);
+	
+	Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date);
+	
+	void cancelBooking(Integer bookingId);
 	
 }

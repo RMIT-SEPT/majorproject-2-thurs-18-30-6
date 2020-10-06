@@ -1,6 +1,7 @@
 package agme.backend2.services;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.models.AdminCompany;
+import agme.backend2.models.Booking;
 import agme.backend2.models.Management;
 import agme.backend2.models.User;
 import agme.backend2.models.AdminCompany;
@@ -18,6 +20,7 @@ import agme.backend2.models.Management;
 import agme.backend2.models.WorkerService;
 import agme.backend2.repositories.WorkerAvailabilityRepository;
 import agme.backend2.repositories.AdminCompanyRepository;
+import agme.backend2.repositories.BookingRepository;
 import agme.backend2.repositories.ManagementRepository;
 import agme.backend2.repositories.UserRepository;
 import agme.backend2.repositories.WorkerServiceRepository;
@@ -34,7 +37,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	AdminCompanyRepository adminCompanyRepository;
 	@Autowired
-	ManagementRepository managementRepository;
+	ManagementRepository managementRepository;	
+	@Autowired
+	BookingRepository bookingRepository;
 
 	@Override
 	//register customer into the database
@@ -171,6 +176,7 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteAll();
 		workerAvailabilityRepository.deleteAll();
 		workerServiceRepository.deleteAll();
+		bookingRepository.deleteAll();
 	}
 
 	@Override
@@ -197,6 +203,32 @@ public class UserServiceImpl implements UserService {
 	public List<String> getAllCompanies(){
 		List<String> companies = adminCompanyRepository.findAllCompany();
 		return companies;
+	}
+	
+	@Override
+	//get all current bookings for a worker or customer
+	public List<Booking> getBookings(Integer userId){
+		List<Booking> bookings = null;
+		String role = userRepository.findRoleByUserId(userId);
+		if (role == "Worker") {
+			bookings = bookingRepository.findByWorkerIdAfterDate(userId, new Date());
+		} else if (role == "Customer") {
+			bookings = bookingRepository.findByCustomerIdAfterDate(userId, new Date());
+		}
+		return bookings;
+	}
+	
+	@Override
+	//create a booking
+	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date){
+		Booking booking = new Booking(workerId, customerId, timeslot, date);
+		return bookingRepository.save(booking);
+	}
+	
+	@Override
+	//delete a booking
+	public void cancelBooking(Integer bookingId){
+		bookingRepository.deleteByBookingId(bookingId);
 	}
 	
 }

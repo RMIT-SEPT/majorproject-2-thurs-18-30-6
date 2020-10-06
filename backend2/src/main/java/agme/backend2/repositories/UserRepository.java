@@ -23,4 +23,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	@Query("select u.userId from User u where u.username = ?1")
 	Integer findUserIdByUsername (String username);
+	
+	String findRoleByUserId(Integer userId);
 }

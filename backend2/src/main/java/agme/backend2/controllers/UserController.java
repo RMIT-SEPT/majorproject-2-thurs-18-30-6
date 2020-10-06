@@ -170,11 +170,10 @@ public class UserController {
 
 
 	//function to get all bookings of a customer or worker
-	@PostMapping("/getBooking")
-	public ResponseEntity<?> getBooking(@RequestBody Map<String, Object> userMap){
+	@PostMapping("/getBookings")
+	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap){
 		Integer userId = (Integer) userMap.get("userId");
-		//TODO
-		List<Booking> bookings = null;
+		List<Booking> bookings = userService.getBookings(userId);
         return new ResponseEntity<>(bookings,HttpStatus.OK);
 	}
 
@@ -185,8 +184,7 @@ public class UserController {
 		Integer customerId = (Integer) userMap.get("customerId");
 		String timeslot = (String) userMap.get("timeslot");
 		Date date = (Date) userMap.get("date");
-		//TODO
-		Booking booking = null;
+		Booking booking = userService.createBooking(workerId, customerId, timeslot, date);
         return new ResponseEntity<>(booking,HttpStatus.CREATED);
 	}
 	
@@ -194,8 +192,7 @@ public class UserController {
 	@PostMapping("/cancelBooking")
 	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap){
 		Integer bookingId = (Integer) userMap.get("bookingId");
-		//TODO
-		Booking booking = null;
-        return new ResponseEntity<>(booking,HttpStatus.CREATED);
+		userService.cancelBooking(bookingId);
+        return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
 	}
 }
