@@ -17,5 +17,10 @@ public interface TimeslotRepository extends CrudRepository<Timeslot, Long> {
 
 	@Query("select t from Timeslot t where t.workerId = ?1 and t.timeslot = ?2 and t.longDate = ?3")
 	Integer findTimeslotIdByWorkerIdAndTimeslotAndLongDate(Integer workerId, String timeslot, long longDate);
+
+	@Query("select t from Timeslot t where t.workerId = ?1 and t.booked = ?2")
+	List<Timeslot> findByWorkerIdAndBooked(Integer workerId, boolean booked);
+
+	Timeslot findByTimeslotId(Integer timeslotId);
 	
 }

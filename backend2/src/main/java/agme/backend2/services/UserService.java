@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import agme.backend2.models.Booking;
+import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 
 
@@ -26,6 +27,10 @@ public interface UserService  {
 	List<String> getAssigned(Integer userId);
 	
 	void setAssigned(Integer userId, String timeslot, Boolean assigned);
+	
+	List<Timeslot> getShifts(Integer workerId);
+	
+	void setShifts(Integer workerId, Date date);
 	
 	String getService(Integer adminId, String service);
 	

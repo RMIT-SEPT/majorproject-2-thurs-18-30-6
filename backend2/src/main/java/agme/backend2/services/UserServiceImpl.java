@@ -14,6 +14,7 @@ import agme.backend2.models.WorkerAvailability;
 import agme.backend2.models.AdminCompany;
 import agme.backend2.models.Booking;
 import agme.backend2.models.Management;
+import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 import agme.backend2.models.AdminCompany;
 import agme.backend2.models.Management;
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
 	TimeslotRepository timeslotRepository;
 	
 	static final int MILLIS_PER_DAY = 86400000;
+	static final int MILLIS_PER_HOUR = 3600000;
 
 	@Override
 	//register customer into the database
@@ -147,6 +149,27 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//get all available timeslots for a worker
+	public List<Timeslot> getShifts(Integer workerId){
+		List<Timeslot> shifts = timeslotRepository.findByWorkerIdAndBooked(workerId, false);
+		return shifts;
+	}
+	
+	@Override
+	//create all timeslots for a day
+	public void setShifts(Integer workerId, Date date) {
+		long longDate = date.getTime() / MILLIS_PER_DAY;
+		timeslotRepository.save(new Timeslot(workerId, "9-10", new Date((longDate * MILLIS_PER_DAY) + (9 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "10-11", new Date((longDate * MILLIS_PER_DAY) + (10 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "11-12", new Date((longDate * MILLIS_PER_DAY) + (11 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "12-13", new Date((longDate * MILLIS_PER_DAY) + (12 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "13-14", new Date((longDate * MILLIS_PER_DAY) + (13 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "14-15", new Date((longDate * MILLIS_PER_DAY) + (14 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "15-16", new Date((longDate * MILLIS_PER_DAY) + (15 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "16-17", new Date((longDate * MILLIS_PER_DAY) + (16 * MILLIS_PER_HOUR)), longDate));
+	}
+	
+	@Override
 	//set services provided by admin into database
 	public String getService(Integer userId, String name) {
 		String workerService = workerServiceRepository.findStatusByUserIdAndName(userId, name);
@@ -244,10 +267,14 @@ public class UserServiceImpl implements UserService {
 		long longDate = date.getTime() / MILLIS_PER_DAY;
 		Integer timeslotId = timeslotRepository.findTimeslotIdByWorkerIdAndTimeslotAndLongDate(workerId, timeslot, longDate);
 		
-		if (bookingRepository.findByWorkerIdAndTimeslotId(workerId, timeslotId) != null) {
+		if (bookingRepository.findByTimeslotId(timeslotId) != null) {
 			throw new ValidationException("Worker is booked for that time");		
 		}
 		Date newDate = timeslotRepository.findDateByTimeslotId(timeslotId);
+		
+		Timeslot shift = timeslotRepository.findByTimeslotId(timeslotId);
+		shift.setBooked(true);
+		timeslotRepository.save(shift);
 		
 		booking = new Booking(workerId, customerId, timeslotId, timeslot, newDate);
 		return bookingRepository.save(booking);
@@ -261,9 +288,14 @@ public class UserServiceImpl implements UserService {
 		Date cutoff = new Date(currentDate.getTime() - (2 * MILLIS_PER_DAY));
 		if (bookingDate.after(cutoff)) {
 			throw new ValidationException("Booking cannot be cancelled within 48 hours");
-		} else {
-			bookingRepository.deleteByBookingId(bookingId);
 		}
+		
+		bookingRepository.deleteByBookingId(bookingId);
+		
+		Integer timeslotId = bookingRepository.findTimeslotIdByBookingId(bookingId);
+		Timeslot timeslot = timeslotRepository.findByTimeslotId(timeslotId);
+		timeslot.setBooked(false);
+		timeslotRepository.save(timeslot);
 	}
 	
 }

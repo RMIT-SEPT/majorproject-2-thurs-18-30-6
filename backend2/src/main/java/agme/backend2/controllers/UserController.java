@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.Booking;
+import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
@@ -110,19 +111,18 @@ public class UserController {
 	//function to get shift for the specific worker
 	@PostMapping("/getShift")
 	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap){
-		Integer userId = (Integer) userMap.get("userId");
-        List<String> assigned = userService.getAssigned(userId);
-        return new ResponseEntity<>(assigned,HttpStatus.OK);
+		Integer workerId = (Integer) userMap.get("workerId");
+        List<Timeslot> shifts = userService.getShifts(workerId);
+        return new ResponseEntity<>(shifts,HttpStatus.OK);
 	}
 
 	//function to set a shift for a specific worker
 	@PostMapping("/setShift")
 	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap){
 		Integer userId = (Integer) userMap.get("userId");
-		String timeslot = (String) userMap.get("timeslot");
-        Boolean assigned = (Boolean) userMap.get("assigned");
-        userService.setAssigned(userId, timeslot, assigned);
-        return new ResponseEntity<>(assigned,HttpStatus.CREATED);
+		Date date = (Date) userMap.get("date");
+        userService.setShifts(userId, date);
+        return new ResponseEntity<>(date,HttpStatus.CREATED);
 	}
 
 	//function to get all services provided by an admin

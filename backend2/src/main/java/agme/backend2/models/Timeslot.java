@@ -16,6 +16,7 @@ public class Timeslot {
 	private String timeslot;
 	private Date date;
 	private long longDate;
+	private boolean booked = false;
 	
     public Timeslot(Integer workerId, String timeslot, Date date, long longDate) {
     	this.workerId = workerId;
@@ -26,6 +27,10 @@ public class Timeslot {
 
     public Timeslot() {
     	
+    }
+    
+    public void setBooked(boolean booked) {
+    	this.booked = booked;
     }
 
 }
