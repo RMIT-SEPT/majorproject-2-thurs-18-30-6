@@ -15,6 +15,8 @@ class Availability extends Component {
             wednesday: "Unavailable",
             thursday: "Unavailable",
             friday: "Unavailable",
+            saturday: "Unavailable",
+            sunday: "Unavailable",
             redirect: "",
         }
 
@@ -59,6 +61,18 @@ class Availability extends Component {
             username: user['username'],
             timeslot: "Friday",
             availability: this.state.friday
+        })
+
+        axios.post("http://localhost:8080/setAvailability", {
+            username: user['username'],
+            timeslot: "Saturday",
+            availability: this.state.saturday
+        })
+
+        axios.post("http://localhost:8080/setAvailability", {
+            username: user['username'],
+            timeslot: "Sunday",
+            availability: this.state.sunday
         })
 
         alert('Availability submitted successfully!')
@@ -111,6 +125,18 @@ class Availability extends Component {
 
                                 <h4 className={'days'}>Friday:</h4>
                                 <select className={"dropdownAvail"} name={'friday'} onChange={this.handleChange}>
+                                    <option value={'Unavailable'}>Unavailable</option>
+                                    <option value={'Available'}>Available</option>
+                                </select>
+
+                                <h4 className={'days'}>Saturday:</h4>
+                                <select className={"dropdownAvail"} name={'saturday'} onChange={this.handleChange}>
+                                    <option value={'Unavailable'}>Unavailable</option>
+                                    <option value={'Available'}>Available</option>
+                                </select>
+
+                                <h4 className={'days'}>Sunday:</h4>
+                                <select className={"dropdownAvail"} name={'sunday'} onChange={this.handleChange}>
                                     <option value={'Unavailable'}>Unavailable</option>
                                     <option value={'Available'}>Available</option>
                                 </select>

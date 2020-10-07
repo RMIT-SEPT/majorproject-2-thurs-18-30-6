@@ -1,5 +1,8 @@
 package agme.backend2.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -118,7 +121,7 @@ public class UserController {
 
 	//function to set a shift for a specific worker
 	@PostMapping("/setShift")
-	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap) throws ParseException {
 		Integer userId = (Integer) userMap.get("userId");
 		Date date = (Date) userMap.get("date");
         userService.setShifts(userId, date);
