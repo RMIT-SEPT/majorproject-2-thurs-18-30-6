@@ -23,5 +23,8 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 	
 	@Query("select b.date from Booking b where b.bookingId = ?1")
 	Date getDateByBookingId(Integer bookingId);
+
+	@Query("select b from Booking b where b.workerId = ?1 and b.timeslotId = ?2")
+	Booking findByWorkerIdAndTimeslotId(Integer workerId, Integer timeslotId);
 	
 }

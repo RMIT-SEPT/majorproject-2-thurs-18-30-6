@@ -22,6 +22,7 @@ import agme.backend2.repositories.WorkerAvailabilityRepository;
 import agme.backend2.repositories.AdminCompanyRepository;
 import agme.backend2.repositories.BookingRepository;
 import agme.backend2.repositories.ManagementRepository;
+import agme.backend2.repositories.TimeslotRepository;
 import agme.backend2.repositories.UserRepository;
 import agme.backend2.repositories.WorkerServiceRepository;
 
@@ -39,7 +40,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	ManagementRepository managementRepository;	
 	@Autowired
-	BookingRepository bookingRepository;
+	BookingRepository bookingRepository;	
+	@Autowired
+	TimeslotRepository timeslotRepository;
+	
+	static final int MILLIS_PER_DAY = 86400000;
 
 	@Override
 	//register customer into the database
@@ -228,7 +233,23 @@ public class UserServiceImpl implements UserService {
 	@Override
 	//create a booking
 	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date){
-		Booking booking = new Booking(workerId, customerId, timeslot, date);
+		Booking booking = null;
+		Date currentDate = new Date();
+		Date cutoff = new Date(currentDate.getTime() + (7 * MILLIS_PER_DAY));
+		if (date.after(cutoff)) {			
+			throw new ValidationException("Booking must be within 7 days");			
+		} else if (date.before(currentDate)) {			
+			throw new ValidationException("Booking cannot be before the current time");			
+		}
+		long longDate = date.getTime() / MILLIS_PER_DAY;
+		Integer timeslotId = timeslotRepository.findTimeslotIdByWorkerIdAndTimeslotAndLongDate(workerId, timeslot, longDate);
+		
+		if (bookingRepository.findByWorkerIdAndTimeslotId(workerId, timeslotId) != null) {
+			throw new ValidationException("Worker is booked for that time");		
+		}
+		Date newDate = timeslotRepository.findDateByTimeslotId(timeslotId);
+		
+		booking = new Booking(workerId, customerId, timeslotId, timeslot, newDate);
 		return bookingRepository.save(booking);
 	}
 	
@@ -237,7 +258,7 @@ public class UserServiceImpl implements UserService {
 	public void cancelBooking(Integer bookingId){
 		Date bookingDate = bookingRepository.getDateByBookingId(bookingId);
 		Date currentDate = new Date();
-		Date cutoff = new Date(currentDate.getTime() - 172800000);
+		Date cutoff = new Date(currentDate.getTime() - (2 * MILLIS_PER_DAY));
 		if (bookingDate.after(cutoff)) {
 			throw new ValidationException("Booking cannot be cancelled within 48 hours");
 		} else {

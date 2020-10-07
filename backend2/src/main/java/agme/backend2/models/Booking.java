@@ -15,12 +15,14 @@ public class Booking {
 	
 	private Integer workerId;	
 	private Integer customerId;
+	private Integer timeslotId;
     private String timeslot;
     private Date date;
     
-    public Booking(Integer workerId, Integer customerId, String timeslot, Date date) {
+    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, Date date) {
     	this.workerId = workerId;
     	this.customerId = customerId;
+    	this.timeslotId = timeslotId;
     	this.timeslot = timeslot;
     	this.date = date;
     }
