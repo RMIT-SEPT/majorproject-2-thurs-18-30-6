@@ -21,4 +21,7 @@ public interface WorkerServiceRepository extends CrudRepository<WorkerService, L
 	
 	@Query("select ws.service from WorkerService ws where ws.userId = ?1")
 	List<String> findServiceByUserId(Integer userId);
+	
+	@Query("select ws.description from WorkerService ws where ws.userId = ?1 and ws.service = ?2")
+	String findDescriptionByUserIdAndName (Integer userId, String service);
 }

@@ -21,4 +21,7 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 	@Query("select b from Booking b where b.customerId = ?1 and b.date >= ?2")
 	List<Booking> findByCustomerIdAfterDate(Integer customerId, Date date);
 	
+	@Query("select b.date from Booking b where b.bookingId = ?1")
+	Date getDateByBookingId(Integer bookingId);
+	
 }

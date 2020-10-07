@@ -39,6 +39,8 @@ public interface UserService  {
 	
 	List<String> getAllCompanies();
 	
+	String getDescription(Integer adminId, String service);
+	
 	List<Booking> getBookings(Integer userId);
 	
 	Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date);

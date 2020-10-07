@@ -167,6 +167,15 @@ public class UserController {
         List<String> companies = userService.getAllCompanies();
         return new ResponseEntity<>(companies,HttpStatus.OK);
 	}
+	
+	//function to get service description
+	@PostMapping("/getDescription")
+	public ResponseEntity<?> getDescription(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
+		String service = (String) userMap.get("service");
+        String description = userService.getDescription(adminId, service);
+        return new ResponseEntity<>(description,HttpStatus.OK);
+	}
 
 
 	//function to get all bookings of a customer or worker

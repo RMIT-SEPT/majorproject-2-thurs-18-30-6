@@ -206,6 +206,13 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	//get description
+	public String getDescription(Integer adminId, String service){
+		String description = workerServiceRepository.findDescriptionByUserIdAndName(adminId, service);
+		return description;
+	}
+	
+	@Override
 	//get all current bookings for a worker or customer
 	public List<Booking> getBookings(Integer userId){
 		List<Booking> bookings = null;
@@ -228,7 +235,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	//delete a booking
 	public void cancelBooking(Integer bookingId){
-		bookingRepository.deleteByBookingId(bookingId);
+		Date bookingDate = bookingRepository.getDateByBookingId(bookingId);
+		Date currentDate = new Date();
+		Date cutoff = new Date(currentDate.getTime() - 172800000);
+		if (bookingDate.after(cutoff)) {
+			throw new ValidationException("Booking cannot be cancelled within 48 hours");
+		} else {
+			bookingRepository.deleteByBookingId(bookingId);
+		}
 	}
 	
 }
