@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import axios from 'axios';
 import '../../assets/shiftAllocation.css';
+import parse from 'html-react-parser';
 
 
 class ShiftAllocation extends Component {
@@ -22,16 +23,8 @@ class ShiftAllocation extends Component {
             sunday: null,
 
             date: null,
-            dateAssigned: "Unassigned",
-
-            mondayAssigned: "Unassigned",
-            tuesdayAssigned: "Unassigned",
-            wednesdayAssigned: "Unassigned",
-            thursdayAssigned: "Unassigned",
-            fridayAssigned: "Unassigned",
-            saturdayAssigned: "Unassigned",
-            sundayAssigned: "Unassigned",
-            redirect: null
+            redirect: null,
+            error: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -102,20 +95,19 @@ class ShiftAllocation extends Component {
 
         const send = chosenFull.getFullYear() + "-" + chosenFull.getMonth() + "-" + chosenFull.getDate();
 
-        alert(send)
+        if(chosenYear === currYear && chosenMonth === currMonth && chosenDate >= currDate){
 
-        // BUNCH OF IF STATEMENTS, IF FALSE SEND ERROR MESSAGE TO USER, IF TRUE POST IT
-
-        if(chosenYear >= currYear && chosenMonth >= currMonth && chosenDate >= currDate){
-            console.log( 'bla',this.state.date)
             axios.post("http://localhost:8080/setShift", {
                 userId: parseInt(this.state.userId),
                 date: send
+            }).then(response =>{
+                alert('Shift submitted successfully!')
+                this.setState({redirect: '/dashboard'})
+            }).catch( error => {
+                this.setState({error: "Error: Date already assigned for this worker"})
             })
-            alert('Shift submitted successfully!')
-            event.preventDefault();
         }else{
-            alert('Date entered is invalid, please select a valid date')
+            this.setState({error: "Error: Invalid Date, Date should be within this month"})
         }
 
         event.preventDefault()
@@ -151,16 +143,10 @@ class ShiftAllocation extends Component {
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
                                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
                                 <h1>Set Worker's Shifts This Month</h1>
-
+                                <p className={'error'}>{parse(this.state.error)}</p>
                                 <h4 className={'days'}>Date:</h4>
-                                <input type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>
+                                <input className={'dropdownShift'} type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>
 
-                                <select className={'dropdownShift'} name={'dateAssigned'} onChange={this.handleChange}>
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-                                </select>
-
-                                <br/>
                                 <button className ={'submitShift'} type={'submit'}> Submit </button>
                             </form>
 
