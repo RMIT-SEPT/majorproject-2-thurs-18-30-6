@@ -98,13 +98,19 @@ class ShiftAllocation extends Component {
         const chosenMonth = parseInt(chosen[1]);
         const chosenDate = parseInt(chosen[2]);
 
+        const chosenFull = new Date(chosenYear, chosenMonth, chosenDate)
+
+        const send = chosenFull.getFullYear() + "-" + chosenFull.getMonth() + "-" + chosenFull.getDate();
+
+        alert(send)
+
         // BUNCH OF IF STATEMENTS, IF FALSE SEND ERROR MESSAGE TO USER, IF TRUE POST IT
 
         if(chosenYear >= currYear && chosenMonth >= currMonth && chosenDate >= currDate){
             console.log( 'bla',this.state.date)
             axios.post("http://localhost:8080/setShift", {
                 userId: parseInt(this.state.userId),
-                date: this.state.date
+                date: send
             })
             alert('Shift submitted successfully!')
             event.preventDefault();
@@ -144,7 +150,7 @@ class ShiftAllocation extends Component {
                             {/*Select box for Admin to set worker's shift*/}
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
                                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
-                                <h1>Set Worker's Shifts This Week</h1>
+                                <h1>Set Worker's Shifts This Month</h1>
 
                                 <h4 className={'days'}>Date:</h4>
                                 <input type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>

@@ -32,7 +32,6 @@
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +91,8 @@
       <workItem from="1601733229215" duration="271000" />
       <workItem from="1601879723611" duration="11288000" />
       <workItem from="1601969093587" duration="5717000" />
-      <workItem from="1602069540407" duration="4468000" />
+      <workItem from="1602069540407" duration="4710000" />
+      <workItem from="1602133510820" duration="3450000" />
     </task>
     <servers />
   </component>

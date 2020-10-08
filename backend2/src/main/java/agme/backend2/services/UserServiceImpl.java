@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	TimeslotRepository timeslotRepository;
 	
 
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
 	static final int MILLIS_PER_DAY = 86400000;
 	static final int MILLIS_PER_HOUR = 3600000;
