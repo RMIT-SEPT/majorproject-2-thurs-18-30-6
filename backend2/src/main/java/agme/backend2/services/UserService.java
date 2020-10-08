@@ -29,10 +29,12 @@ public interface UserService  {
 	
 	void setShifts(Integer workerId, String date) throws ParseException;
 	
+	void deleteShifts(Integer workerId, String date);
+	
 	String getService(Integer adminId, String service);
 	
 	List<String> getAllServices(Integer adminId);
-	
+		
 	void setService(Integer adminId, String service, String availability, String description);
 	
 	void deleteAll();

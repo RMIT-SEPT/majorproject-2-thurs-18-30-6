@@ -144,7 +144,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	//create all timeslots for a day
 	public void setShifts(Integer workerId, String stringDate) throws ParseException {
-		//TODO validation so worker cannot work the same day multiple times
+		//validation so worker cannot work the same day multiple times
+		List<Integer> list = timeslotRepository.findTimeslotIdByWorkerIdAndStringDate(workerId, stringDate);
+		if (list.isEmpty()) {
+			throw new ValidationException("Worker is already assigned to that date");
+		}
 		timeslotRepository.save(new Timeslot(workerId, "9-10", stringDate));
 		timeslotRepository.save(new Timeslot(workerId, "10-11", stringDate));
 		timeslotRepository.save(new Timeslot(workerId, "11-12", stringDate));
@@ -155,7 +159,14 @@ public class UserServiceImpl implements UserService {
 		timeslotRepository.save(new Timeslot(workerId, "16-17", stringDate));
 	}
 	
+	@Override
 	//method to delete all timeslots for a day
+	public void deleteShifts(Integer workerId, String stringDate) {
+		List<Integer> list = timeslotRepository.findTimeslotIdByWorkerIdAndStringDate(workerId, stringDate);
+		for (Integer i: list) {
+			timeslotRepository.deleteByTimeslotId(i);
+		}
+	}
 	
 	@Override
 	//set services provided by admin into database

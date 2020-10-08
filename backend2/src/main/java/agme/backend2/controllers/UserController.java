@@ -133,6 +133,15 @@ public class UserController {
         userService.setShifts(userId, date);
         return new ResponseEntity<>(date,HttpStatus.CREATED);
 	}
+	
+	//function to delete a shift for a specific worker
+	@PostMapping("/deleteShift")
+	public ResponseEntity<?> deleteShift(@RequestBody Map<String, Object> userMap) throws ParseException {
+		Integer userId = (Integer) userMap.get("userId");
+		String date = (String) userMap.get("date");
+        userService.deleteShifts(userId, date);
+        return new ResponseEntity<>(date,HttpStatus.OK);
+	}
 
 	//function to get all services provided by an admin
 	@PostMapping("/checkService")
