@@ -21,7 +21,7 @@ public class Booking {
     private Date date;
     private String stringDate;
 
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
     public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, Date date) {
     	this.workerId = workerId;
