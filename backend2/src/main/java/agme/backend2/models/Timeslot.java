@@ -20,7 +20,7 @@ public class Timeslot {
 	private String stringDate;
 	private boolean booked = false;
 
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
     public Timeslot(Integer workerId, String timeslot, Date date, long longDate) {
     	this.workerId = workerId;
