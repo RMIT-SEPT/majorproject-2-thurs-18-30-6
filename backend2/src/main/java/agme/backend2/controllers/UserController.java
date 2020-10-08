@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.Booking;
 import agme.backend2.models.Timeslot;
@@ -29,6 +32,8 @@ public class UserController {
 	
 	@Autowired
 	ManagementService managementService;
+	
+	ObjectMapper mapper = new ObjectMapper();
 	
 	//Registering a user of role customer into the database
 	@PostMapping("/register/customer")
@@ -113,10 +118,11 @@ public class UserController {
 
 	//function to get shift for the specific worker
 	@PostMapping("/getShift")
-	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer workerId = (Integer) userMap.get("workerId");
         List<Timeslot> shifts = userService.getShifts(workerId);
-        return new ResponseEntity<>(shifts,HttpStatus.OK);
+		String stringShifts = mapper.writeValueAsString(shifts);
+        return new ResponseEntity<>(stringShifts,HttpStatus.OK);
 	}
 
 	//function to set a shift for a specific worker
@@ -183,21 +189,23 @@ public class UserController {
 
 	//function to get all bookings of a customer or worker
 	@PostMapping("/getBookings")
-	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer userId = (Integer) userMap.get("userId");
 		List<Booking> bookings = userService.getBookings(userId);
-        return new ResponseEntity<>(bookings,HttpStatus.OK);
+		String stringBookings = mapper.writeValueAsString(bookings);
+        return new ResponseEntity<>(stringBookings,HttpStatus.OK);
 	}
 
 	//function to create a booking
 	@PostMapping("/createBooking")
-	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
+	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap) throws ParseException, JsonProcessingException{
 		Integer workerId = (Integer) userMap.get("workerId");
 		Integer customerId = (Integer) userMap.get("customerId");
 		String timeslot = (String) userMap.get("timeslot");
 		String date = (String) userMap.get("date");
 		Booking booking = userService.createBooking(workerId, customerId, timeslot, date);
-        return new ResponseEntity<>(booking,HttpStatus.CREATED);
+		String stringBooking = mapper.writeValueAsString(booking);
+        return new ResponseEntity<>(stringBooking,HttpStatus.CREATED);
 	}
 	
 	//function to cancel a booking
