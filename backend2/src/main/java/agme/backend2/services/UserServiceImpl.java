@@ -146,7 +146,7 @@ public class UserServiceImpl implements UserService {
 	public void setShifts(Integer workerId, String stringDate) throws ParseException {
 		//validation so worker cannot work the same day multiple times
 		List<Integer> list = timeslotRepository.findTimeslotIdByWorkerIdAndStringDate(workerId, stringDate);
-		if (list.isEmpty()) {
+		if (!list.isEmpty()) {
 			throw new ValidationException("Worker is already assigned to that date");
 		}
 		timeslotRepository.save(new Timeslot(workerId, "9-10", stringDate));
