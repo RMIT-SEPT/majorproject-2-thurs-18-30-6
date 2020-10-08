@@ -163,16 +163,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	//create all timeslots for a day
 	public void setShifts(Integer workerId, String stringDate) throws ParseException {
-		Date date = formatter.parse(stringDate);
-		long longDate = date.getTime() / MILLIS_PER_DAY;
-		timeslotRepository.save(new Timeslot(workerId, "9-10", new Date((longDate * MILLIS_PER_DAY) + (9 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "10-11", new Date((longDate * MILLIS_PER_DAY) + (10 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "11-12", new Date((longDate * MILLIS_PER_DAY) + (11 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "12-13", new Date((longDate * MILLIS_PER_DAY) + (12 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "13-14", new Date((longDate * MILLIS_PER_DAY) + (13 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "14-15", new Date((longDate * MILLIS_PER_DAY) + (14 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "15-16", new Date((longDate * MILLIS_PER_DAY) + (15 * MILLIS_PER_HOUR)), longDate, stringDate));
-		timeslotRepository.save(new Timeslot(workerId, "16-17", new Date((longDate * MILLIS_PER_DAY) + (16 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "9-10", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "10-11", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "11-12", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "12-13", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "13-14", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "14-15", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "15-16", stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "16-17", stringDate));
 	}
 	
 	@Override
@@ -211,6 +209,7 @@ public class UserServiceImpl implements UserService {
 		workerAvailabilityRepository.deleteAll();
 		workerServiceRepository.deleteAll();
 		bookingRepository.deleteAll();
+		timeslotRepository.deleteAll();
 	}
 
 	@Override
@@ -252,9 +251,9 @@ public class UserServiceImpl implements UserService {
 		List<Booking> bookings = null;
 		String role = userRepository.findRoleByUserId(userId);
 		if (role == "Worker") {
-			bookings = bookingRepository.findByWorkerIdAfterDate(userId, new Date());
+			bookings = bookingRepository.findByWorkerIdAndDone(userId, false);
 		} else if (role == "Customer") {
-			bookings = bookingRepository.findByCustomerIdAfterDate(userId, new Date());
+			bookings = bookingRepository.findByCustomerIdAndDone(userId, false);
 		}
 		return bookings;
 	}
@@ -271,26 +270,24 @@ public class UserServiceImpl implements UserService {
 		} else if (date.before(currentDate)) {			
 			throw new ValidationException("Booking cannot be before the current time");			
 		}
-		long longDate = date.getTime() / MILLIS_PER_DAY;
-		Integer timeslotId = timeslotRepository.findTimeslotIdByWorkerIdAndTimeslotAndLongDate(workerId, timeslot, longDate);
+		Integer timeslotId = timeslotRepository.findTimeslotIdByWorkerIdAndTimeslotAndStringDate(workerId, timeslot, stringDate);
 		
 		if (bookingRepository.findByTimeslotId(timeslotId) != null) {
 			throw new ValidationException("Worker is booked for that time");		
 		}
-		Date newDate = timeslotRepository.findDateByTimeslotId(timeslotId);
 		
 		Timeslot shift = timeslotRepository.findByTimeslotId(timeslotId);
 		shift.setBooked(true);
 		timeslotRepository.save(shift);
 		
-		booking = new Booking(workerId, customerId, timeslotId, timeslot, newDate, stringDate);
+		booking = new Booking(workerId, customerId, timeslotId, timeslot, stringDate);
 		return bookingRepository.save(booking);
 	}
 	
 	@Override
 	//delete a booking
-	public void cancelBooking(Integer bookingId){
-		Date bookingDate = bookingRepository.getDateByBookingId(bookingId);
+	public void cancelBooking(Integer bookingId) throws ParseException{
+		Date bookingDate = formatter.parse(bookingRepository.getStringDateByBookingId(bookingId));
 		Date currentDate = new Date();
 		Date cutoff = new Date(currentDate.getTime() - (2 * MILLIS_PER_DAY));
 		if (bookingDate.after(cutoff)) {

@@ -210,7 +210,7 @@ public class UserController {
 	
 	//function to cancel a booking
 	@PostMapping("/cancelBooking")
-	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
 		Integer bookingId = (Integer) userMap.get("bookingId");
 		userService.cancelBooking(bookingId);
         return new ResponseEntity<>(bookingId,HttpStatus.CREATED);

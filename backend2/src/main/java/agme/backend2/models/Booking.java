@@ -1,8 +1,5 @@
 package agme.backend2.models;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,15 +15,14 @@ public class Booking {
 	private Integer customerId;
 	private Integer timeslotId;
     private String timeslot;
-    private Date date;
     private String stringDate;
+    boolean done = false;
     
-    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, Date date, String stringDate) {
+    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, String stringDate) {
     	this.workerId = workerId;
     	this.customerId = customerId;
     	this.timeslotId = timeslotId;
     	this.timeslot = timeslot;
-    	this.date = date;
     	this.stringDate = stringDate;
     }
 

@@ -51,6 +51,6 @@ public interface UserService  {
 	
 	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date) throws ParseException;
 	
-	void cancelBooking(Integer bookingId);
+	void cancelBooking(Integer bookingId) throws ParseException;
 	
 }

@@ -1,8 +1,5 @@
 package agme.backend2.models;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,16 +12,12 @@ public class Timeslot {
     private Integer timeslotId;
 	private Integer workerId;
 	private String timeslot;
-	private Date date;
-	private long longDate;
 	private String stringDate;
 	private boolean booked = false;
 	
-    public Timeslot(Integer workerId, String timeslot, Date date, long longDate, String stringDate) {
+    public Timeslot(Integer workerId, String timeslot, String stringDate) {
     	this.workerId = workerId;
     	this.timeslot = timeslot;
-    	this.date = date;
-    	this.longDate = longDate;
     	this.stringDate = stringDate;
     }
 
