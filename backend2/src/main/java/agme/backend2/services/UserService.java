@@ -1,5 +1,6 @@
 package agme.backend2.services;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public interface UserService  {
 	
 	List<Timeslot> getShifts(Integer workerId);
 	
-	void setShifts(Integer workerId, Date date);
+	void setShifts(Integer workerId, String date) throws ParseException;
 	
 	String getService(Integer adminId, String service);
 	
@@ -48,7 +49,7 @@ public interface UserService  {
 	
 	List<Booking> getBookings(Integer userId);
 	
-	Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date);
+	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date) throws ParseException;
 	
 	void cancelBooking(Integer bookingId);
 	

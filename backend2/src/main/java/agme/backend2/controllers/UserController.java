@@ -29,7 +29,7 @@ public class UserController {
 	
 	@Autowired
 	ManagementService managementService;
-
+	
 	//Registering a user of role customer into the database
 	@PostMapping("/register/customer")
 	public ResponseEntity<?> registerCustomer(@RequestBody Map<String, Object> userMap){
@@ -123,7 +123,7 @@ public class UserController {
 	@PostMapping("/setShift")
 	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap) throws ParseException {
 		Integer userId = (Integer) userMap.get("userId");
-		Date date = (Date) userMap.get("date");
+		String date = (String) userMap.get("date");
         userService.setShifts(userId, date);
         return new ResponseEntity<>(date,HttpStatus.CREATED);
 	}
@@ -191,11 +191,11 @@ public class UserController {
 
 	//function to create a booking
 	@PostMapping("/createBooking")
-	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
 		Integer workerId = (Integer) userMap.get("workerId");
 		Integer customerId = (Integer) userMap.get("customerId");
 		String timeslot = (String) userMap.get("timeslot");
-		Date date = (Date) userMap.get("date");
+		String date = (String) userMap.get("date");
 		Booking booking = userService.createBooking(workerId, customerId, timeslot, date);
         return new ResponseEntity<>(booking,HttpStatus.CREATED);
 	}

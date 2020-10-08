@@ -1,6 +1,8 @@
 package agme.backend2.services;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,6 +46,9 @@ public class UserServiceImpl implements UserService {
 	BookingRepository bookingRepository;	
 	@Autowired
 	TimeslotRepository timeslotRepository;
+	
+
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	
 	static final int MILLIS_PER_DAY = 86400000;
 	static final int MILLIS_PER_HOUR = 3600000;
@@ -157,7 +162,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//create all timeslots for a day
-	public void setShifts(Integer workerId, Date date) {
+	public void setShifts(Integer workerId, String stringDate) throws ParseException {
+		Date date = formatter.parse(stringDate);
 		long longDate = date.getTime() / MILLIS_PER_DAY;
 		timeslotRepository.save(new Timeslot(workerId, "9-10", new Date((longDate * MILLIS_PER_DAY) + (9 * MILLIS_PER_HOUR)), longDate));
 		timeslotRepository.save(new Timeslot(workerId, "10-11", new Date((longDate * MILLIS_PER_DAY) + (10 * MILLIS_PER_HOUR)), longDate));
@@ -255,7 +261,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//create a booking
-	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, Date date){
+	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, String stringDate) throws ParseException{
+		Date date = formatter.parse(stringDate);
 		Booking booking = null;
 		Date currentDate = new Date();
 		Date cutoff = new Date(currentDate.getTime() + (7 * MILLIS_PER_DAY));

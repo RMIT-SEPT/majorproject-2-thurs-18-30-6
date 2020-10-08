@@ -1,5 +1,6 @@
 package agme.backend2.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,13 +17,17 @@ public class Timeslot {
 	private String timeslot;
 	private Date date;
 	private long longDate;
+	private String stringDate;
 	private boolean booked = false;
+
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	
     public Timeslot(Integer workerId, String timeslot, Date date, long longDate) {
     	this.workerId = workerId;
     	this.timeslot = timeslot;
     	this.date = date;
     	this.longDate = longDate;
+    	this.stringDate = formatter.format(date);
     }
 
     public Timeslot() {
