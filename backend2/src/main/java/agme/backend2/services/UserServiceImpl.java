@@ -135,25 +135,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	//load shifts for the specific worker
-	public List<String> getAssigned(Integer userId) {
-		List<String> shifts = workerAvailabilityRepository.findTimeslotByUserIdAndAssigned(userId, true);
-		return shifts;				
-	}
-	
-	@Override
-	//set a shift for the specific worker in the database
-	public void setAssigned(Integer userId, String timeslot, Boolean assigned) {
-		WorkerAvailability shift = workerAvailabilityRepository.findByUserIdAndName(userId, timeslot);
-		if (shift == null) {
-			throw new ValidationException("Timeslot does not exist");
-		}
-		//set it to the boolean value passed from font end
-		shift.setAssigned(assigned);
-		workerAvailabilityRepository.save(shift);		
-	}
-	
-	@Override
 	//get all available timeslots for a worker
 	public List<Timeslot> getShifts(Integer workerId){
 		List<Timeslot> shifts = timeslotRepository.findByWorkerIdAndBooked(workerId, false);
@@ -163,6 +144,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	//create all timeslots for a day
 	public void setShifts(Integer workerId, String stringDate) throws ParseException {
+		//TODO validation so worker cannot work the same day multiple times
 		timeslotRepository.save(new Timeslot(workerId, "9-10", stringDate));
 		timeslotRepository.save(new Timeslot(workerId, "10-11", stringDate));
 		timeslotRepository.save(new Timeslot(workerId, "11-12", stringDate));
@@ -172,6 +154,8 @@ public class UserServiceImpl implements UserService {
 		timeslotRepository.save(new Timeslot(workerId, "15-16", stringDate));
 		timeslotRepository.save(new Timeslot(workerId, "16-17", stringDate));
 	}
+	
+	//method to delete all timeslots for a day
 	
 	@Override
 	//set services provided by admin into database

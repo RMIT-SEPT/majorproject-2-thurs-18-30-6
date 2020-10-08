@@ -24,11 +24,7 @@ public interface UserService  {
 	String getAvailability(String username, String timeslot);
 	
 	void setAvailability(String username, String timeslot, String availability);
-	
-	List<String> getAssigned(Integer userId);
-	
-	void setAssigned(Integer userId, String timeslot, Boolean assigned);
-	
+		
 	List<Timeslot> getShifts(Integer workerId);
 	
 	void setShifts(Integer workerId, String date) throws ParseException;

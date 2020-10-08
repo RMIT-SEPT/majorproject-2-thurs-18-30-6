@@ -58,24 +58,6 @@ class WorkerAvailabilityTests {
 		assertEquals("Unavailable", availability);
 	}
 	
-	//Check if setting shifts passes without exceptions
-	@Test
-	void setAssignedSuccess(){
-		Integer userId = userService.validateUser("test1", "password").getUserId();
-		userService.setAvailability("test1", "Monday", "Available");
-		userService.setAssigned(userId, "Monday", true);
-	}
-	
-	//Check if getting shifts returns the correct result
-	@Test
-	void getAssignedSuccess(){
-		Integer userId = userService.validateUser("test1", "password").getUserId();
-		userService.setAvailability("test1", "Monday", "Available");
-		userService.setAssigned(userId, "Monday", true);
-		List<String> assigned = userService.getAssigned(userId);
-		assertEquals("Monday", assigned.get(0));
-	}
-	
 	//Check if setting services passes without exceptions
 	@Test
 	void setServiceSuccess(){
