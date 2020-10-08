@@ -1,11 +1,11 @@
-.formViewChooseCompany {
+.formCAS{
     background: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    padding: 50px 100px 150px;
+    padding: 100px 75px;
     box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -15,5 +15,22 @@
     border: 0;
     font-size: 14px;
     margin-bottom: 10px;
-    padding: 3px 40px;
+    width: 280px;
+    height: 40px;
+}
+
+.formCAS button {
+    text-transform: uppercase;
+    outline: 0;
+    background: black;
+    width:280px;
+    border: 0;
+    padding: 15px;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.formCAS button:hover {
+    background: darkgrey;
 }

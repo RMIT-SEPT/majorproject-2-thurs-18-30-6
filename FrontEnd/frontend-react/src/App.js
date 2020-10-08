@@ -23,8 +23,9 @@ import Profilepage from "./components/pages/profilepage";
 import ViewShifts from "./components/pages/viewShifts";
 import ViewWorkers from "./components/pages/viewWorkers";
 import CreateService from "./components/pages/createService";
-import ChooseCompany from "./components/pages/chooseCompany";
-import ViewServices from "./components/pages/viewServices";
+import CompanyAndServices from "./components/pages/companyAndServices";
+import ServiceDetails from "./components/pages/serviceDetails";
+import BookingPage from "./components/pages/bookingPage";
 
 class App extends Component {
 
@@ -47,8 +48,9 @@ class App extends Component {
                     <Route exact path={'/viewShifts'} component={ViewShifts}/>
                     <Route exact path={'/viewWorkers'} component={ViewWorkers}/>
                     <Route exact path={'/createService'} component={CreateService}/>
-                    <Route exact path={'/chooseCompany'} component={ChooseCompany}/>
-                    <Route exact path={'/viewServices'} component={ViewServices}/>
+                    <Route exact path={'/companyAndServices'} component={CompanyAndServices}/>
+                    <Route exact path={'/serviceDetails'} component={ServiceDetails}/>
+                    <Route exact path={'/bookingPage'} component={BookingPage}/>s
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

@@ -31,12 +31,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/shiftAllocation.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/shiftAllocation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/chooseCompany.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/companyAndServices.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/viewServices.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/serviceDetails.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyAndServices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/serviceDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -96,7 +99,7 @@
       <workItem from="1601879723611" duration="11288000" />
       <workItem from="1601969093587" duration="5717000" />
       <workItem from="1602069540407" duration="4710000" />
-      <workItem from="1602133510820" duration="7474000" />
+      <workItem from="1602133510820" duration="17199000" />
     </task>
     <servers />
   </component>

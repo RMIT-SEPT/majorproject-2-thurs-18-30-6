@@ -107,7 +107,7 @@ class ShiftAllocation extends Component {
                 this.setState({error: "Error: Date already assigned for this worker"})
             })
         }else{
-            this.setState({error: "Error: Invalid Date, Date should be within this month"})
+            this.setState({error: "Error: Invalid Date, Date should be within this month and not in the past"})
         }
 
         event.preventDefault()
