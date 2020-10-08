@@ -20,16 +20,14 @@ public class Booking {
     private String timeslot;
     private Date date;
     private String stringDate;
-
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
-    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, Date date) {
+    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, Date date, String stringDate) {
     	this.workerId = workerId;
     	this.customerId = customerId;
     	this.timeslotId = timeslotId;
     	this.timeslot = timeslot;
     	this.date = date;
-    	this.stringDate = formatter.format(date);
+    	this.stringDate = stringDate;
     }
 
     public Booking() {

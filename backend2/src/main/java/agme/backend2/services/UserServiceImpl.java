@@ -165,14 +165,14 @@ public class UserServiceImpl implements UserService {
 	public void setShifts(Integer workerId, String stringDate) throws ParseException {
 		Date date = formatter.parse(stringDate);
 		long longDate = date.getTime() / MILLIS_PER_DAY;
-		timeslotRepository.save(new Timeslot(workerId, "9-10", new Date((longDate * MILLIS_PER_DAY) + (9 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "10-11", new Date((longDate * MILLIS_PER_DAY) + (10 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "11-12", new Date((longDate * MILLIS_PER_DAY) + (11 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "12-13", new Date((longDate * MILLIS_PER_DAY) + (12 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "13-14", new Date((longDate * MILLIS_PER_DAY) + (13 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "14-15", new Date((longDate * MILLIS_PER_DAY) + (14 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "15-16", new Date((longDate * MILLIS_PER_DAY) + (15 * MILLIS_PER_HOUR)), longDate));
-		timeslotRepository.save(new Timeslot(workerId, "16-17", new Date((longDate * MILLIS_PER_DAY) + (16 * MILLIS_PER_HOUR)), longDate));
+		timeslotRepository.save(new Timeslot(workerId, "9-10", new Date((longDate * MILLIS_PER_DAY) + (9 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "10-11", new Date((longDate * MILLIS_PER_DAY) + (10 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "11-12", new Date((longDate * MILLIS_PER_DAY) + (11 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "12-13", new Date((longDate * MILLIS_PER_DAY) + (12 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "13-14", new Date((longDate * MILLIS_PER_DAY) + (13 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "14-15", new Date((longDate * MILLIS_PER_DAY) + (14 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "15-16", new Date((longDate * MILLIS_PER_DAY) + (15 * MILLIS_PER_HOUR)), longDate, stringDate));
+		timeslotRepository.save(new Timeslot(workerId, "16-17", new Date((longDate * MILLIS_PER_DAY) + (16 * MILLIS_PER_HOUR)), longDate, stringDate));
 	}
 	
 	@Override
@@ -283,7 +283,7 @@ public class UserServiceImpl implements UserService {
 		shift.setBooked(true);
 		timeslotRepository.save(shift);
 		
-		booking = new Booking(workerId, customerId, timeslotId, timeslot, newDate);
+		booking = new Booking(workerId, customerId, timeslotId, timeslot, newDate, stringDate);
 		return bookingRepository.save(booking);
 	}
 	

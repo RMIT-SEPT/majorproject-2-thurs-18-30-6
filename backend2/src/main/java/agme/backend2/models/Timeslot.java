@@ -19,15 +19,13 @@ public class Timeslot {
 	private long longDate;
 	private String stringDate;
 	private boolean booked = false;
-
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
-    public Timeslot(Integer workerId, String timeslot, Date date, long longDate) {
+    public Timeslot(Integer workerId, String timeslot, Date date, long longDate, String stringDate) {
     	this.workerId = workerId;
     	this.timeslot = timeslot;
     	this.date = date;
     	this.longDate = longDate;
-    	this.stringDate = formatter.format(date);
+    	this.stringDate = stringDate;
     }
 
     public Timeslot() {
