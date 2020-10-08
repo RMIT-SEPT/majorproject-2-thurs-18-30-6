@@ -15,10 +15,10 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 	
 	void deleteByBookingId(Integer bookingId);
 	
-	@Query("select b from Booking b where b.workerId = ?1 and b.done >= ?2")
+	@Query("select b from Booking b where b.workerId = ?1 and b.done = ?2")
 	List<Booking> findByWorkerIdAndDone(Integer workerId, boolean done);
 	
-	@Query("select b from Booking b where b.customerId = ?1 and b.date >= ?2")
+	@Query("select b from Booking b where b.customerId = ?1 and b.done = ?2")
 	List<Booking> findByCustomerIdAndDone(Integer customerId, boolean done);
 	
 	@Query("select b.stringDate from Booking b where b.bookingId = ?1")
