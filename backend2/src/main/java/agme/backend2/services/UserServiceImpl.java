@@ -240,6 +240,11 @@ public class UserServiceImpl implements UserService {
 		return description;
 	}
 	
+	public List<User> getWorkerOnDate(Integer adminId, String date) {
+		List<User> worker = userRepository.findWorkerByAdminIdAndDate(adminId, date);
+		return worker;
+	}
+	
 	@Override
 	//get all current bookings for a worker or customer
 	public List<Booking> getBookings(Integer userId){

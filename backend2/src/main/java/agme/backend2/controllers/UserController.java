@@ -96,6 +96,16 @@ public class UserController {
 		worker = managementService.getAllWorkerFromAdmin(adminId);
 		return new ResponseEntity<>(worker,HttpStatus.OK);
 	}
+	
+	//function to get all worker availability for worker
+	@PostMapping("/getWorkerOnDate")
+	public ResponseEntity<?> getWorkerOnDate(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
+		Integer adminId = (Integer) userMap.get("adminId");
+		String date = (String) userMap.get("date");
+        List<User> result = userService.getWorkerOnDate(adminId, date);
+        String workers = mapper.writeValueAsString(result);
+        return new ResponseEntity<>(workers,HttpStatus.OK);
+	}
 
 	//function to get all worker availability for worker
 	@PostMapping("/getAvailability")

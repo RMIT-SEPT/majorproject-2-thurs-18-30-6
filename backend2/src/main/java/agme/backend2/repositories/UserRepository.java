@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import agme.backend2.models.User;
 
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -25,4 +26,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	Integer findUserIdByUsername (String username);
 	
 	String findRoleByUserId(Integer userId);
+	
+	@Query("select distinct u from User u, Management m, Timeslot t where u.userId = m.workerId and u.userId = t.workerId and m.adminId = ?1 and t.stringDate = ?2")
+	List<User> findWorkerByAdminIdAndDate(Integer adminId, String date);
 }

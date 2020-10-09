@@ -45,6 +45,8 @@ public interface UserService  {
 	
 	String getDescription(Integer adminId, String service);
 	
+	List<User> getWorkerOnDate(Integer adminId, String date);
+	
 	List<Booking> getBookings(Integer userId);
 	
 	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date) throws ParseException;
