@@ -58,7 +58,7 @@ class ConfirmBooking extends Component {
             }).catch(errors => {
                 console.log('booking error', errors.data);
 
-                alert('Sorry but ' + this.state.workerName + ' already booked at this time. Returning to dashboard...')
+                alert('Error: Worker may already be booked or date is more than a week away.')
 
             })
 

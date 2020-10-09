@@ -28,9 +28,61 @@ public class Booking {
 
     public Booking() {
     	
-    }    
+    }
 
     public Integer getBookingId() {
     	return bookingId;
     }
+
+	public void setBookingId(Integer bookingId) {
+		this.bookingId = bookingId;
+	}
+
+	public Integer getWorkerId() {
+		return workerId;
+	}
+
+	public void setWorkerId(Integer workerId) {
+		this.workerId = workerId;
+	}
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public Integer getTimeslotId() {
+		return timeslotId;
+	}
+
+	public void setTimeslotId(Integer timeslotId) {
+		this.timeslotId = timeslotId;
+	}
+
+	public String getTimeslot() {
+		return timeslot;
+	}
+
+	public void setTimeslot(String timeslot) {
+		this.timeslot = timeslot;
+	}
+
+	public String getStringDate() {
+		return stringDate;
+	}
+
+	public void setStringDate(String stringDate) {
+		this.stringDate = stringDate;
+	}
+
+	public boolean isDone() {
+		return done;
+	}
+
+	public void setDone(boolean done) {
+		this.done = done;
+	}
 }

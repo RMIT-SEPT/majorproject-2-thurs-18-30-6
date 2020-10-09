@@ -252,14 +252,15 @@ public class UserServiceImpl implements UserService {
 	public List<Booking> getBookings(Integer userId){
 		List<Booking> bookings = null;
 		String role = userRepository.findRoleByUserId(userId);
-		System.out.println(role);
-		if (role.toLowerCase() == "worker") {
+
+		if (role.toLowerCase().equals("worker")) {
 			bookings = bookingRepository.findByWorkerIdAndDone(userId, false);
-		} else if (role.toLowerCase() == "customer") {
+		} else if (role.toLowerCase().equals("customer")) {
 			bookings = bookingRepository.findByCustomerIdAndDone(userId, false);
 		} else {
 			throw new ValidationException("User is not a Customer or Worker");
 		}
+		
 		return bookings;
 	}
 	

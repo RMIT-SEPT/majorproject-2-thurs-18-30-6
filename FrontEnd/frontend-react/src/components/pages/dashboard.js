@@ -66,6 +66,9 @@ class Dashboard extends Component {
                             <form className={'formDash'} action={'/viewBookings'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Existing Bookings</button>
                             </form>
+                            <form className={'formDash'} action={'/cancelBookings'}>
+                                <button className={'buttonDash'}  type={'submit'}>Cancel Existing Booking</button>
+                            </form>
                         </div>
                         <Footer/>
                     </div>
