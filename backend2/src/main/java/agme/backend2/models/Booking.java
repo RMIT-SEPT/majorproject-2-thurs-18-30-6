@@ -28,6 +28,9 @@ public class Booking {
 
     public Booking() {
     	
+    }    
+
+    public Integer getBookingId() {
+    	return bookingId;
     }
-	
 }
