@@ -23,7 +23,7 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>Admin Dashboard</h1>
+                            <h1>Welcome {user['firstName']}!</h1>
 
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
@@ -54,7 +54,7 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>User Dashboard</h1>
+                            <h1>Welcome {user['firstName']}!</h1>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
                             </form>
@@ -74,7 +74,7 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>Worker Dashboard</h1>
+                            <h1>Welcome {user['firstName']}!</h1>
 
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Profile Page</button>

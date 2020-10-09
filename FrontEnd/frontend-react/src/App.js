@@ -26,6 +26,7 @@ import CreateService from "./components/pages/createService";
 import CompanyAndServices from "./components/pages/companyAndServices";
 import ServiceDetails from "./components/pages/serviceDetails";
 import BookingPage from "./components/pages/bookingPage";
+import ConfirmBooking from "./components/pages/confirmBooking";
 
 class App extends Component {
 
@@ -50,7 +51,8 @@ class App extends Component {
                     <Route exact path={'/createService'} component={CreateService}/>
                     <Route exact path={'/companyAndServices'} component={CompanyAndServices}/>
                     <Route exact path={'/serviceDetails'} component={ServiceDetails}/>
-                    <Route exact path={'/bookingPage'} component={BookingPage}/>s
+                    <Route exact path={'/bookingPage'} component={BookingPage}/>
+                    <Route exact path={'/confirmBooking'} component={ConfirmBooking}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

@@ -56,6 +56,7 @@ class ChooseAvailableWorker extends Component {
 
         //set session storage items to store worker information
         if (workerId) {
+            sessionStorage.setItem('fromCompanyAndServices', 'True');
             sessionStorage.setItem('workerUserId', workerId)
             sessionStorage.setItem('workerUserName', workerUsername)
             this.setState({redirect: '/shiftAllocation'})

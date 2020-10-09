@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from "axios";
-// import parse from "html-react-parser/index";
 import "../../assets/serviceDetails.css";
 import {Redirect} from "react-router-dom";
 
@@ -9,6 +8,7 @@ class ServiceDetails extends Component {
         super(props);
 
         this.state = {
+            validation: sessionStorage.getItem('fromCompanyAndServices'),
             loggedInStatus: sessionStorage.getItem('loggedInStatus'),
             user: sessionStorage.getItem('user'),
             redirect: null,
@@ -18,7 +18,6 @@ class ServiceDetails extends Component {
             description: ""
         }
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
 
@@ -36,15 +35,12 @@ class ServiceDetails extends Component {
 
     }
 
-    handleChange(event){
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
     handleSubmit(event){
 
         if(event.target.value === "Yes"){
+            sessionStorage.removeItem('fromCompanyAndServices');
+            sessionStorage.setItem('fromServiceDetails', 'True');
+            sessionStorage.setItem('desc', this.state.description);
             this.setState({redirect: "/bookingPage"})
         }
         else{
@@ -57,13 +53,13 @@ class ServiceDetails extends Component {
     render() {
         if(this.state.redirect){
             return <Redirect to={this.state.redirect}/>
-        }else if(this.state.adminId == null){
-            return <Redirect to={"/dashboard"}/>
         }
-        if(this.state.loggedInStatus){
+
+        const user = JSON.parse(this.state.user);
+        if(this.state.loggedInStatus && this.state.validation && user['role'] === 'Customer'){
             return (
                 <div className={'formViewServ'}>
-                    <form className={'textViewServ'} onSubmit={this.handleSubmit}>
+                    <form className={'textViewServ'}>
                         <h2>You have chosen:</h2>
                         <h4>Company Name: <br/>{this.state.company}</h4>
                         <h4>Service Name: <br/>{this.state.service}</h4>
@@ -77,6 +73,8 @@ class ServiceDetails extends Component {
 
                 </div>
             );
+        }else{
+            return <Redirect to={'/login'}/>
         }
     }
 }

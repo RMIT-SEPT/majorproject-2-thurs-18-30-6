@@ -83,9 +83,14 @@ class CompanyAndServices extends Component {
 
     handleSubmit(event){
 
+        sessionStorage.removeItem('adminId');
+        sessionStorage.removeItem('company');
+        sessionStorage.removeItem('service');
+
         sessionStorage.setItem('adminId', this.state.adminId);
         sessionStorage.setItem('company', this.state.company);
         sessionStorage.setItem('service', this.state.service);
+        sessionStorage.setItem('fromCompanyAndServices', 'True');
 
         this.setState({redirect: "/serviceDetails"})
 
@@ -98,10 +103,9 @@ class CompanyAndServices extends Component {
             return <Redirect to={this.state.redirect}/>
         }
 
-        if(this.state.loggedInStatus) {
-            sessionStorage.removeItem('adminId');
-            sessionStorage.removeItem('company');
-            sessionStorage.removeItem('service');
+        const user = JSON.parse(this.state.user);
+
+        if(this.state.loggedInStatus && user['role'] === 'Customer') {
             return (
                 <div className={'formCAS'}>
 

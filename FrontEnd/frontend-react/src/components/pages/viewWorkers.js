@@ -25,7 +25,8 @@ class ViewWorkers extends Component {
             //htmlCode is the string that is parsed later on to HTML
             let htmlCode = ""
             for(let i = 0; i < userCount; i++){
-                let workerDetails = "ID: " + response.data[i]['firstName'] + ", " + response.data[i]['lastName']
+                const worker = response.data[i]
+                let workerDetails = worker['lastName'] + ", " + worker['firstName'] + " - Username: " + worker['username'];
                 htmlCode += "<li>" + workerDetails + "</li>"
             }
 
