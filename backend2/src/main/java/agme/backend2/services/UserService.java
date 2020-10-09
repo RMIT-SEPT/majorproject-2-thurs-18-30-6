@@ -20,6 +20,8 @@ public interface UserService  {
 			String address, String phone, String role, Integer adminId);
 	
 	User validateUser(String username, String password);
+
+	String getName(Integer userId);
 	
 	String getAvailability(String username, String timeslot);
 	
@@ -54,5 +56,6 @@ public interface UserService  {
 	void cancelBooking(Integer bookingId) throws ParseException;
 
 	void finishBooking(Integer bookingId);
+
 	
 }

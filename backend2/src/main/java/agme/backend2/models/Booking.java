@@ -11,17 +11,21 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Integer bookingId;
 	
-	private Integer workerId;	
+	private Integer workerId;
+	private String workerName;
 	private Integer customerId;
+	private String customerName;
 	private Integer timeslotId;
     private String timeslot;
     private String stringDate;
     private String serviceName;
     boolean done = false;
     
-    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, String stringDate, String serviceName) {
+    public Booking(Integer workerId, String workerName, Integer customerId, String customerName, Integer timeslotId, String timeslot, String stringDate, String serviceName) {
     	this.setWorkerId(workerId);
+    	this.setWorkerName(workerName);
     	this.setCustomerId(customerId);
+    	this.setCustomerName(customerName);
     	this.setTimeslotId(timeslotId);
     	this.setTimeslot(timeslot);
     	this.setStringDate(stringDate);
@@ -48,12 +52,28 @@ public class Booking {
 		this.workerId = workerId;
 	}
 
+	public String getWorkerName() {
+		return workerName;
+	}
+
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+	}
+
 	public Integer getCustomerId() {
 		return customerId;
 	}
 
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public Integer getTimeslotId() {

@@ -104,6 +104,15 @@ public class UserServiceImpl implements UserService {
 		managementRepository.save(newManagement);
 		return newUser;
 	}
+	
+	@Override
+	//get full name of user from id
+	public String getName(Integer userId) {
+		User user = userRepository.findByUserId(userId);
+		String name = user.getFirstName() + " " + user.getLastName();
+		return name;
+	}
+	
 	//find availability of worker with that specific username
 	public String getAvailability(String username, String name) {
 		Integer userId = userRepository.findUserIdByUsername(username);
@@ -288,7 +297,7 @@ public class UserServiceImpl implements UserService {
 		shift.setBooked(true);
 		timeslotRepository.save(shift);
 		
-		booking = new Booking(workerId, customerId, timeslotId, timeslot, stringDate, serviceName);
+		booking = new Booking(workerId, this.getName(workerId), customerId, this.getName(customerId), timeslotId, timeslot, stringDate, serviceName);
 		return bookingRepository.save(booking);
 	}
 	
