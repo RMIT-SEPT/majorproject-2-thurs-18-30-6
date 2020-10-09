@@ -210,6 +210,7 @@ public class UserController {
 	@PostMapping("/getBookings")
 	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer userId = (Integer) userMap.get("userId");
+		System.out.println(userId);
 		List<Booking> bookings = userService.getBookings(userId);
 		String stringBookings = mapper.writeValueAsString(bookings);
         return new ResponseEntity<>(stringBookings,HttpStatus.OK);
