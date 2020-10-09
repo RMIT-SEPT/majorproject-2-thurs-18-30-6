@@ -276,7 +276,9 @@ public class UserServiceImpl implements UserService {
 			throw new ValidationException("Booking cannot be before the current time");			
 		}
 		Integer timeslotId = timeslotRepository.findTimeslotIdByWorkerIdAndTimeslotAndStringDate(workerId, timeslot, stringDate);
-		
+		if (timeslotId == null) {
+			throw new ValidationException("Timeslot does not exist");
+		}
 		if (bookingRepository.findByTimeslotId(timeslotId) != null) {
 			throw new ValidationException("Worker is booked for that time");		
 		}
