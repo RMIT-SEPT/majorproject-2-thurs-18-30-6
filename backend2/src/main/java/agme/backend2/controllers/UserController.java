@@ -32,9 +32,7 @@ public class UserController {
 	
 	@Autowired
 	ManagementService managementService;
-	
-	ObjectMapper mapper = new ObjectMapper();
-	
+		
 	//Registering a user of role customer into the database
 	@PostMapping("/register/customer")
 	public ResponseEntity<?> registerCustomer(@RequestBody Map<String, Object> userMap){
@@ -102,8 +100,7 @@ public class UserController {
 	public ResponseEntity<?> getWorkerOnDate(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer adminId = (Integer) userMap.get("adminId");
 		String date = (String) userMap.get("date");
-        List<User> result = userService.getWorkerOnDate(adminId, date);
-        String workers = mapper.writeValueAsString(result);
+        List<User> workers = userService.getWorkerOnDate(adminId, date);
         return new ResponseEntity<>(workers,HttpStatus.OK);
 	}
 
@@ -131,8 +128,7 @@ public class UserController {
 	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer workerId = (Integer) userMap.get("workerId");
         List<Timeslot> shifts = userService.getShifts(workerId);
-		String stringShifts = mapper.writeValueAsString(shifts);
-        return new ResponseEntity<>(stringShifts,HttpStatus.OK);
+        return new ResponseEntity<>(shifts,HttpStatus.OK);
 	}
 
 	//function to set a shift for a specific worker
@@ -212,8 +208,7 @@ public class UserController {
 		Integer userId = (Integer) userMap.get("userId");
 		System.out.println(userId);
 		List<Booking> bookings = userService.getBookings(userId);
-		String stringBookings = mapper.writeValueAsString(bookings);
-        return new ResponseEntity<>(stringBookings,HttpStatus.OK);
+        return new ResponseEntity<>(bookings,HttpStatus.OK);
 	}
 
 	//function to create a booking
@@ -224,8 +219,7 @@ public class UserController {
 		String timeslot = (String) userMap.get("timeslot");
 		String date = (String) userMap.get("date");
 		Booking booking = userService.createBooking(workerId, customerId, timeslot, date);
-		String stringBooking = mapper.writeValueAsString(booking);
-        return new ResponseEntity<>(stringBooking,HttpStatus.CREATED);
+        return new ResponseEntity<>(booking,HttpStatus.CREATED);
 	}
 	
 	//function to cancel a booking
