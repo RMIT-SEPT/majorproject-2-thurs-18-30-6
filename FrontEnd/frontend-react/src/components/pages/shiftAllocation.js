@@ -24,7 +24,8 @@ class ShiftAllocation extends Component {
 
             date: null,
             redirect: null,
-            error: ""
+            error: "",
+            allocation: 'Allocate'
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -97,15 +98,32 @@ class ShiftAllocation extends Component {
 
         if(chosenYear === currYear && chosenMonth === currMonth && chosenDate >= currDate){
 
-            axios.post("http://localhost:8080/setShift", {
-                userId: parseInt(this.state.userId),
-                date: send
-            }).then(response =>{
-                alert('Shift submitted successfully!')
-                this.setState({redirect: '/dashboard'})
-            }).catch( error => {
-                this.setState({error: "Error: Date already assigned for this worker"})
-            })
+            if(this.state.allocation === 'Allocate'){
+
+                axios.post("http://localhost:8080/setShift", {
+                    userId: parseInt(this.state.userId),
+                    date: send
+                }).then(response =>{
+                    alert('Shift allocated successfully!')
+                    this.setState({redirect: '/dashboard'})
+                }).catch( error => {
+                    this.setState({error: "Error: Date already assigned for this worker"})
+                })
+
+            }else{
+
+                axios.post("http://localhost:8080/deleteShift", {
+                    userId: parseInt(this.state.userId),
+                    date: send
+                }).then(response =>{
+                    alert('Shift deallocated successfully!')
+                    this.setState({redirect: '/dashboard'})
+                }).catch( error => {
+                    this.setState({error: "Error: There was an error while deallocating the shift"})
+                })
+
+            }
+
         }else{
             this.setState({error: "Error: Invalid Date, Date should be within this month and not in the past"})
         }
@@ -147,6 +165,10 @@ class ShiftAllocation extends Component {
                                 <h4 className={'days'}>Date:</h4>
                                 <input className={'dropdownShift'} type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>
 
+                                <select className={'dropdownShift'} name={'allocation'} onChange={this.handleChange}>
+                                    <option value={'Allocate'}>Allocate</option>
+                                    <option value={'Deallocate'}>Deallocate</option>
+                                </select>
                                 <button className ={'submitShift'} type={'submit'}> Submit </button>
                             </form>
 
