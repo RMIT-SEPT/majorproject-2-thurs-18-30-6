@@ -16,17 +16,49 @@ public class Timeslot {
 	private boolean booked = false;
 	
     public Timeslot(Integer workerId, String timeslot, String stringDate) {
-    	this.workerId = workerId;
-    	this.timeslot = timeslot;
-    	this.stringDate = stringDate;
+    	this.setWorkerId(workerId);
+    	this.setTimeslot(timeslot);
+    	this.setStringDate(stringDate);
     }
 
     public Timeslot() {
     	
     }
     
+    public Integer getTimeslotId() {
+    	return timeslotId;
+    }
+
+	public Integer getWorkerId() {
+		return workerId;
+	}
+
+	public void setWorkerId(Integer workerId) {
+		this.workerId = workerId;
+	}
+
+	public String getTimeslot() {
+		return timeslot;
+	}
+
+	public void setTimeslot(String timeslot) {
+		this.timeslot = timeslot;
+	}
+	
+	public String getStringDate() {
+		return stringDate;
+	}
+
+	public void setStringDate(String stringDate) {
+		this.stringDate = stringDate;
+	}
+
+	public boolean getBooked() {
+		return booked;
+	}
+
     public void setBooked(boolean booked) {
     	this.booked = booked;
     }
-
+    
 }

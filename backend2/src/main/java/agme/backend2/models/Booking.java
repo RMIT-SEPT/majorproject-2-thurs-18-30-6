@@ -16,14 +16,16 @@ public class Booking {
 	private Integer timeslotId;
     private String timeslot;
     private String stringDate;
+    private String serviceName;
     boolean done = false;
     
-    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, String stringDate) {
-    	this.workerId = workerId;
-    	this.customerId = customerId;
-    	this.timeslotId = timeslotId;
-    	this.timeslot = timeslot;
-    	this.stringDate = stringDate;
+    public Booking(Integer workerId, Integer customerId, Integer timeslotId, String timeslot, String stringDate, String serviceName) {
+    	this.setWorkerId(workerId);
+    	this.setCustomerId(customerId);
+    	this.setTimeslotId(timeslotId);
+    	this.setTimeslot(timeslot);
+    	this.setStringDate(stringDate);
+    	this.setServiceName(serviceName);
     }
 
     public Booking() {
@@ -79,6 +81,16 @@ public class Booking {
 	}
 
 	public boolean isDone() {
+	
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+
+	public boolean getDone() {
 		return done;
 	}
 

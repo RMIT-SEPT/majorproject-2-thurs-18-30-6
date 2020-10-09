@@ -266,7 +266,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//create a booking
-	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, String stringDate) throws ParseException{
+	public Booking createBooking(Integer workerId, Integer customerId, String timeslot, String stringDate, String serviceName) throws ParseException{
 		Date date = formatter.parse(stringDate);
 		Booking booking = null;
 		Date currentDate = new Date();
@@ -288,7 +288,7 @@ public class UserServiceImpl implements UserService {
 		shift.setBooked(true);
 		timeslotRepository.save(shift);
 		
-		booking = new Booking(workerId, customerId, timeslotId, timeslot, stringDate);
+		booking = new Booking(workerId, customerId, timeslotId, timeslot, stringDate, serviceName);
 		return bookingRepository.save(booking);
 	}
 	
@@ -310,4 +310,11 @@ public class UserServiceImpl implements UserService {
 		timeslotRepository.save(timeslot);
 	}
 	
+	@Override
+	//mark a booking as done
+	public void finishBooking(Integer bookingId) {
+		Booking booking = bookingRepository.findByBookingId(bookingId);
+		booking.setDone(true);
+		bookingRepository.save(booking);
+	}
 }

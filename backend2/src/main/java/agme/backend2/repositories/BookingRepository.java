@@ -15,6 +15,9 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
 	
 	void deleteByBookingId(Integer bookingId);
 	
+	@Query("select b from Booking b where b.bookingId = ?1")
+	Booking findByBookingId(Integer bookingId);
+	
 	@Query("select b from Booking b where b.workerId = ?1 and b.done = ?2")
 	List<Booking> findByWorkerIdAndDone(Integer workerId, boolean done);
 	

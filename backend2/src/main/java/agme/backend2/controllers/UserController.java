@@ -219,7 +219,8 @@ public class UserController {
 		Integer customerId = (Integer) userMap.get("customerId");
 		String timeslot = (String) userMap.get("timeslot");
 		String date = (String) userMap.get("date");
-		Booking booking = userService.createBooking(workerId, customerId, timeslot, date);
+		String serviceName = (String) userMap.get("serviceName");
+		Booking booking = userService.createBooking(workerId, customerId, timeslot, date, serviceName);
         return new ResponseEntity<>(booking,HttpStatus.CREATED);
 	}
 	
@@ -228,6 +229,14 @@ public class UserController {
 	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
 		Integer bookingId = (Integer) userMap.get("bookingId");
 		userService.cancelBooking(bookingId);
+        return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
+	}
+	
+	//function to mark a booking as done
+	@PostMapping("/finishBooking")
+	public ResponseEntity<?> finishBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
+		Integer bookingId = (Integer) userMap.get("bookingId");
+		userService.finishBooking(bookingId);
         return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
 	}
 }
