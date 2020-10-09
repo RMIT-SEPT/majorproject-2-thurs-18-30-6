@@ -44,7 +44,7 @@ class BookingTests {
     	userService.registerCustomer("fname", "lname", "customerUsername", "customerPassword", "customerPassword", "customerAddress", "customerPhone", "Customer");
     	validCustomer = userService.validateUser("customerUsername", "customerPassword");
     	userService.setAvailability("workerUsername", "Monday", "Available");
-    	userService.setShifts(validWorker.getUserId(), "2020-10-10");
+    	userService.setShifts(validWorker.getUserId(), "2020-10-11");
 	}
 	
 	@AfterEach
@@ -55,17 +55,24 @@ class BookingTests {
 	//Checks if creating a booking calls an exception
 	@Test
 	void createBooking() throws ParseException {
-    	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10", "Baking");
+    	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-11", "Baking");
 		
 	}
 	
 	//Checks if getting a booking returns the correct result
 	@Test
 	void getBooking() throws ParseException, JsonProcessingException {
-		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10", "Baking");
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-11", "Baking");
     	List<Booking> bookings = userService.getBookings(validWorker.getUserId());
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
+	}
+	
+	//Checks if cancelling a booking calls an exception
+	@Test
+	void cancelBooking() throws ParseException {
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-11", "Baking");
+		userService.cancelBooking(booking.getBookingId());
 	}
 	
 	@Test

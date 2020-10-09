@@ -81,6 +81,9 @@ public class Booking {
 	}
 
 	public boolean isDone() {
+		return done;
+	}
+	
 	
 	public String getServiceName() {
 		return serviceName;

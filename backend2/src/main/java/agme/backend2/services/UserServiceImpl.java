@@ -297,8 +297,8 @@ public class UserServiceImpl implements UserService {
 	public void cancelBooking(Integer bookingId) throws ParseException{
 		Date bookingDate = formatter.parse(bookingRepository.getStringDateByBookingId(bookingId));
 		Date currentDate = new Date();
-		Date cutoff = new Date(currentDate.getTime() - (2 * MILLIS_PER_DAY));
-		if (bookingDate.after(cutoff)) {
+		Date cutoff = new Date(bookingDate.getTime() - (2 * MILLIS_PER_DAY));
+		if (currentDate.after(cutoff)) {
 			throw new ValidationException("Booking cannot be cancelled within 48 hours");
 		}
 		
