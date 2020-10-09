@@ -240,6 +240,8 @@ public class UserServiceImpl implements UserService {
 		return description;
 	}
 	
+	@Override
+	//get workers by admin id and date
 	public List<User> getWorkerOnDate(Integer adminId, String date) {
 		List<User> worker = userRepository.findWorkerByAdminIdAndDate(adminId, date);
 		return worker;
