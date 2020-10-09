@@ -207,7 +207,8 @@ public class UserController {
 	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer userId = (Integer) userMap.get("userId");
 		System.out.println(userId);
-		List<Booking> bookings = userService.getBookings(userId);
+		List<Booking> bookings = new ArrayList<Booking>();
+		bookings = userService.getBookings(userId);
         return new ResponseEntity<>(bookings,HttpStatus.OK);
 	}
 
