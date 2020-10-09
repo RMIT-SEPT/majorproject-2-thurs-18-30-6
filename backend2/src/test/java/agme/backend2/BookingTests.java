@@ -55,14 +55,14 @@ class BookingTests {
 	//Checks if creating a booking calls an exception
 	@Test
 	void createBooking() throws ParseException {
-    	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10");
+    	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10", "Baking");
 		
 	}
 	
 	//Checks if getting a booking returns the correct result
 	@Test
 	void getBooking() throws ParseException, JsonProcessingException {
-		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10");
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", "2020-10-10", "Baking");
     	List<Booking> bookings = userService.getBookings(validWorker.getUserId());
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());

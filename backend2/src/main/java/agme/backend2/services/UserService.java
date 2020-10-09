@@ -49,8 +49,10 @@ public interface UserService  {
 	
 	List<Booking> getBookings(Integer userId);
 	
-	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date) throws ParseException;
+	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date, String serviceName) throws ParseException;
 	
 	void cancelBooking(Integer bookingId) throws ParseException;
+
+	void finishBooking(Integer bookingId);
 	
 }
