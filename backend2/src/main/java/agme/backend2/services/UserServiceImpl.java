@@ -311,12 +311,12 @@ public class UserServiceImpl implements UserService {
 			throw new ValidationException("Booking cannot be cancelled within 48 hours");
 		}
 		
-		bookingRepository.deleteByBookingId(bookingId);
-		
 		Integer timeslotId = bookingRepository.findTimeslotIdByBookingId(bookingId);
 		Timeslot timeslot = timeslotRepository.findByTimeslotId(timeslotId);
 		timeslot.setBooked(false);
 		timeslotRepository.save(timeslot);
+		
+		bookingRepository.deleteByBookingId(bookingId);
 	}
 	
 	@Override
