@@ -47,7 +47,8 @@ class ConfirmBooking extends Component {
                 workerId: parseInt(this.state.workerId),
                 customerId: parseInt(user['userId']),
                 timeslot: this.state.timeslot,
-                date: this.state.date
+                date: this.state.date,
+                serviceName: this.state.service
 
             }).then(response => {
                 console.log('successful booking', response.data);

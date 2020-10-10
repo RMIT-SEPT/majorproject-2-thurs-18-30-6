@@ -24,9 +24,30 @@ class ViewBookings extends Component {
 
             let bookingCode = "";
             for(let i = 0; i < response.data['length']; i++){
+                let timeslot = response.data[i]['timeslot'];
+
+                if(timeslot === '9-10'){
+                    timeslot = '9:00am - 10:00am';
+                }else if(timeslot === '10-11'){
+                    timeslot = '10:00am - 11:00am'
+                }else if(timeslot === '11-12'){
+                    timeslot = '11:00am - 12:00pm'
+                }else if(timeslot === '12-13'){
+                    timeslot = '12:00pm - 1:00pm'
+                }else if(timeslot === '13-14'){
+                    timeslot = '1:00pm - 2:00pm'
+                }else if(timeslot === '14-15'){
+                    timeslot = '2:00pm - 3:00pm'
+                }else if(timeslot === '15-16'){
+                    timeslot = '3:00pm - 4:00pm'
+                }else if(timeslot === '16-17'){
+                    timeslot = '4:00pm - 5:00pm'
+                }
+
                 bookingCode += "<tr>";
+                bookingCode += "<td>" + response.data[i]['serviceName'] + "</td>";
                 bookingCode += "<td>" + response.data[i]['stringDate']  + "</td>";
-                bookingCode += "<td>" + response.data[i]['timeslot'] + "</td>";
+                bookingCode += "<td>" + timeslot + "</td>";
                 bookingCode += "</tr>";
             }
 
@@ -46,16 +67,15 @@ class ViewBookings extends Component {
             <div>
 
                 <h2>Your Bookings:</h2>
+                <a href={'/dashboard'}>back</a>
                 <table>
                     <tr>
+                        <th>Service</th>
                         <th>Date</th>
-                        <th>Time (24 hour format)</th>
-                        <th>Cancel Booking</th>
+                        <th>Time</th>
                     </tr>
                     {parse(this.state.bookingCode)}
                 </table>
-
-                <p>Note: You may only cancel bookings within the first 48 hours of creation.</p>
             </div>
         );
     }
