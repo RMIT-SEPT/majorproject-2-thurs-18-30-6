@@ -258,18 +258,18 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	//get all current bookings for a worker or customer
-	public List<Booking> getBookings(Integer userId){
+	public List<Booking> getBookings(Integer userId, boolean done){
 		List<Booking> bookings = null;
 		String role = userRepository.findRoleByUserId(userId);
 
 		if (role.toLowerCase().equals("worker")) {
-			bookings = bookingRepository.findByWorkerIdAndDone(userId, false);
+			bookings = bookingRepository.findByWorkerIdAndDone(userId, done);
 		} else if (role.toLowerCase().equals("customer")) {
-			bookings = bookingRepository.findByCustomerIdAndDone(userId, false);
+			bookings = bookingRepository.findByCustomerIdAndDone(userId, done);
 		} else if (role.toLowerCase().equals("admin")) {
-			bookings = bookingRepository.findByAdminIdAndDone(userId, false);
+			bookings = bookingRepository.findByAdminIdAndDone(userId, done);
 		} else {
-			throw new ValidationException("User is not a Customer or Worker");
+			throw new ValidationException("User has an incorrect role");
 		}
 		
 		return bookings;
@@ -330,4 +330,6 @@ public class UserServiceImpl implements UserService {
 		booking.setDone(true);
 		bookingRepository.save(booking);
 	}
+	
+	
 }
