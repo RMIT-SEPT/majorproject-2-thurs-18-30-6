@@ -266,6 +266,8 @@ public class UserServiceImpl implements UserService {
 			bookings = bookingRepository.findByWorkerIdAndDone(userId, false);
 		} else if (role.toLowerCase().equals("customer")) {
 			bookings = bookingRepository.findByCustomerIdAndDone(userId, false);
+		} else if (role.toLowerCase().equals("admin")) {
+			bookings = bookingRepository.findByAdminIdAndDone(userId, false);
 		} else {
 			throw new ValidationException("User is not a Customer or Worker");
 		}

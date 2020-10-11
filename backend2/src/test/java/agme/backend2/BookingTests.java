@@ -67,11 +67,29 @@ class BookingTests {
 		
 	}
 	
-	//Checks if getting a booking returns the correct result
+	//Checks if getting a worker booking returns the correct result
 	@Test
-	void getBooking() throws ParseException, JsonProcessingException {
+	void getBookingWorker() throws ParseException, JsonProcessingException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
     	List<Booking> bookings = userService.getBookings(validWorker.getUserId());
+
+    	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
+	}
+	
+	//Checks if getting a customer booking returns the correct result
+	@Test
+	void getBookingCustomer() throws ParseException, JsonProcessingException {
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
+    	List<Booking> bookings = userService.getBookings(validCustomer.getUserId());
+
+    	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
+	}
+	
+	//Checks if getting an admin booking returns the correct result
+	@Test
+	void getBookingAdmin() throws ParseException, JsonProcessingException {
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
+    	List<Booking> bookings = userService.getBookings(validAdmin.getUserId());
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
