@@ -57,5 +57,5 @@ public interface UserService  {
 
 	void finishBooking(Integer bookingId);
 
-	
+	List<Booking> getPastBookings(Integer userId);
 }
