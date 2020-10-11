@@ -38,11 +38,12 @@ class BookingTests {
 
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
+	Date currentDate;
 	String testDate;
 	
 	@BeforeEach
 	void init() throws ParseException {
-		Date currentDate = new Date();
+		currentDate = new Date();
 		testDate = formatter.format(currentDate.getTime() +(4 * 86400000));
 		userService.registerAdmin("adminFirstName","adminLastName","adminUsername","adminPassword","adminPassword","adminCompany","adminAddress","adminPhone","admin");
     	validAdmin = userService.validateUser("adminUsername", "adminPassword");
@@ -60,11 +61,29 @@ class BookingTests {
 		userService.deleteAll();
 	}
 	
-	//Checks if creating a booking calls an exception
+	//Checks if creating a booking does not calls an exception
 	@Test
 	void createBooking() throws ParseException {
     	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
 		
+	}
+	
+	//Checks if creating two bookings for the same timeslot calls an exception
+	@Test
+	void createBookingMultipleTimeslot() throws ParseException {
+    	userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Eating");
+		});		
+	}
+	
+	//Checks if creating a booking in the past calls an exception
+	@Test
+	void createBookingBeforeToday() throws ParseException {
+		String newDate = formatter.format(currentDate.getTime() - (1 * 86400000));
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", newDate, "Eating");
+		});		
 	}
 	
 	//Checks if getting a worker booking returns the correct result
@@ -94,18 +113,32 @@ class BookingTests {
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
 	
-	//Checks if cancelling a booking calls an exception
+	//Checks if cancelling a booking does not calls an exception
 	@Test
 	void cancelBooking() throws ParseException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
 		userService.cancelBooking(booking.getBookingId());
 	}
 	
-	//Checks if marking a booking as done calls an exception
+	//Checks if cancelling a booking within 48 hours calls an exception
+	@Test
+	void cancelBookingAfterCutoff() throws ParseException {
+		String newDate = formatter.format(currentDate.getTime() +(1 * 86400000));
+    	userService.setShifts(validWorker.getUserId(), newDate);
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", newDate, "Baking");
+		Assertions.assertThrows(ValidationException.class, () -> {
+			userService.cancelBooking(booking.getBookingId());
+		});
+	}
+	
+	//Checks if marking a booking works as intended
 	@Test
 	void finishBooking() throws ParseException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
 		userService.finishBooking(booking.getBookingId());
+		
+		List<Booking> bookings = userService.getBookings(validAdmin.getUserId());
+    	assertTrue(bookings.isEmpty());
 	}
 	
 	@Test
