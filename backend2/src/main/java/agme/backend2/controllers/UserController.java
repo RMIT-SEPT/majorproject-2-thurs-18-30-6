@@ -239,4 +239,12 @@ public class UserController {
 		userService.finishBooking(bookingId);
         return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
 	}
+	
+	//function to get past bookings
+	@PostMapping("/getPastBookings")
+	public ResponseEntity<?> getPastBookings(@RequestBody Map<String, Object> userMap) throws ParseException{
+		Integer userId = (Integer) userMap.get("userId");
+		userService.getPastBookings(userId);
+        return new ResponseEntity<>(userId,HttpStatus.OK);
+	}
 }
