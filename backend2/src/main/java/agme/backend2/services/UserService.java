@@ -56,6 +56,4 @@ public interface UserService  {
 	void cancelBooking(Integer bookingId) throws ParseException;
 
 	void finishBooking(Integer bookingId);
-
-	List<Booking> getPastBookings(Integer userId);
 }
