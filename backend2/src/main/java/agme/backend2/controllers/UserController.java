@@ -208,7 +208,7 @@ public class UserController {
 		Integer userId = (Integer) userMap.get("userId");
 		System.out.println(userId);
 		List<Booking> bookings = new ArrayList<Booking>();
-		bookings = userService.getBookings(userId);
+		bookings = userService.getBookings(userId, false);
         return new ResponseEntity<>(bookings,HttpStatus.OK);
 	}
 
@@ -244,7 +244,7 @@ public class UserController {
 	@PostMapping("/getPastBookings")
 	public ResponseEntity<?> getPastBookings(@RequestBody Map<String, Object> userMap) throws ParseException{
 		Integer userId = (Integer) userMap.get("userId");
-		userService.getPastBookings(userId);
+		userService.getBookings(userId, true);
         return new ResponseEntity<>(userId,HttpStatus.OK);
 	}
 }
