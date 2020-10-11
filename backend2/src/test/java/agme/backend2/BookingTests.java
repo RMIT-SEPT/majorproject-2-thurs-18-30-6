@@ -90,7 +90,7 @@ class BookingTests {
 	@Test
 	void getBookingWorker() throws ParseException, JsonProcessingException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
-    	List<Booking> bookings = userService.getBookings(validWorker.getUserId());
+    	List<Booking> bookings = userService.getBookings(validWorker.getUserId(), false);
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
@@ -99,7 +99,7 @@ class BookingTests {
 	@Test
 	void getBookingCustomer() throws ParseException, JsonProcessingException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
-    	List<Booking> bookings = userService.getBookings(validCustomer.getUserId());
+    	List<Booking> bookings = userService.getBookings(validCustomer.getUserId(), false);
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
@@ -108,7 +108,7 @@ class BookingTests {
 	@Test
 	void getBookingAdmin() throws ParseException, JsonProcessingException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
-    	List<Booking> bookings = userService.getBookings(validAdmin.getUserId());
+    	List<Booking> bookings = userService.getBookings(validAdmin.getUserId(), false);
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
@@ -137,7 +137,7 @@ class BookingTests {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
 		userService.finishBooking(booking.getBookingId());
 		
-		List<Booking> bookings = userService.getBookings(validAdmin.getUserId());
+		List<Booking> bookings = userService.getBookings(validAdmin.getUserId(), false);
     	assertTrue(bookings.isEmpty());
 	}
 	
@@ -146,7 +146,7 @@ class BookingTests {
 	void getPastBooking() throws ParseException, JsonProcessingException {
 		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
 		userService.finishBooking(booking.getBookingId());
-    	List<Booking> bookings = userService.getPastBookings(validAdmin.getUserId());
+    	List<Booking> bookings = userService.getBookings(validAdmin.getUserId(), true);
 
     	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
 	}
