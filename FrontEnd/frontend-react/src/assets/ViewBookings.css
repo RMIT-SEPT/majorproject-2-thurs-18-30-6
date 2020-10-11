@@ -21,5 +21,6 @@
 }
 
 .tableViewB {
-    padding-right: 50px;
+    padding-right: 200px;
+    border-bottom: 2px solid black;
 }

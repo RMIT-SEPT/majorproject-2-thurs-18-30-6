@@ -42,6 +42,9 @@ class Dashboard extends Component {
                             <form className={'formDash'} action={'/createService'}>
                                 <button className={'buttonDash'}  type={'submit'}>Create a Service</button>
                             </form>
+                            <form className={'formDash'} action={'/viewBookings'}>
+                                <button className={'buttonDash'}  type={'submit'}>View Past Bookings</button>
+                            </form>
 
                         </div>
                         <Footer/>
