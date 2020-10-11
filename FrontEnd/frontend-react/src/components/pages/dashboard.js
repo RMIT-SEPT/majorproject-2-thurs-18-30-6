@@ -61,7 +61,7 @@ class Dashboard extends Component {
 
                             <h3>Customer Options:</h3>
                             <form className={'formDash'} action={'/companyAndServices'}>
-                                <button className={'buttonDash'}  type={'submit'}>Browse and Book Services</button>
+                                <button className={'buttonDash'}  type={'submit'}> Book Services</button>
                             </form>
                             <form className={'formDash'} action={'/viewBookings'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Existing Bookings</button>
@@ -97,7 +97,7 @@ class Dashboard extends Component {
                                 <button className={'buttonDash'}  type={'submit'}>View Existing Bookings</button>
                             </form>
                             <form className={'formDash'} action={'/bookingAction'}>
-                                <button className={'buttonDash'}  type={'submit'}>Mark Booking As Finished</button>
+                                <button className={'buttonDash'}  type={'submit'}>Mark Finished Bookings</button>
                             </form>
 
                         </div>

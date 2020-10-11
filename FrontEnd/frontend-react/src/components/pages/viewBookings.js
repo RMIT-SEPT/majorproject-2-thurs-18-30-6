@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import parse from "html-react-parser/index";
+import Header from "../header_component/header";
+import Footer from "../footer_component/footer";
+import "../../assets/ViewBookings.css";
 
 class ViewBookings extends Component {
     constructor(props){
@@ -65,17 +68,20 @@ class ViewBookings extends Component {
     render() {
         return (
             <div>
-
-                <h2>Your Bookings:</h2>
-                <a href={'/dashboard'}>back</a>
-                <table>
-                    <tr>
-                        <th>Service</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                    </tr>
-                    {parse(this.state.bookingCode)}
-                </table>
+                <Header/>
+                <a className="backViewB" href={"/dashboard"}><i className="arrowViewB leftViewB"></i>back</a>
+                <div className="divViewB">
+                    <h2>Your Bookings:</h2>
+                    <table>
+                        <tr>
+                            <th className={"tableViewB"}>Service</th>
+                            <th className={"tableViewB"}>Date</th>
+                            <th className={"tableViewB"}>Time</th>
+                        </tr>
+                        {parse(this.state.bookingCode)}
+                    </table>
+                </div>
+                <Footer/>
             </div>
         );
     }

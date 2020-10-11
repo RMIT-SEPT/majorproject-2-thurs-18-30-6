@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import "../../assets/confirmBooking.css";
 
 class ConfirmBooking extends Component {
     constructor(props){
@@ -86,7 +87,7 @@ class ConfirmBooking extends Component {
         if(this.state.loggedInStatus && this.state.validation && user['role'] === 'Customer'){
             return (
                 <div>
-                    <form>
+                    <form className={'formConfirmB'}>
                         <h2>Please confirm your booking with {this.state.company}</h2>
                         <h3>Service: {this.state.service}</h3>
                         <h3>Service Description: {this.state.description}</h3>
@@ -94,6 +95,8 @@ class ConfirmBooking extends Component {
                         <h3>Time: {this.state.timeslot}</h3>
                         <h3>Worker: {this.state.workerName}</h3>
 
+                        <br/>
+                        <br/>
                         <button type={'submit'} value={'Confirm'} onClick={this.handleSubmit}> Confirm </button>
                         <button type={'submit'} value={'Cancel'} onClick={this.handleSubmit}> Cancel </button>
                     </form>

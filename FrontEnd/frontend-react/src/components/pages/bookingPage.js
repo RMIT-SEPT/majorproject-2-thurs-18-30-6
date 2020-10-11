@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import parse from "html-react-parser/index";
 import {Redirect} from "react-router-dom";
+import "../../assets/bookingPage.css";
 class BookingPage extends Component {
 
     constructor(props){
@@ -107,14 +108,14 @@ class BookingPage extends Component {
         if(this.state.loggedInStatus && this.state.validation && user['role'] === 'Customer'){
             return (
                 <div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form className={'formBookingP'} onSubmit={this.handleSubmit}>
                         <h2> Book a Service! </h2>
                         {parse(this.state.errors)}
                         <h3>Select a Date:</h3>
-                        <input type={"date"} name={"date"} onChange={this.handleDateChange} required/>
+                        <input className={'dropdownBookingP '} type={"date"} name={"date"} onChange={this.handleDateChange} required/>
                         <br/>
                         <h3>Select a Time:</h3>
-                        <select name={"timeslot"} onChange={this.handleChange} required>
+                        <select className={'dropdownBookingP'} name={"timeslot"} onChange={this.handleChange} required>
                             <option value={"9-10"}>9:00am - 10:00am</option>
                             <option value={"10-11"}>10:00am - 11:00am</option>
                             <option value={"11-12"}>11:00am - 12:00pm</option>
@@ -126,9 +127,10 @@ class BookingPage extends Component {
                         </select>
                         <br/>
 
-                        <p>Please select a date to see workers. If there are no workers shown then there are no workers available on your chosen date.</p>
+                        <p className={'textBookingP'}>Please select a date to see workers. If there are no workers shown then</p>
+                        <p className={'textBookingP'}> there are no workers available on your chosen date.</p>
                         <h3>Select A Worker:</h3>
-                        <select name={'chosenWorker'} onChange={this.handleChange} required>
+                        <select className={'dropdownBookingP'}  name={'chosenWorker'} onChange={this.handleChange} required>
                             {parse(this.state.workerCode)}
                         </select>
                         <br/>

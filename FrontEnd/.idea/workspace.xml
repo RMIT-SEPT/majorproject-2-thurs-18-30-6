@@ -31,16 +31,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/cancelBookings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/ViewBookings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/bookingAction.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/bookingPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/confirmBooking.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/confirmBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/confirmBooking.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewBookings.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewBookings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/models/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/models/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/Backend2Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -103,6 +103,8 @@
       <workItem from="1602069540407" duration="4710000" />
       <workItem from="1602133510820" duration="17199000" />
       <workItem from="1602238807702" duration="8256000" />
+      <workItem from="1602339072506" duration="296000" />
+      <workItem from="1602398639090" duration="5583000" />
     </task>
     <servers />
   </component>

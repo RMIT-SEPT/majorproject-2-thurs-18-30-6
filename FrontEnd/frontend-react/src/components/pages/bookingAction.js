@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import parse from "html-react-parser/index";
 import {Redirect} from "react-router-dom";
+import "../../assets/bookingAction.css";
 
 class BookingAction extends Component {
 
@@ -123,27 +124,29 @@ class BookingAction extends Component {
         if(user['role'] === 'Customer'){
             return (
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <a href={"/dashboard"}>back</a>
+                    <form className={'formBookingA'} onSubmit={this.handleSubmit}>
+                        <a className="backBookingA" href={"/dashboard"}><i className="arrowBookingA leftBookingA"></i>back</a>
                         <h2> Cancel a booking: </h2>
-                        <select name={'chosenBooking'} onChange={this.handleChange}>
+                        <select className={'dropdownBookingA'} name={'chosenBooking'} onChange={this.handleChange}>
                             {parse(this.state.bookingCode)}
                         </select>
+                        <br/>
                         <button type={'submit'}> Select </button>
 
-                        <p>Note: You may only cancel a booking before 48 hours of its booked date.</p>
+                        <p className={'errorBookingA'}>Note: You may only cancel a booking before 48 hours of its booked date.</p>
                     </form>
                 </div>
             );
         }else if(user['role'] === 'Worker'){
             return (
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <a href={"/dashboard"}>back</a>
+                    <form className={'formBookingA'} onSubmit={this.handleSubmit}>
+                        <a className="backBookingA" href={"/dashboard"}><i className="arrowBookingA leftBookingA"></i>back</a>
                         <h2> Mark a booking as done: </h2>
-                        <select name={'chosenBooking'} onChange={this.handleChange}>
+                        <select className={'dropdownBookingA'} name={'chosenBooking'} onChange={this.handleChange}>
                             {parse(this.state.bookingCode)}
                         </select>
+                        <br/>
                         <button type={'submit'}> Select </button>
                     </form>
                 </div>
