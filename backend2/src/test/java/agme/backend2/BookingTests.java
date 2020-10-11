@@ -83,6 +83,13 @@ class BookingTests {
 		userService.cancelBooking(booking.getBookingId());
 	}
 	
+	//Checks if marking a booking as done calls an exception
+	@Test
+	void finishBooking() throws ParseException {
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
+		userService.finishBooking(booking.getBookingId());
+	}
+	
 	@Test
 	void contextLoads() {
 	}

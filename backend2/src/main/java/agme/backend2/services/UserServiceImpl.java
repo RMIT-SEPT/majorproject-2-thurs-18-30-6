@@ -297,7 +297,9 @@ public class UserServiceImpl implements UserService {
 		shift.setBooked(true);
 		timeslotRepository.save(shift);
 		
-		booking = new Booking(workerId, this.getName(workerId), customerId, this.getName(customerId), timeslotId, timeslot, stringDate, serviceName);
+		Integer adminId = managementRepository.findAdminIdByWorkerId(workerId);
+		
+		booking = new Booking(workerId, this.getName(workerId), customerId, this.getName(customerId), timeslotId, timeslot, stringDate, serviceName, adminId);
 		return bookingRepository.save(booking);
 	}
 	
