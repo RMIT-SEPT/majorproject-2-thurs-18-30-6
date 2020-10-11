@@ -141,6 +141,16 @@ class BookingTests {
     	assertTrue(bookings.isEmpty());
 	}
 	
+	//Checks if getting past bookings returns the correct result
+	@Test
+	void getPastBooking() throws ParseException, JsonProcessingException {
+		Booking booking = userService.createBooking(validWorker.getUserId(), validCustomer.getUserId(), "9-10", testDate, "Baking");
+		userService.finishBooking(booking.getBookingId());
+    	List<Booking> bookings = userService.getPastBookings(validAdmin.getUserId());
+
+    	assertEquals(booking.getBookingId(), bookings.get(0).getBookingId());
+	}
+	
 	@Test
 	void contextLoads() {
 	}
