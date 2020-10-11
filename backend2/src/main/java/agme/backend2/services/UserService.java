@@ -49,7 +49,7 @@ public interface UserService  {
 	
 	List<User> getWorkerOnDate(Integer adminId, String date);
 	
-	List<Booking> getBookings(Integer userId);
+	List<Booking> getBookings(Integer userId, boolean done);
 	
 	Booking createBooking(Integer workerId, Integer customerId, String timeslot, String date, String serviceName) throws ParseException;
 	
