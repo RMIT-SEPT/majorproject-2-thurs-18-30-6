@@ -1,19 +1,7 @@
 package agme.backend2.models;
 
-import java.util.Collection;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-@Entity
-public class User implements UserDetails {
-	@Id
-	@GeneratedValue
-    private Integer userId;
+public class AuthenticationResponse {
+	private Integer userId;
     private String firstName;
     private String lastName;
     private String username;
@@ -21,11 +9,29 @@ public class User implements UserDetails {
     private String address;
     private String phone;
     private String role;
+    private String jwt;
     
+	public AuthenticationResponse(Integer userId, String firstName, String lastName, String username, String password,
+			String address, String phone, String role, String jwt) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.phone = phone;
+		this.role = role;
+		this.jwt = jwt;
+	}
+	
 	
 
-	public User() {
+	public AuthenticationResponse() {
+		super();
 	}
+
+
 
 	public Integer getUserId() {
 		return userId;
@@ -91,34 +97,12 @@ public class User implements UserDetails {
 		this.role = role;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getJwt() {
+		return jwt;
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+	public void setJwt(String jwt) {
+		this.jwt = jwt;
 	}
     
     

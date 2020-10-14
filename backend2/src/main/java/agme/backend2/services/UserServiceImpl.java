@@ -10,6 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.WorkerAvailability;
@@ -28,10 +35,12 @@ import agme.backend2.repositories.ManagementRepository;
 import agme.backend2.repositories.TimeslotRepository;
 import agme.backend2.repositories.UserRepository;
 import agme.backend2.repositories.WorkerServiceRepository;
+import agme.backend2.util.JwtUtil;
+import agme.backend2.models.AuthenticationResponse;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService,UserDetailsService {
 	@Autowired
     UserRepository userRepository;
 	@Autowired
@@ -46,13 +55,18 @@ public class UserServiceImpl implements UserService {
 	BookingRepository bookingRepository;	
 	@Autowired
 	TimeslotRepository timeslotRepository;
-	
-
+	@Autowired
+	AuthenticationManager authenticationManager;
+	@Autowired
+	UserDetailService userDetailService;
+	@Autowired
+	JwtUtil JwtTokenUtil;
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
 	static final int MILLIS_PER_DAY = 86400000;
 	static final int MILLIS_PER_HOUR = 3600000;
-
+	
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Override
 	//register customer into the database
 	public User registerCustomer(String firstName, String lastName, String username, String password, String confirmPassword,
@@ -70,7 +84,7 @@ public class UserServiceImpl implements UserService {
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 		newUser.setUsername(username);
-		newUser.setPassword(password);
+		newUser.setPassword(bCryptPasswordEncoder.encode(password));
 		newUser.setAddress(address);
 		newUser.setPhone(phone);
 		newUser.setRole(role);
@@ -224,6 +238,32 @@ public class UserServiceImpl implements UserService {
 		}
 		return newUser;
 	}
+	
+	public AuthenticationResponse createAuthenticationToken(String username, String password) throws Exception{
+		try {
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(username,password));
+		}
+		catch(BadCredentialsException e){
+			throw new Exception("Incorrect username or password", e);
+		}
+		
+		final UserDetails userDetails = userDetailService.loadUserByUsername(username);
+		final String jwt = JwtTokenUtil.generateToken(userDetails);
+		User user = userRepository.findByUsername(username);
+		AuthenticationResponse authenticationResponse = new AuthenticationResponse();
+		authenticationResponse.setAddress(user.getAddress());
+		authenticationResponse.setFirstName(user.getFirstName());
+		authenticationResponse.setJwt(jwt);
+		authenticationResponse.setLastName(user.getLastName());
+		authenticationResponse.setPassword(user.getPassword());
+		authenticationResponse.setPhone(user.getPhone());
+		authenticationResponse.setRole(user.getRole());
+		authenticationResponse.setUserId(user.getUserId());
+		authenticationResponse.setUsername(user.getUsername());
+		return authenticationResponse;
+		
+	}
 
 	@Override
 	//get admin id from company name
@@ -329,6 +369,11 @@ public class UserServiceImpl implements UserService {
 		Booking booking = bookingRepository.findByBookingId(bookingId);
 		booking.setDone(true);
 		bookingRepository.save(booking);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findByUsername(username);
 	}
 	
 	

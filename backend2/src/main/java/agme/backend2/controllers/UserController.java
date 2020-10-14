@@ -11,18 +11,25 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import agme.backend2.exceptions.ValidationException;
+import agme.backend2.models.AuthenticationResponse;
 import agme.backend2.models.Booking;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
+import agme.backend2.services.UserDetailService;
 import agme.backend2.services.UserService;
+import agme.backend2.util.JwtUtil;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:3000", allowCredentials = "true")
@@ -31,8 +38,17 @@ public class UserController {
 	UserService userService;
 	
 	@Autowired
+	UserDetailService userDetailService;
+	
+	@Autowired
+	JwtUtil JwtTokenUtil;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
 	ManagementService managementService;
-		
+
 	//Registering a user of role customer into the database
 	@PostMapping("/register/customer")
 	public ResponseEntity<?> registerCustomer(@RequestBody Map<String, Object> userMap){
@@ -80,13 +96,13 @@ public class UserController {
 	//uses validateUser method to query from the database, if found, return the status that a user is found with
 	//that specific name and password
 	@PostMapping("/login")
-	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap) throws Exception{
 		String email = (String) userMap.get("username");
         String password = (String) userMap.get("password");
-        User user = userService.validateUser(email, password);
-        return new ResponseEntity<>(user,HttpStatus.CREATED);		
+        AuthenticationResponse authenticationResponse = userService.createAuthenticationToken(email, password);
+        return new ResponseEntity<>(authenticationResponse,HttpStatus.CREATED);		
 	}
-
+	
 	//function to find all workers under the specific admin id
 	@PostMapping("/getworker/{adminId}")
 	public ResponseEntity<?> getWorkerFromAdmin(@PathVariable Integer adminId){

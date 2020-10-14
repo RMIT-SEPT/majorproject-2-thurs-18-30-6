@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+import agme.backend2.models.AuthenticationResponse;
 import agme.backend2.models.Booking;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
@@ -56,4 +57,6 @@ public interface UserService  {
 	void cancelBooking(Integer bookingId) throws ParseException;
 
 	void finishBooking(Integer bookingId);
+
+	AuthenticationResponse createAuthenticationToken(String email, String password) throws Exception;
 }
