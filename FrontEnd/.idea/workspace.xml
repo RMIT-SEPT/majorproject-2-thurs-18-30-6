@@ -34,26 +34,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/addingWorkersPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/addingWorkersPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/availability.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/bookingPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseAvailableWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/chooseAvailableWorker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/companyAndServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyAndServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/confirmBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/confirmBooking.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/createService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/createService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/loginpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/serviceDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/serviceDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/assets/shiftAllocation.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/assets/shiftAllocation.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/shiftAllocation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewBookings.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewBookings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewShifts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/JwtRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/SecurityConfigurer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +101,8 @@
       <workItem from="1602339072506" duration="296000" />
       <workItem from="1602398639090" duration="5903000" />
       <workItem from="1602420330669" duration="3143000" />
-      <workItem from="1602739039174" duration="8305000" />
+      <workItem from="1602739039174" duration="9014000" />
+      <workItem from="1602749791999" duration="2079000" />
     </task>
     <servers />
   </component>

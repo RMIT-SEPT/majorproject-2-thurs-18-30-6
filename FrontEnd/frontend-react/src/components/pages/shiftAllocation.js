@@ -201,6 +201,7 @@ class ShiftAllocation extends Component {
                                 <h1>Set Worker's Shifts This Month</h1>
                                 <p className={'error'}>{parse(this.state.error)}</p>
                                 <h4 className={'days'}>Date:</h4>
+                                <br/>
                                 <input className={'dropdownShift'} type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>
 
                                 <select className={'dropdownShift'} name={'allocation'} onChange={this.handleChange}>
