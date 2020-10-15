@@ -29,6 +29,9 @@ class CreateService extends Component {
         const user = JSON.parse(this.state.user)
         const userId = user['userId']
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/setService", {
 
             adminId: userId,
@@ -36,6 +39,10 @@ class CreateService extends Component {
             description: this.state.description,
             availability: "True"
 
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(response => {
             console.log('service response', response.data)
 

@@ -31,45 +31,76 @@ class ShiftAllocation extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Monday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({monday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Tuesday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({tuesday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Wednesday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({wednesday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Thursday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({thursday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Friday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({friday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Saturday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({saturday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Sunday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({sunday: result.data.toString()})
         })
@@ -96,6 +127,9 @@ class ShiftAllocation extends Component {
 
         const send = chosenFull.getFullYear() + "-" + chosenFull.getMonth() + "-" + chosenFull.getDate();
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         if(chosenYear === currYear && chosenMonth === currMonth && chosenDate >= currDate){
 
             if(this.state.allocation === 'Allocate'){
@@ -103,6 +137,10 @@ class ShiftAllocation extends Component {
                 axios.post("http://localhost:8080/setShift", {
                     userId: parseInt(this.state.userId),
                     date: send
+                },{
+                    headers: {
+                        'Authorization': `Bearer ${proper}`
+                    }
                 }).then(response =>{
                     alert('Shift allocated successfully!')
                     this.setState({redirect: '/dashboard'})

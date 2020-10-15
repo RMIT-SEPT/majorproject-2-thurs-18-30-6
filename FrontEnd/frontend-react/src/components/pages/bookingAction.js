@@ -22,10 +22,17 @@ class BookingAction extends Component {
 
         const user = JSON.parse(this.state.user);
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/getBookings", {
 
             userId: user['userId']
 
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(response => {
 
             console.log('response', response.data)
@@ -56,7 +63,8 @@ class BookingAction extends Component {
         const user = JSON.parse(this.state.user);
         const bookingId = this.state.chosenBooking.split(',')[0];
         const bookingDate = this.state.chosenBooking.split(',')[1];
-
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
 
         if(user['role'] === 'Customer'){
 
@@ -64,6 +72,10 @@ class BookingAction extends Component {
 
                 bookingId: parseInt(bookingId)
 
+            },{
+                headers: {
+                    'Authorization': `Bearer ${proper}`
+                }
             }).then(response => {
                 console.log('cancel response', response.data);
 
@@ -82,6 +94,8 @@ class BookingAction extends Component {
             const d = new Date();
             const todayMonth = d.getMonth()
             const todayDate = d.getFullYear() + "-" + (todayMonth+1) + "-" + d.getDate();
+            const token = sessionStorage.getItem('token')
+            const proper = token.substr(1, token.length - 2)
 
             if(todayDate >= bookingDate){
 
@@ -89,6 +103,10 @@ class BookingAction extends Component {
 
                     bookingId: parseInt(this.state.chosenBooking)
 
+                },{
+                    headers: {
+                        'Authorization': `Bearer ${proper}`
+                    }
                 }).then(response => {
 
                     console.log('finish response', response.data);

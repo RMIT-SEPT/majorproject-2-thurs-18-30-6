@@ -30,8 +30,9 @@ import ConfirmBooking from "./components/pages/confirmBooking";
 import ViewBookings from "./components/pages/viewBookings";
 import BookingAction from "./components/pages/bookingAction";
 
-class App extends Component {
 
+
+class App extends Component {
     render() {
         return (
 

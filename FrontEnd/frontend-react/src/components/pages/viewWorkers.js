@@ -18,8 +18,16 @@ class ViewWorkers extends Component {
 
         const adminUser = JSON.parse(this.state.user)
         const adminId = adminUser['userId']
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+        console.log(proper)
+        axios.post("http://localhost:8080/getworker/" + adminId, {
 
-        axios.post("http://localhost:8080/getworker/" + adminId).then(response => {
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
+        }).then(response => {
             const userCount = response.data['length']
             console.log('log:', response.data)
             //htmlCode is the string that is parsed later on to HTML

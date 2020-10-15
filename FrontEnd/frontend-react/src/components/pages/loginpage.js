@@ -44,6 +44,7 @@ class Loginpage extends Component {
 
             // set code for response 200 here (show as good)
             sessionStorage.setItem('user', JSON.stringify(response.data))
+            sessionStorage.setItem('token' , JSON.stringify(response.data['jwt']))
             sessionStorage.setItem('loggedInStatus', 'true')
             this.setState({redirect: '/dashboard'})
 

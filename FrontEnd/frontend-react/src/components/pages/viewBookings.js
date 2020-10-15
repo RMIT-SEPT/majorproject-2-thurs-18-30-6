@@ -19,11 +19,18 @@ class ViewBookings extends Component {
 
         const user = JSON.parse(this.state.user);
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         if(user['role'] === 'Worker' || user['role'] === 'Customer'){
             axios.post("http://localhost:8080/getBookings", {
 
                 userId: user['userId']
 
+            },{
+                headers: {
+                    'Authorization': `Bearer ${proper}`
+                }
             }).then(response => {
 
                 console.log('response', response.data)
@@ -72,6 +79,10 @@ class ViewBookings extends Component {
 
             userId: user['userId']
 
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(response => {
 
             console.log('response', response.data)

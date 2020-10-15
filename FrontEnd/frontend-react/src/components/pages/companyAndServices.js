@@ -24,7 +24,16 @@ class CompanyAndServices extends Component {
         this.handleCompanyChange = this.handleCompanyChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        axios.post("http://localhost:8080/getAllCompanies").then(response => {
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
+        axios.post("http://localhost:8080/getAllCompanies",{}
+            ,{
+                headers: {
+                    'Authorization': `Bearer ${proper}`
+                }
+            }
+        ).then(response => {
 
             const companyCount = response.data['length']
             //htmlCode is the string that is parsed later on to HTML
@@ -49,14 +58,25 @@ class CompanyAndServices extends Component {
             [event.target.name]: event.target.value
         })
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/getAdminId", {
             company: event.target.value
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(response => {
 
             this.setState({adminId: response.data}, function() {
 
                 axios.post("http://localhost:8080/getServices", {
                     adminId: this.state.adminId
+                },{
+                    headers: {
+                        'Authorization': `Bearer ${proper}`
+                    }
                 }).then(response => {
 
                     const count = response.data['length'];

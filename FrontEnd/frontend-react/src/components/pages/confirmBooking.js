@@ -43,6 +43,9 @@ class ConfirmBooking extends Component {
 
             const user = JSON.parse(this.state.user);
 
+            const token = sessionStorage.getItem('token')
+            const proper = token.substr(1, token.length - 2)
+
             axios.post("http://localhost:8080/createBooking", {
 
                 workerId: parseInt(this.state.workerId),
@@ -51,6 +54,10 @@ class ConfirmBooking extends Component {
                 date: this.state.date,
                 serviceName: this.state.service
 
+            },{
+                headers: {
+                    'Authorization': `Bearer ${proper}`
+                }
             }).then(response => {
                 console.log('successful booking', response.data);
 
