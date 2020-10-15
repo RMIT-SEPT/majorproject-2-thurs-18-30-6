@@ -40,9 +40,13 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().cors().and()
-		.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/register/admin").permitAll()
-				.antMatchers("/register/customer").permitAll()
+		http.csrf().disable()
+		.cors().and()
+		.authorizeRequests().antMatchers("/login").permitAll()
+		.antMatchers("/register/admin").permitAll()
+		.antMatchers("/register/customer").permitAll()
+		.antMatchers("/h2-console/**").permitAll()
+		.antMatchers("/console/**").permitAll()
 		.anyRequest().authenticated()
 		.and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
