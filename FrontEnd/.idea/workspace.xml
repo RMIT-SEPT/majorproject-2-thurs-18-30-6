@@ -31,24 +31,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/companyDetailsPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/selectCompany.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/assets/setDetailsPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyDetailsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/selectCompany.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/setDetailsPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/bookingAction.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/bookingPage.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/companyAndServices.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/companyDetailsPage.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/confirmBooking.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/createService.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/selectCompany.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/serviceDetails.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/setDetailsPage.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewBookings.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewWorkers.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/repositories/AdminCompanyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/repositories/AdminCompanyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/security/SecurityConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/java/agme/backend2/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/src/main/resources/import.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/src/main/resources/import.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend2/target/classes/agme/backend2/services/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/companyDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyDetailsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/selectCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/selectCompany.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/setDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/setDetailsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +59,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -114,7 +112,7 @@
       <workItem from="1602398639090" duration="5903000" />
       <workItem from="1602420330669" duration="3143000" />
       <workItem from="1602739039174" duration="8305000" />
-      <workItem from="1602846620746" duration="6722000" />
+      <workItem from="1602846620746" duration="8650000" />
     </task>
     <servers />
   </component>

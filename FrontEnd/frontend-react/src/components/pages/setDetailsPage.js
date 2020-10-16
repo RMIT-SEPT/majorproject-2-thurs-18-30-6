@@ -57,20 +57,30 @@ class SetDetailsPage extends Component {
     render() {
         if(this.state.redirect){
             return <Redirect to={this.state.redirect}/>
+        }
+
+        if(this.state.loggedInStatus){
+            const user = JSON.parse(this.state.user);
+
+            if(user['role'] === 'Admin'){
+                return (
+                    <div>
+                        <form className={'formSet'} onSubmit={this.handleSubmit}>
+                            <a className="backSet" href={"/dashboard"}><i className="arrowSet leftSet"></i>back</a>
+                            <h2>Enter Company Details:</h2>
+                            <br/>
+                            <input type={'text'} name={'detail'} placeholder={'Details'} value={this.state.detail} onChange={this.handleChange} required/>
+                            <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
+                            <input type={'number'} name={'phone'} placeholder={'Phone'} value={this.state.phone} onChange={this.handleChange} required/>
+                            <button type={'submit'}> Submit </button>
+                        </form>
+                    </div>
+                );
+            }else{
+                return <Redirect to={'/dashboard'}/>
+            }
         }else{
-            return (
-            <div>
-                <form className={'formSet'} onSubmit={this.handleSubmit}>
-                    <a className="backSet" href={"/dashboard"}><i className="arrowSet leftSet"></i>back</a>
-                    <h2>Enter Company Details:</h2>
-                    <br/>
-                    <input type={'text'} name={'detail'} placeholder={'Details'} value={this.state.detail} onChange={this.handleChange} required/>
-                    <input type={'email'} name={'email'} placeholder={'Email'} value={this.state.email} onChange={this.handleChange} required/>
-                    <input type={'number'} name={'phone'} placeholder={'Phone'} value={this.state.phone} onChange={this.handleChange} required/>
-                    <button type={'submit'}> Submit </button>
-                </form>
-            </div>
-            );
+            return <Redirect to={'/login'}/>
         }
     }
 }

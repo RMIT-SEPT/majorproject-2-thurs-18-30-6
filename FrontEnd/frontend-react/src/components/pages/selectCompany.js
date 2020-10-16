@@ -56,6 +56,7 @@ class SelectCompany extends Component {
         const companyName = this.state.companyDetails.split(',')[1]
         sessionStorage.setItem('companyId', companyId)
         sessionStorage.setItem('companyName', companyName)
+        sessionStorage.setItem('fromSelectCompany', 'True')
         this.setState({redirect: '/companyDetailsPage'})
         event.preventDefault()
     }
@@ -64,18 +65,29 @@ class SelectCompany extends Component {
         if(this.state.redirect){
             return <Redirect to={this.state.redirect}/>
         }
-        return (
-            <div>
-                <form className={'formSelect'} onSubmit={this.handleSubmit}>
-                    <h2>Select A Company:</h2>
-                    <br/>
-                    <select className={'dropdownSelect'} name={"companyDetails"} onChange={this.handleChange}>
-                        {parse(this.state.companyCode)}
-                    </select>
-                    <button type={'submit'}> Next </button>
-                </form>
-            </div>
-        );
+
+        if(this.state.loggedInStatus){
+            const user = JSON.parse(this.state.user);
+
+            if(user['role'] === 'Customer'){
+                return (
+                    <div>
+                        <form className={'formSelect'} onSubmit={this.handleSubmit}>
+                            <h2>Select A Company:</h2>
+                            <br/>
+                            <select className={'dropdownSelect'} name={"companyDetails"} onChange={this.handleChange}>
+                                {parse(this.state.companyCode)}
+                            </select>
+                            <button type={'submit'}> Next </button>
+                        </form>
+                    </div>
+                );
+            }else{
+                return <Redirect to={'/dashboard'}/>
+            }
+        }else{
+            return <Redirect to={'/login'}/>
+        }
     }
 }
 

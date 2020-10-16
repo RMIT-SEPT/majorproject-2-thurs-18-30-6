@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../header_component/header";
 import Footer from "../footer_component/footer";
 import "../../assets/companyDetailsPage.css"
+import {Redirect} from "react-router-dom";
 
 class CompanyDetailsPage extends Component {
 
@@ -17,11 +18,9 @@ class CompanyDetailsPage extends Component {
             companyName: sessionStorage.getItem('companyName'),
             companyPhone: "",
             companyDetail: "",
-            companyEmail: ""
+            companyEmail: "",
+            validation: sessionStorage.getItem('fromSelectCompany')
         }
-
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
 
         const token = sessionStorage.getItem('token')
         const proper = token.substr(1, token.length - 2)
@@ -41,20 +40,25 @@ class CompanyDetailsPage extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Header/>
-                <a className="backContact" href={"/dashboard"}><i className="arrowContact leftContact"></i>back</a>
-                <br/>
-                <div className={'text'}>
-                    <h1>Contact Us:</h1>
-                    <h4>Company Number: {this.state.companyPhone}</h4>
-                    <h4>Company Email: {this.state.companyEmail}</h4>
-                    <h4>Company Detail: {this.state.companyDetail}</h4>
+        if(this.state.validation){
+            sessionStorage.removeItem('fromSelectCompany')
+            return (
+                <div>
+                    <Header/>
+                    <a className="backContact" href={"/dashboard"}><i className="arrowContact leftContact"></i>back</a>
+                    <br/>
+                    <div className={'text'}>
+                        <h1>Contact Us:</h1>
+                        <h4>Company Number: {this.state.companyPhone}</h4>
+                        <h4>Company Email: {this.state.companyEmail}</h4>
+                        <h4>Company Detail: {this.state.companyDetail}</h4>
+                    </div>
+                    <Footer/>
                 </div>
-                <Footer/>
-            </div>
-        );
+            );
+        }else{
+            return <Redirect to={'/dashboard'}/>
+        }
     }
 }
 

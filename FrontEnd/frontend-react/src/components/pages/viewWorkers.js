@@ -4,6 +4,7 @@ import parse from 'html-react-parser';
 import Header from "../header_component/header";
 import Footer from "../footer_component/footer";
 import '../../assets/viewWorkers.css';
+import {Redirect} from "react-router-dom";
 
 
 class ViewWorkers extends Component {
@@ -45,20 +46,30 @@ class ViewWorkers extends Component {
 
 
     render() {
-        return (
-            <div>
-                <Header/>
+        if(this.state.loggedInStatus){
+            const user = JSON.parse(this.state.user);
 
-                <a className="backViewWorker " href={"/dashboard"}><i className="arrowViewWorker leftViewWorker"></i>back</a>
+            if(user['role'] === 'Admin'){
+                return (
+                    <div>
+                        <Header/>
 
-                <h3 className={"headWorker"}>Your Workers:</h3> <br/>
-                <ul className={"ulWorker"}>
-                    {parse(this.state.code)}
-                </ul>
+                        <a className="backViewWorker " href={"/dashboard"}><i className="arrowViewWorker leftViewWorker"></i>back</a>
 
-                <Footer/>
-            </div>
-        );
+                        <h3 className={"headWorker"}>Your Workers:</h3> <br/>
+                        <ul className={"ulWorker"}>
+                            {parse(this.state.code)}
+                        </ul>
+
+                        <Footer/>
+                    </div>
+                );
+            }else{
+                return <Redirect to={'/dashboard'} />
+            }
+        }else{
+            return <Redirect to={'/login'} />
+        }
     }
 }
 
