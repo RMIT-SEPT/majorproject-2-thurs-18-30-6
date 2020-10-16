@@ -9,7 +9,6 @@ public class AdminCompany {
 	private Integer adminId;
 	private String company;
 	
-	
 
 	public AdminCompany() {
 	}

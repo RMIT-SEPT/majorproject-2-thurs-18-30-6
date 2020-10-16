@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.AuthenticationResponse;
 import agme.backend2.models.Booking;
+import agme.backend2.models.Contact;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
@@ -263,5 +264,24 @@ public class UserController {
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings = userService.getBookings(userId, true);
         return new ResponseEntity<>(bookings,HttpStatus.OK);
+	}
+	
+	@PostMapping("/getContactInfo")
+	public ResponseEntity<?> getContactInfo(@RequestBody Map<String, Object> userMap){
+		Integer userId = (Integer) userMap.get("userId");
+		Contact contact = userService.getContact(userId);
+		return new ResponseEntity<>(contact,HttpStatus.OK);
+		
+	}
+	
+	@PostMapping("/setContactInfo")
+	public ResponseEntity<?> setContactInfo(@RequestBody Map<String, Object> contactMap) {
+		Integer userId = (Integer) contactMap.get("userId");
+		String phone = (String) contactMap.get("phone");
+		String email = (String) contactMap.get("email");
+		String detail = (String) contactMap.get("detail");
+		Contact contact = userService.setContact(userId, phone, email, detail);		
+		return new ResponseEntity<>(contact,HttpStatus.OK);
+		
 	}
 }

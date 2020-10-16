@@ -22,6 +22,7 @@ import agme.backend2.exceptions.ValidationException;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.models.AdminCompany;
 import agme.backend2.models.Booking;
+import agme.backend2.models.Contact;
 import agme.backend2.models.Management;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
@@ -31,6 +32,7 @@ import agme.backend2.models.WorkerService;
 import agme.backend2.repositories.WorkerAvailabilityRepository;
 import agme.backend2.repositories.AdminCompanyRepository;
 import agme.backend2.repositories.BookingRepository;
+import agme.backend2.repositories.ContactRepository;
 import agme.backend2.repositories.ManagementRepository;
 import agme.backend2.repositories.TimeslotRepository;
 import agme.backend2.repositories.UserRepository;
@@ -50,7 +52,9 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	@Autowired
 	AdminCompanyRepository adminCompanyRepository;
 	@Autowired
-	ManagementRepository managementRepository;	
+	ManagementRepository managementRepository;
+	@Autowired
+	ContactRepository contactRepository;
 	@Autowired
 	BookingRepository bookingRepository;	
 	@Autowired
@@ -100,6 +104,10 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		newCompany.setAdminId(newUser.getUserId());
 		newCompany.setCompany(company);
 		adminCompanyRepository.save(newCompany);
+		Contact newContact = new Contact();
+		newContact.setPhone(phone);
+		newContact.setUserId(newUser.getUserId());
+		contactRepository.save(newContact);
 		return newUser;
 	}
 	
@@ -116,6 +124,10 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		newManagement.setAdminId(adminId);
 		newManagement.setWorkerId(newUser.getUserId());
 		managementRepository.save(newManagement);
+		Contact newContact = new Contact();
+		newContact.setPhone(phone);
+		newContact.setUserId(newUser.getUserId());
+		contactRepository.save(newContact);
 		return newUser;
 	}
 	
@@ -376,5 +388,19 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 		return userRepository.findByUsername(username);
 	}
 	
+	@Override
+	public Contact getContact(Integer userId) {		
+		return contactRepository.findByUserId(userId);
+	}
+	
+	@Override
+	public Contact setContact(Integer userId, String phone, String email, String detail) {
+		Contact newContact = contactRepository.findByUserId(userId);
+		newContact.setPhone(phone);
+		newContact.setEmail(email);
+		newContact.setDetail(detail);
+		return contactRepository.save(newContact);
+		
+	}
 	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import agme.backend2.models.AuthenticationResponse;
 import agme.backend2.models.Booking;
+import agme.backend2.models.Contact;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 
@@ -59,4 +60,8 @@ public interface UserService  {
 	void finishBooking(Integer bookingId);
 
 	AuthenticationResponse createAuthenticationToken(String email, String password) throws Exception;
+	
+	Contact getContact(Integer userId);
+
+	Contact setContact(Integer userId, String phone, String email, String detail);
 }
