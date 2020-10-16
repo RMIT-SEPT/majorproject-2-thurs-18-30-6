@@ -9,6 +9,7 @@ jobs:
       - image: circleci/node:14.11.0
       
     steps:
+      - cd /frontend/frontend-react
       - checkout
       - setup_remote_docker
        - run:
@@ -62,6 +63,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
       
     steps:
+      - cd /backend2
       - checkout
       - setup_remote_docker
        - run:
