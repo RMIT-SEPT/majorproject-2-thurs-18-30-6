@@ -40,4 +40,5 @@
 html {
   background-color: lightgray;
   opacity: 90%;
+  overflow: auto;
 }

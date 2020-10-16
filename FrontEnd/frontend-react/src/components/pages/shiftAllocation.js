@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from "react-router-dom";
 import axios from 'axios';
 import '../../assets/shiftAllocation.css';
+import parse from 'html-react-parser';
 
 
 class ShiftAllocation extends Component {
@@ -18,46 +19,90 @@ class ShiftAllocation extends Component {
             wednesday: null,
             thursday: null,
             friday: null,
-            mondayAssigned: "Unassigned",
-            tuesdayAssigned: "Unassigned",
-            wednesdayAssigned: "Unassigned",
-            thursdayAssigned: "Unassigned",
-            fridayAssigned: "Unassigned",
-            redirect: null
+            saturday: null,
+            sunday: null,
+
+            date: null,
+            redirect: null,
+            error: "",
+            allocation: 'Allocate'
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Monday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({monday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Tuesday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({tuesday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Wednesday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({wednesday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Thursday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({thursday: result.data.toString()})
         })
         axios.post("http://localhost:8080/getAvailability", {
             username: this.state.username,
             timeslot: 'Friday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(result => {
             this.setState({friday: result.data.toString()})
+        })
+        axios.post("http://localhost:8080/getAvailability", {
+            username: this.state.username,
+            timeslot: 'Saturday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
+        }).then(result => {
+            this.setState({saturday: result.data.toString()})
+        })
+        axios.post("http://localhost:8080/getAvailability", {
+            username: this.state.username,
+            timeslot: 'Sunday'
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
+        }).then(result => {
+            this.setState({sunday: result.data.toString()})
         })
     }
 
@@ -68,65 +113,58 @@ class ShiftAllocation extends Component {
     }
     //updating back end on days where the workers are given shifts
     handleSubmit(event){
-        let assigned = false;
 
-        if(this.state.mondayAssigned === 'Assigned'){
-            assigned = true
+        const d = new Date();
+        const currDate = d.getDate();
+        const currMonth = d.getMonth() + 1;
+        const currYear = d.getFullYear();
+        const chosen = this.state.date.split("-");
+        const chosenYear = parseInt(chosen[0]);
+        const chosenMonth = parseInt(chosen[1]);
+        const chosenDate = parseInt(chosen[2]);
+
+        const chosenFull = new Date(chosenYear, chosenMonth, chosenDate)
+
+        const send = chosenFull.getFullYear() + "-" + chosenFull.getMonth() + "-" + chosenFull.getDate();
+
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
+        if(chosenYear === currYear && chosenMonth === currMonth && chosenDate >= currDate){
+
+            if(this.state.allocation === 'Allocate'){
+
+                axios.post("http://localhost:8080/setShift", {
+                    userId: parseInt(this.state.userId),
+                    date: send
+                },{
+                    headers: {
+                        'Authorization': `Bearer ${proper}`
+                    }
+                }).then(response =>{
+                    alert('Shift allocated successfully!')
+                    this.setState({redirect: '/dashboard'})
+                }).catch( error => {
+                    this.setState({error: "Error: Date already assigned for this worker"})
+                })
+
+            }else{
+
+                axios.post("http://localhost:8080/deleteShift", {
+                    userId: parseInt(this.state.userId),
+                    date: send
+                }).then(response =>{
+                    alert('Shift deallocated successfully!')
+                    this.setState({redirect: '/dashboard'})
+                }).catch( error => {
+                    this.setState({error: "Error: There was an error while deallocating the shift"})
+                })
+
+            }
+
         }else{
-            assigned = false
+            this.setState({error: "Error: Invalid Date, Date should be within this month and not in the past"})
         }
-        axios.post("http://localhost:8080/setShift", {
-            userId: parseInt(this.state.userId),
-            timeslot: "Monday",
-            assigned: assigned
-        })
-
-        if(this.state.tuesdayAssigned === 'Assigned'){
-            assigned = true
-        }else{
-            assigned = false
-        }
-        axios.post("http://localhost:8080/setShift", {
-            userId: parseInt(this.state.userId),
-            timeslot: "Tuesday",
-            assigned: assigned
-        })
-
-        if(this.state.wednesdayAssigned === 'Assigned'){
-            assigned = true
-        }else{
-            assigned = false
-        }
-        axios.post("http://localhost:8080/setShift", {
-            userId: parseInt(this.state.userId),
-            timeslot: "Wednesday",
-            assigned: assigned
-        })
-
-        if(this.state.thursdayAssigned === 'Assigned'){
-            assigned = true
-        }else{
-            assigned = false
-        }
-        axios.post("http://localhost:8080/setShift", {
-            userId: parseInt(this.state.userId),
-            timeslot: "Thursday",
-            assigned: assigned
-        })
-
-        if(this.state.fridayAssigned === 'Assigned'){
-            assigned = true
-        }else{
-            assigned = false
-        }
-        axios.post("http://localhost:8080/setShift", {
-            userId: parseInt(this.state.userId),
-            timeslot: "Friday",
-            assigned: assigned
-        })
-
-        alert('Shifts allocated for ' + this.state.username + ' successfully!')
-        this.setState({redirect: "/dashboard"})
 
         event.preventDefault()
     }
@@ -152,54 +190,23 @@ class ShiftAllocation extends Component {
                                 <h4>Wednesday - {this.state.wednesday}</h4>
                                 <h4>Thursday - {this.state.thursday}</h4>
                                 <h4>Friday - {this.state.friday}</h4>
+                                <h4>Saturday - {this.state.saturday}</h4>
+                                <h4>Sunday - {this.state.sunday}</h4>
                                 <br/>
                                 <p>Please only assign workers on available days <br/> unless in an emergency.</p>
                             </div>
                             {/*Select box for Admin to set worker's shift*/}
                             <form className={'formShift'} onSubmit={this.handleSubmit}>
                                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
-                                <h1>Set Worker's Shifts This Week</h1>
+                                <h1>Set Worker's Shifts This Month</h1>
+                                <p className={'error'}>{parse(this.state.error)}</p>
+                                <h4 className={'days'}>Date:</h4>
+                                <input className={'dropdownShift'} type={'date'} name={'date'} value={this.state.date} onChange={this.handleChange} required/>
 
-                                <h4 className={'days'}>Monday:</h4>
-                                <select className={"dropdownShift"} name={'mondayAssigned'} onChange={this.handleChange}>
-
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-
+                                <select className={'dropdownShift'} name={'allocation'} onChange={this.handleChange}>
+                                    <option value={'Allocate'}>Allocate</option>
+                                    <option value={'Deallocate'}>Deallocate</option>
                                 </select>
-
-                                <h4 className={'days'}>Tuesday:</h4>
-                                <select className={"dropdownShift"} name={'tuesdayAssigned'} onChange={this.handleChange}>
-
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-
-                                </select>
-
-                                <h4 className={'days'}>Wednesday:</h4>
-                                <select className={"dropdownShift"} name={'wednesdayAssigned'} onChange={this.handleChange}>
-
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-
-                                </select>
-
-                                <h4 className={'days'}>Thursday:</h4>
-                                <select className={"dropdownShift"} name={'thursdayAssigned'} onChange={this.handleChange}>
-
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-
-                                </select>
-
-                                <h4 className={'days'}>Friday:</h4>
-                                <select className={"dropdownShift"} name={'fridayAssigned'} onChange={this.handleChange}>
-
-                                    <option value={'Unassigned'}>Unassigned</option>
-                                    <option value={'Assigned'}>Assigned</option>
-
-                                </select>
-                                <br/>
                                 <button className ={'submitShift'} type={'submit'}> Submit </button>
                             </form>
 

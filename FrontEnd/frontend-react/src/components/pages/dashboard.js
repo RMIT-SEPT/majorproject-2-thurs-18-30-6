@@ -23,19 +23,27 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>Admin Dashboard</h1>
+                            <h1>Welcome back {user['firstName']}!</h1>
 
-                            <h3>Profile:</h3>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
                             </form>
 
-                            <h3>Worker Options:</h3>
+                            <h3>Administration Options:</h3>
                             <form className={'formDash'} action={'/workerRegistration'}>
                                 <button className={'buttonDash'}  type={'submit'}>Add a Worker</button>
                             </form>
                             <form className={'formDash'} action={'/chooseAvailableWorker'}>
                                 <button className={'buttonDash'} type={'submit'}>Allocate Worker Shifts</button>
+                            </form>
+                            <form className={'formDash'} action={'/viewWorkers'}>
+                                <button className={'buttonDash'} type={'submit'}>View All Workers</button>
+                            </form>
+                            <form className={'formDash'} action={'/createService'}>
+                                <button className={'buttonDash'}  type={'submit'}>Create a Service</button>
+                            </form>
+                            <form className={'formDash'} action={'/viewBookings'}>
+                                <button className={'buttonDash'}  type={'submit'}>View Past Bookings</button>
                             </form>
 
                         </div>
@@ -49,10 +57,20 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>User Dashboard</h1>
-                            <h3>Profile:</h3>
+                            <h1>Welcome back {user['firstName']}!</h1>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
+                            </form>
+
+                            <h3>Customer Options:</h3>
+                            <form className={'formDash'} action={'/companyAndServices'}>
+                                <button className={'buttonDash'}  type={'submit'}> Book Services</button>
+                            </form>
+                            <form className={'formDash'} action={'/viewBookings'}>
+                                <button className={'buttonDash'}  type={'submit'}>View Existing Bookings</button>
+                            </form>
+                            <form className={'formDash'} action={'/bookingAction'}>
+                                <button className={'buttonDash'}  type={'submit'}>Cancel Existing Booking</button>
                             </form>
                         </div>
                         <Footer/>
@@ -65,19 +83,24 @@ class Dashboard extends Component {
                     <div>
                         <Header/>
                         <div className={'bodyDash'}>
-                            <h1>Worker Dashboard</h1>
+                            <h1>Welcome back {user['firstName']}!</h1>
 
-                            <h3>Profile:</h3>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Profile Page</button>
                             </form>
 
-                            <h3>Availability:</h3>
+                            <h3>Worker Options:</h3>
                             <form className={'formDash'} action={'/availability'}>
                                 <button className={'buttonDash'}  type={'submit'}>Set Availability</button>
                             </form>
                             <form className={'formDash'} action={'/viewShifts'}>
                                 <button className={'buttonDash'}  type={'submit'}>View Assigned Shifts</button>
+                            </form>
+                            <form className={'formDash'} action={'/viewBookings'}>
+                                <button className={'buttonDash'}  type={'submit'}>View Existing Bookings</button>
+                            </form>
+                            <form className={'formDash'} action={'/bookingAction'}>
+                                <button className={'buttonDash'}  type={'submit'}>Mark Finished Bookings</button>
                             </form>
 
                         </div>

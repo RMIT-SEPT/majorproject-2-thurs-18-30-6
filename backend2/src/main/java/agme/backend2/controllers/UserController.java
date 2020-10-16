@@ -1,25 +1,50 @@
 package agme.backend2.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import agme.backend2.exceptions.ValidationException;
+import agme.backend2.models.AuthenticationResponse;
+import agme.backend2.models.Booking;
+import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
 import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
+import agme.backend2.services.UserDetailService;
 import agme.backend2.services.UserService;
+import agme.backend2.util.JwtUtil;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	UserDetailService userDetailService;
+	
+	@Autowired
+	JwtUtil JwtTokenUtil;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
 	
 	@Autowired
 	ManagementService managementService;
@@ -71,19 +96,28 @@ public class UserController {
 	//uses validateUser method to query from the database, if found, return the status that a user is found with
 	//that specific name and password
 	@PostMapping("/login")
-	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> loginUser(@RequestBody Map<String, Object> userMap) throws Exception{
 		String email = (String) userMap.get("username");
         String password = (String) userMap.get("password");
-        User user = userService.validateUser(email, password);
-        return new ResponseEntity<>(user,HttpStatus.CREATED);		
+        AuthenticationResponse authenticationResponse = userService.createAuthenticationToken(email, password);
+        return new ResponseEntity<>(authenticationResponse,HttpStatus.CREATED);		
 	}
-
+	
 	//function to find all workers under the specific admin id
 	@PostMapping("/getworker/{adminId}")
 	public ResponseEntity<?> getWorkerFromAdmin(@PathVariable Integer adminId){
 		List<User> worker = new ArrayList<User>();
 		worker = managementService.getAllWorkerFromAdmin(adminId);
 		return new ResponseEntity<>(worker,HttpStatus.OK);
+	}
+	
+	//function to get all workers for an admin and date
+	@PostMapping("/getWorkerOnDate")
+	public ResponseEntity<?> getWorkerOnDate(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
+		Integer adminId = (Integer) userMap.get("adminId");
+		String date = (String) userMap.get("date");
+        List<User> workers = userService.getWorkerOnDate(adminId, date);
+        return new ResponseEntity<>(workers,HttpStatus.OK);
 	}
 
 	//function to get all worker availability for worker
@@ -107,38 +141,127 @@ public class UserController {
 
 	//function to get shift for the specific worker
 	@PostMapping("/getShift")
-	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap){
-		Integer userId = (Integer) userMap.get("userId");
-        List<String> assigned = userService.getAssigned(userId);
-        return new ResponseEntity<>(assigned,HttpStatus.OK);
+	public ResponseEntity<?> getShift(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
+		Integer workerId = (Integer) userMap.get("workerId");
+        List<Timeslot> shifts = userService.getShifts(workerId);
+        return new ResponseEntity<>(shifts,HttpStatus.OK);
 	}
 
 	//function to set a shift for a specific worker
 	@PostMapping("/setShift")
-	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap){
+	public ResponseEntity<?> setShift(@RequestBody Map<String, Object> userMap) throws ParseException {
 		Integer userId = (Integer) userMap.get("userId");
-		String timeslot = (String) userMap.get("timeslot");
-        Boolean assigned = (Boolean) userMap.get("assigned");
-        userService.setAssigned(userId, timeslot, assigned);
-        return new ResponseEntity<>(assigned,HttpStatus.CREATED);
+		String date = (String) userMap.get("date");
+        userService.setShifts(userId, date);
+        return new ResponseEntity<>(date,HttpStatus.CREATED);
+	}
+	
+	//function to delete a shift for a specific worker
+	@PostMapping("/deleteShift")
+	public ResponseEntity<?> deleteShift(@RequestBody Map<String, Object> userMap) throws ParseException {
+		Integer userId = (Integer) userMap.get("userId");
+		String date = (String) userMap.get("date");
+        userService.deleteShifts(userId, date);
+        return new ResponseEntity<>(date,HttpStatus.OK);
 	}
 
 	//function to get all services provided by an admin
-	@PostMapping("/getService")
-	public ResponseEntity<?> getService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+	@PostMapping("/checkService")
+	public ResponseEntity<?> checkService(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
-        String availability = userService.getService(username, service);
+        String availability = userService.getService(adminId, service);
         return new ResponseEntity<>(availability,HttpStatus.OK);
+	}
+	
+	//function to get all services provided by an admin
+	@PostMapping("/getServices")
+	public ResponseEntity<?> getServices(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
+        List<String> services = userService.getAllServices(adminId);
+        return new ResponseEntity<>(services,HttpStatus.OK);
 	}
 
 	//function to set services by admin 
 	@PostMapping("/setService")
 	public ResponseEntity<?> setService(@RequestBody Map<String, Object> userMap){
-		String username = (String) userMap.get("username");
+		Integer adminId = (Integer) userMap.get("adminId");
 		String service = (String) userMap.get("service");
         String availability = (String) userMap.get("availability");
-        userService.setService(username, service, availability);
+        String description = (String) userMap.get("description");
+        userService.setService(adminId, service, availability,description);
         return new ResponseEntity<>(availability,HttpStatus.CREATED);
+	}
+	
+	//function to get an adminId from a company name
+	@PostMapping("/getAdminId")
+	public ResponseEntity<?> getAdminId(@RequestBody Map<String, Object> userMap){
+		String company = (String) userMap.get("company");
+        Integer adminId = userService.getAdminId(company);
+        return new ResponseEntity<>(adminId,HttpStatus.OK);
+	}
+
+	//function to get all companies
+	@PostMapping("/getAllCompanies")
+	public ResponseEntity<?> getAllCompanies(){
+        List<String> companies = userService.getAllCompanies();
+        return new ResponseEntity<>(companies,HttpStatus.OK);
+	}
+	
+	//function to get service description
+	@PostMapping("/getDescription")
+	public ResponseEntity<?> getDescription(@RequestBody Map<String, Object> userMap){
+		Integer adminId = (Integer) userMap.get("adminId");
+		String service = (String) userMap.get("service");
+        String description = userService.getDescription(adminId, service);
+        return new ResponseEntity<>(description,HttpStatus.OK);
+	}
+
+
+	//function to get all bookings of a customer or worker
+	@PostMapping("/getBookings")
+	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
+		Integer userId = (Integer) userMap.get("userId");
+		System.out.println(userId);
+		List<Booking> bookings = new ArrayList<Booking>();
+		bookings = userService.getBookings(userId, false);
+        return new ResponseEntity<>(bookings,HttpStatus.OK);
+	}
+
+	//function to create a booking
+	@PostMapping("/createBooking")
+	public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> userMap) throws ParseException, JsonProcessingException{
+		Integer workerId = (Integer) userMap.get("workerId");
+		Integer customerId = (Integer) userMap.get("customerId");
+		String timeslot = (String) userMap.get("timeslot");
+		String date = (String) userMap.get("date");
+		String serviceName = (String) userMap.get("serviceName");
+		Booking booking = userService.createBooking(workerId, customerId, timeslot, date, serviceName);
+        return new ResponseEntity<>(booking,HttpStatus.CREATED);
+	}
+	
+	//function to cancel a booking
+	@PostMapping("/cancelBooking")
+	public ResponseEntity<?> cancelBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
+		Integer bookingId = (Integer) userMap.get("bookingId");
+		userService.cancelBooking(bookingId);
+        return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
+	}
+	
+	//function to mark a booking as done
+	@PostMapping("/finishBooking")
+	public ResponseEntity<?> finishBooking(@RequestBody Map<String, Object> userMap) throws ParseException{
+		Integer bookingId = (Integer) userMap.get("bookingId");
+		userService.finishBooking(bookingId);
+        return new ResponseEntity<>(bookingId,HttpStatus.CREATED);
+	}
+	
+	//function to get past bookings
+	@PostMapping("/getPastBookings")
+	public ResponseEntity<?> getPastBookings(@RequestBody Map<String, Object> userMap) throws ParseException{
+		Integer userId = (Integer) userMap.get("userId");
+		List<Booking> bookings = new ArrayList<Booking>();
+		bookings = userService.getBookings(userId, true);
+        return new ResponseEntity<>(bookings,HttpStatus.OK);
 	}
 }
