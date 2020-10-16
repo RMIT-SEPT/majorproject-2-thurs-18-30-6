@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,6 @@ import agme.backend2.models.Contact;
 import agme.backend2.models.Management;
 import agme.backend2.models.Timeslot;
 import agme.backend2.models.User;
-import agme.backend2.models.AdminCompany;
-import agme.backend2.models.Management;
 import agme.backend2.models.WorkerService;
 import agme.backend2.repositories.WorkerAvailabilityRepository;
 import agme.backend2.repositories.AdminCompanyRepository;
@@ -289,8 +286,8 @@ public class UserServiceImpl implements UserService,UserDetailsService {
 	
 	@Override
 	//get all company names
-	public List<String> getAllCompanies(){
-		List<String> companies = adminCompanyRepository.findAllCompany();
+	public List<AdminCompany> getAllCompanies(){
+		List<AdminCompany> companies = adminCompanyRepository.findAllCompany();
 		return companies;
 	}
 	

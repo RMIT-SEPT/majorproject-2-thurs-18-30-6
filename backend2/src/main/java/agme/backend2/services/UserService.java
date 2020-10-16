@@ -4,11 +4,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import agme.backend2.models.AuthenticationResponse;
-import agme.backend2.models.Booking;
-import agme.backend2.models.Contact;
-import agme.backend2.models.Timeslot;
-import agme.backend2.models.User;
+import agme.backend2.models.*;
 
 
 public interface UserService  {
@@ -45,7 +41,7 @@ public interface UserService  {
 	
 	Integer getAdminId(String company);
 	
-	List<String> getAllCompanies();
+	List<AdminCompany> getAllCompanies();
 	
 	String getDescription(Integer adminId, String service);
 	

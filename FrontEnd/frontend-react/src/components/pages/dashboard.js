@@ -29,6 +29,10 @@ class Dashboard extends Component {
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
                             </form>
 
+                            <form className={'formDash'} action={'/setDetailsPage'}>
+                                <button className={'buttonDash'} type={'submit'}>Set Company Details</button>
+                            </form>
+
                             <h3>Administration Options:</h3>
                             <form className={'formDash'} action={'/workerRegistration'}>
                                 <button className={'buttonDash'}  type={'submit'}>Add a Worker</button>
@@ -60,6 +64,9 @@ class Dashboard extends Component {
                             <h1>Welcome back {user['firstName']}!</h1>
                             <form className={'formDash'} action={'/profile'}>
                                 <button className={'buttonDash'} type={'submit'}>View Profile Page</button>
+                            </form>
+                            <form className={'formDash'} action={'/selectCompany'}>
+                                <button className={'buttonDash'} type={'submit'}>Contact A Company</button>
                             </form>
 
                             <h3>Customer Options:</h3>

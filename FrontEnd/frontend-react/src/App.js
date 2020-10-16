@@ -29,6 +29,9 @@ import BookingPage from "./components/pages/bookingPage";
 import ConfirmBooking from "./components/pages/confirmBooking";
 import ViewBookings from "./components/pages/viewBookings";
 import BookingAction from "./components/pages/bookingAction";
+import setDetailsPage from "./components/pages/setDetailsPage";
+import selectCompany from "./components/pages/selectCompany";
+import companyDetailsPage from "./components/pages/companyDetailsPage";
 
 
 
@@ -58,6 +61,9 @@ class App extends Component {
                     <Route exact path={'/confirmBooking'} component={ConfirmBooking}/>
                     <Route exact path={'/viewBookings'} component={ViewBookings}/>
                     <Route exact path={'/bookingAction'} component={BookingAction}/>
+                    <Route exact path={'/setDetailsPage'} component={setDetailsPage}/>
+                    <Route exact path={'/selectCompany'} component={selectCompany}/>
+                    <Route exact path={'/companyDetailsPage'} component={companyDetailsPage}/>
 
                     {/*KEEP AT THE END*/}
                     <Route path={'/404'} component={PageNotFound}/>

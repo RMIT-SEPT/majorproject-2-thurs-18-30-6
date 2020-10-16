@@ -13,7 +13,7 @@ public interface AdminCompanyRepository extends CrudRepository<AdminCompany, Lon
 	@Query("select ac.adminId from AdminCompany ac where ac.company = ?1")
 	Integer findAdminIdByCompany(String company);
 	
-	@Query("select ac.company from AdminCompany ac")
-	List<String> findAllCompany();
+	@Query("select ac from AdminCompany ac")
+	List<AdminCompany> findAllCompany();
 	
 }

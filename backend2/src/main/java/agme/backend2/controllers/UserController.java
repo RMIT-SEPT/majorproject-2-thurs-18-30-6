@@ -1,5 +1,6 @@
 package agme.backend2.controllers;
 
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import agme.backend2.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import agme.backend2.exceptions.ValidationException;
-import agme.backend2.models.AuthenticationResponse;
-import agme.backend2.models.Booking;
-import agme.backend2.models.Contact;
-import agme.backend2.models.Timeslot;
-import agme.backend2.models.User;
-import agme.backend2.models.WorkerAvailability;
 import agme.backend2.services.ManagementService;
 import agme.backend2.services.UserDetailService;
 import agme.backend2.services.UserService;
@@ -205,7 +201,7 @@ public class UserController {
 	//function to get all companies
 	@PostMapping("/getAllCompanies")
 	public ResponseEntity<?> getAllCompanies(){
-        List<String> companies = userService.getAllCompanies();
+        List<AdminCompany> companies = userService.getAllCompanies();
         return new ResponseEntity<>(companies,HttpStatus.OK);
 	}
 	
@@ -223,7 +219,6 @@ public class UserController {
 	@PostMapping("/getBookings")
 	public ResponseEntity<?> getBookings(@RequestBody Map<String, Object> userMap) throws JsonProcessingException{
 		Integer userId = (Integer) userMap.get("userId");
-		System.out.println(userId);
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings = userService.getBookings(userId, false);
         return new ResponseEntity<>(bookings,HttpStatus.OK);
