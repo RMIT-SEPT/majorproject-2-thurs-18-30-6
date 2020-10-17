@@ -7,16 +7,16 @@ jobs:
   build_frontend:
     docker:
       - image: circleci/node:14.11.0
-      
+    working_directory: ~/majorproject-2-thurs-18-30-6/Frontend/frontend-react  
     steps:
-      - cd /frontend/frontend-react
-      - checkout
+      - checkout:
+          path: ~/majorproject-2-thurs-18-30-6
       - setup_remote_docker
-       - run:
-           name: Setup common environment variables
-           command: |
-             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
-             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
+#       - run:
+#           name: Setup common environment variables
+#           command: |
+#             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+#             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
 
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
@@ -61,16 +61,16 @@ jobs:
   build_backend:
     docker:
       - image: circleci/openjdk:8-jdk
-      
+    working_directory: ~/majorproject-2-thurs-18-30-6/backend2
     steps:
-      - cd /backend2
-      - checkout
+      - checkout:
+          path: ~/majorproject-2-thurs-18-30-6
       - setup_remote_docker
-       - run:
-           name: Setup common environment variables
-           command: |
-             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
-             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
+#       - run:
+#           name: Setup common environment variables
+#           command: |
+#             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+#             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
 
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
