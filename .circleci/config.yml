@@ -115,10 +115,6 @@ jobs:
 workflows:
   build-deploy-qa:
     jobs:
-      - build_frontend:
-          filters:
-            branches:
-              only: master
       - build_backend:
           filters:
             branches:
