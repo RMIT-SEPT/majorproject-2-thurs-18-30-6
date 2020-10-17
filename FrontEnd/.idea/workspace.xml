@@ -31,22 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/bookingAction.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/bookingPage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/companyAndServices.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/companyDetailsPage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/confirmBooking.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/createService.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/selectCompany.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/serviceDetails.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/setDetailsPage.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewBookings.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/pages_tests/viewWorkers.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/companyDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyDetailsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/selectCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/selectCompany.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/setDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/setDetailsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/viewWorkers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
