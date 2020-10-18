@@ -3,6 +3,7 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import Header from "../header_component/header";
 import Footer from "../footer_component/footer";
+import '../../assets/viewShifts.css';
 
 class ViewShifts extends Component {
     constructor(props){
@@ -15,8 +16,16 @@ class ViewShifts extends Component {
         }
 
         const user = JSON.parse(this.state.user)
+
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
+
         axios.post("http://localhost:8080/getShift", {
-            userId: user['userId']
+            workerId: user['userId']
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         }).then(response => {
             console.log('stuff', response.data)
             const count = response.data['length']
@@ -24,7 +33,7 @@ class ViewShifts extends Component {
             let htmlCode = ""
             for(let i = 0; i < count; i++){
                 // Response is just "assigned" but no day so need to talk to nam about it
-                htmlCode += "<h4 style='padding-left: 50px;'>" + response.data[i] + ": 9am - 5pm</h4>"
+                htmlCode += "<h4 style='padding-left: 50px;'>" + response.data[i]['stringDate'] + ": " + response.data[i]['timeslot'] + "</h4>"
             }
 
             this.setState({code: htmlCode})
@@ -39,7 +48,7 @@ class ViewShifts extends Component {
                 {/*show shifts allocated if there is any*/}
                 <Header/>
                 <a className="backShift" href={"/dashboard"}><i className="arrowShift leftShift"></i>back</a>
-                <h2 align={'center'}>Assigned Shifts this week</h2>
+                <h2 align={'center'}>Assigned Shifts</h2>
 
                 {parse(this.state.code)}
 

@@ -36,6 +36,7 @@ class RegistrationComplete extends Component {
                     <Header/>
 
                     <h1 className={'congrats'}>Congratulations! You have successfully registered a worker.</h1>
+                    <h2 className={'congrats'}>A text message will be sent with the number provided</h2>
                     <h3 className={'congrats'}><a href={'/dashboard'}>Click here to return to the dashboard.</a></h3>
 
                     {/*Clear session storage so you can only access this page after registering*/}

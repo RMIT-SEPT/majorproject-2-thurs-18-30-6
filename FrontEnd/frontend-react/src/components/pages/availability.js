@@ -15,6 +15,8 @@ class Availability extends Component {
             wednesday: "Unavailable",
             thursday: "Unavailable",
             friday: "Unavailable",
+            saturday: "Unavailable",
+            sunday: "Unavailable",
             redirect: "",
         }
 
@@ -30,35 +32,77 @@ class Availability extends Component {
 
     handleSubmit(event){
         const user = JSON.parse(this.state.user)
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
 
         axios.post("http://localhost:8080/setAvailability", {
             username: user['username'],
             timeslot: "Monday",
             availability: this.state.monday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         })
 
         axios.post("http://localhost:8080/setAvailability", {
             username: user['username'],
             timeslot: "Tuesday",
             availability: this.state.tuesday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         })
 
         axios.post("http://localhost:8080/setAvailability", {
             username: user['username'],
             timeslot: "Wednesday",
             availability: this.state.wednesday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         })
 
         axios.post("http://localhost:8080/setAvailability", {
             username: user['username'],
             timeslot: "Thursday",
             availability: this.state.thursday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         })
 
         axios.post("http://localhost:8080/setAvailability", {
             username: user['username'],
             timeslot: "Friday",
             availability: this.state.friday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
+        })
+
+        axios.post("http://localhost:8080/setAvailability", {
+            username: user['username'],
+            timeslot: "Saturday",
+            availability: this.state.saturday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
+        })
+
+        axios.post("http://localhost:8080/setAvailability", {
+            username: user['username'],
+            timeslot: "Sunday",
+            availability: this.state.sunday
+        },{
+            headers: {
+                'Authorization': `Bearer ${proper}`
+            }
         })
 
         alert('Availability submitted successfully!')
@@ -111,6 +155,18 @@ class Availability extends Component {
 
                                 <h4 className={'days'}>Friday:</h4>
                                 <select className={"dropdownAvail"} name={'friday'} onChange={this.handleChange}>
+                                    <option value={'Unavailable'}>Unavailable</option>
+                                    <option value={'Available'}>Available</option>
+                                </select>
+
+                                <h4 className={'days'}>Saturday:</h4>
+                                <select className={"dropdownAvail"} name={'saturday'} onChange={this.handleChange}>
+                                    <option value={'Unavailable'}>Unavailable</option>
+                                    <option value={'Available'}>Available</option>
+                                </select>
+
+                                <h4 className={'days'}>Sunday:</h4>
+                                <select className={"dropdownAvail"} name={'sunday'} onChange={this.handleChange}>
                                     <option value={'Unavailable'}>Unavailable</option>
                                     <option value={'Available'}>Available</option>
                                 </select>
