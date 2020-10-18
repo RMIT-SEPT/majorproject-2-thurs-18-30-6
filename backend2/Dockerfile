@@ -6,5 +6,5 @@ WORKDIR /build/
 RUN mvn package
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=MAVEN_BUILD /build/target/majorproject-2-thurs-18-30-6-1.0.0.jar /app/
-ENTRYPOINT ["java", "-jar", "majorproject-2-thurs-18-30-6-1.0.0.jar"]
+COPY --from=MAVEN_BUILD /build/target/backend2-0.0.1-SNAPSHOT.jar /app/
+ENTRYPOINT ["java", "-jar", "backend2-0.0.1-SNAPSHOT.jar"]

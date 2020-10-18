@@ -7,7 +7,9 @@ jobs:
   build_frontend:
     docker:
       - image: circleci/node:14.11.0
-    working_directory: ~/majorproject-2-thurs-18-30-6/Frontend/frontend-react  
+    environment:
+      FULL_IMAGE_NAME: 545264965023.dkr.ecr.us-east-1.amazonaws.com/agme-frontend:latest
+    working_directory: ~/majorproject-2-thurs-18-30-6/FrontEnd/frontend-react  
     steps:
       - checkout:
           path: ~/majorproject-2-thurs-18-30-6
@@ -17,29 +19,21 @@ jobs:
 #           command: |
 #             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
 #             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
 
-
-      - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
-            # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: frontendreact-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline # gets the project dependencies
-
-      - save_cache: # saves the project dependencies
+      - run: npm install
+   
+      - save_cache:
           paths:
-              - ~/.m2
-          key: frontendreact-{{ checksum "pom.xml" }}
-
-      - run: mvn package # run the actual tests
-
-      - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
-            # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-            path: target/surefire-reports
-
-      - store_artifacts: # store the uberjar as an artifact
-            # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-            path: target/majorproject-2-thurs-18-30-6-1.0.0-SNAPSHOT.jar
-        # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+          - node_modules
+          - ~/.npm 
+          - ~/.cache        
+          key: v1-dependencies-{{ checksum "package.json" }}
+    
+      - run: npm test
 
       - run:
           name: Install dependencies for AWS
@@ -55,12 +49,13 @@ jobs:
       - run:
           name: Push image
           command: |
-            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 545264965023.dkr.ecr.us-east-1.amazonaws.com
             docker push $FULL_IMAGE_NAME
-            
   build_backend:
     docker:
       - image: circleci/openjdk:8-jdk
+    environment:
+      FULL_IMAGE_NAME: 545264965023.dkr.ecr.us-east-1.amazonaws.com/agme-backend:latest
     working_directory: ~/majorproject-2-thurs-18-30-6/backend2
     steps:
       - checkout:
@@ -92,7 +87,7 @@ jobs:
 
       - store_artifacts: # store the uberjar as an artifact
             # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-            path: target/majorproject-2-thurs-18-30-6-1.0.0-SNAPSHOT.jar
+            path: target/backend2-0.0.1-SNAPSHOT.jar
         # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
 
       - run:
@@ -109,13 +104,17 @@ jobs:
       - run:
           name: Push image
           command: |
-            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 545264965023.dkr.ecr.us-east-1.amazonaws.com
             docker push $FULL_IMAGE_NAME
       
 workflows:
   build-deploy-qa:
     jobs:
-      - build_backend:
+      - build_frontend:
           filters:
             branches:
               only: master
+      - build_backend:
+          filters:
+            branches:
+              only: master       
