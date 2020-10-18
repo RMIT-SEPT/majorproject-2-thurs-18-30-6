@@ -39,7 +39,7 @@ class CompanyAndServices extends Component {
             //htmlCode is the string that is parsed later on to HTML
             let htmlCode = "<option> - </option>"
             for(let i = 0; i < companyCount; i++){
-                let companyName = response.data[i]
+                let companyName = response.data[i]['company']
                 htmlCode += "<option value='" + companyName + "'>" + companyName + "</option>"
             }
             this.setState({companyCode: htmlCode})

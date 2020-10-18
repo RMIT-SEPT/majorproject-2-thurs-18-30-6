@@ -32,6 +32,7 @@
   <component name="ChangeListManager">
     <list default="true" id="55abc131-1ca9-4655-b131-cfc38203cd58" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-react/src/components/pages/companyAndServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-react/src/components/pages/companyAndServices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +99,8 @@
       <workItem from="1602420330669" duration="3143000" />
       <workItem from="1602739039174" duration="8305000" />
       <workItem from="1602846620746" duration="8650000" />
+      <workItem from="1603010835959" duration="3000" />
+      <workItem from="1603010926136" duration="895000" />
     </task>
     <servers />
   </component>
