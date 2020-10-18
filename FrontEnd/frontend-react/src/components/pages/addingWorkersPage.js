@@ -29,7 +29,8 @@ class AddingWorkersPage extends Component {
 
     handleSubmit(event){
         const adminUser = JSON.parse(this.state.user)
-
+        const token = sessionStorage.getItem('token')
+        const proper = token.substr(1, token.length - 2)
         // post registration information to API
         axios.post("http://localhost:8080/register/worker", {
 
@@ -45,6 +46,9 @@ class AddingWorkersPage extends Component {
 
             },
             {
+                headers: {
+                    'Authorization': `Bearer ${proper}`
+                },
                 withCredentials: true // lets browser store cookie for logged in purposes
             }).then(response => {
             console.log('adding worker response', response.data)

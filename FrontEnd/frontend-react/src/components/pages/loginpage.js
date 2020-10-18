@@ -20,7 +20,8 @@ class Loginpage extends Component {
             user: sessionStorage.getItem('user'),
             username: "",
             password: "",
-            errors: ""
+            errors: "",
+            redirect: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +34,7 @@ class Loginpage extends Component {
         axios.post("http://localhost:8080/login", {
 
                 username: this.state.username,
-                password: this.state.password,
-                redirect: null
+                password: this.state.password
 
             },
             {
@@ -44,6 +44,7 @@ class Loginpage extends Component {
 
             // set code for response 200 here (show as good)
             sessionStorage.setItem('user', JSON.stringify(response.data))
+            sessionStorage.setItem('token' , JSON.stringify(response.data['jwt']))
             sessionStorage.setItem('loggedInStatus', 'true')
             this.setState({redirect: '/dashboard'})
 

@@ -12,6 +12,7 @@
     height: 40px;
     opacity: 80%;
     border-top: 1px solid black;
+    clear: both;
 }
 
 .footerText {
